@@ -224,7 +224,7 @@ public class BRApiManager {
         String jsonString1 = urlGET(app, url1);
 
         float price1=100000;
-
+        
         JSONArray jsonArray1 = null;
         if (jsonString1 == null) {
             jsonString1 = urlGET(app, url1);        // retry
