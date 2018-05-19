@@ -11,25 +11,29 @@
 
     <ImageView
         android:id="@+id/title"
-        android:layout_width="208dp"
-        android:layout_height="118dp"
+        android:layout_width="0dp"
+        android:layout_height="128dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
-        android:src="@drawable/brd_logo_white"
+        android:scaleType="fitCenter"
+        android:src="@drawable/brd_logo_gradient"
         android:textColor="@color/white"
         android:textSize="48sp"
+        android:visibility="visible"
         app:customTFont="Celevenia.otf"
         app:layout_constraintBottom_toTopOf="@+id/brkeyboard"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttons_layout"
-        app:layout_constraintVertical_bias="0.120000005"
-        tools:layout_editor_absoluteX="32dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/pinLayout"
@@ -168,18 +172,15 @@
         android:id="@+id/unlocked_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="0dp"
+        android:layout_marginBottom="24dp"
         android:alpha="0"
         android:text="@string/UnlockScreen.unlocked"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:customTFont="CircularPro-Book.otf"
         app:layout_constraintBottom_toTopOf="@+id/unlocked_image"
-        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintLeft_toLeftOf="@+id/unlocked_image"
-        app:layout_constraintRight_toRightOf="@+id/unlocked_image"/>
+        app:layout_constraintRight_toRightOf="@+id/unlocked_image" />
 
     <ImageButton
         android:id="@+id/fingerprint_icon"

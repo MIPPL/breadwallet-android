@@ -25,10 +25,12 @@
             android:layout_alignParentTop="true">
 
             <ImageView
-                android:layout_width="178dp"
-                android:layout_height="53dp"
-                android:layout_alignBottom="@+id/total_assets_usd"
-                android:layout_alignStart="@+id/portfolio_label"
+                android:layout_width="150dp"
+                android:layout_height="108dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/brd_logo_gradient" />
 
             <com.nyxwallet.presenter.customviews.BRText

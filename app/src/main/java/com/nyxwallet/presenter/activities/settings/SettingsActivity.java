@@ -232,7 +232,7 @@ public class SettingsActivity extends BRActivity {
             }
         }, false));
 */
-        items.add(new BRSettingsItem(getString(R.string.Settings_digiwage), "", new View.OnClickListener() {
+        items.add(new BRSettingsItem(getString(R.string.Settings_coin), "", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SettingsActivity.this, CurrencySettingsActivity.class);
@@ -257,12 +257,12 @@ public class SettingsActivity extends BRActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent appStoreIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.digiwagewallet"));
+                    Intent appStoreIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.nyxwallet"));
                     appStoreIntent.setPackage("com.android.vending");
 
                     startActivity(appStoreIntent);
                 } catch (android.content.ActivityNotFoundException exception) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + "com.digiwagewallet")));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + "com.nyxwallet")));
                 }
                 overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
             }
