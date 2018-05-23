@@ -223,7 +223,7 @@ public class BRApiManager {
         String url1 = "https://api.crypto-bridge.org/api/v1/ticker/";
         String jsonString1 = urlGET(app, url1);
 
-        float price1=100000;
+        float price1=60000;
 
         JSONArray jsonArray1 = null;
         if (jsonString1 == null) {
