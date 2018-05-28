@@ -213,10 +213,7 @@ public class WalletActivity extends BRActivity implements InternetManager.Connec
 //        exchangeTest();
 
         boolean cryptoPreferred = BRSharedPrefs.isCryptoPreferred(this);
-
-        if (cryptoPreferred) {
-            swap();
-        }
+        setPriceTags(cryptoPreferred, true);
 
         // Check if the "Twilight" screen altering app is currently running
         if (checkIfScreenAlteringAppIsRunning("com.urbandroid.lux")) {

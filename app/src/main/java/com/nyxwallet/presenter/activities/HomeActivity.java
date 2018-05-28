@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -141,8 +142,11 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
         mSupport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!BRAnimator.isClickAllowed()) return;
-                BRAnimator.showSupportFragment(HomeActivity.this, null);
+                /*if (!BRAnimator.isClickAllowed()) return;
+                BRAnimator.showSupportFragment(HomeActivity.this, null);*/
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://discord.gg/Q465cD2"));
+                startActivity(browserIntent);
+                app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
         });
 
