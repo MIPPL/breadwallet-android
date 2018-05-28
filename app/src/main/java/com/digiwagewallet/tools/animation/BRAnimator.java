@@ -8,6 +8,8 @@ import android.animation.LayoutTransition;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
+
+import android.net.Uri;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -27,6 +29,7 @@ import com.digiwagewallet.R;
 import com.digiwagewallet.presenter.activities.HomeActivity;
 import com.digiwagewallet.presenter.activities.LoginActivity;
 import com.digiwagewallet.presenter.activities.WalletActivity;
+
 import com.digiwagewallet.presenter.activities.camera.ScanQRActivity;
 import com.digiwagewallet.presenter.activities.intro.IntroActivity;
 import com.digiwagewallet.presenter.customviews.BRDialogView;
@@ -158,6 +161,11 @@ public class BRAnimator {
     }
 
     public static void showSupportFragment(Activity app, String articleId) {
+
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://discord.gg/HnYGD5h"));
+        app.startActivity(browserIntent);
+        app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
+/*
         if (supportIsShowing) return;
         supportIsShowing = true;
         if (app == null) {
@@ -184,7 +192,7 @@ public class BRAnimator {
         } finally {
 
         }
-
+*/
     }
 
     public static void popBackStackTillEntry(Activity app, int entryIndex) {
