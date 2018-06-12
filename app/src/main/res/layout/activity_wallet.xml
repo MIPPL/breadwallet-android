@@ -55,14 +55,12 @@
                     <com.nyxwallet.presenter.customviews.BRText
                         android:id="@+id/currency_label"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_height="47dp"
                         android:text="@string/CurrencyBitcoin"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/header"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        android:textSize="36sp"
+                        app:layout_constraintStart_toStartOf="@+id/currency_usd_price"
+                        app:layout_constraintTop_toTopOf="@+id/back_icon" />
 
                     <ImageButton
                         android:id="@+id/back_icon"
@@ -80,12 +78,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$16,904.34 per BTC"
-                        android:textColor="@color/trans_white"
-                        android:textSize="@dimen/sub_header"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
                         app:customTFont="CircularPro-Book.otf"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.324"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/currency_label"/>
+                        app:layout_constraintTop_toBottomOf="@+id/currency_label" />
 
 
                     <com.nyxwallet.presenter.customviews.BRText
@@ -95,13 +94,13 @@
                         android:layout_marginBottom="54dp"
                         android:layout_marginEnd="15dp"
                         android:text="@string/CurrencyBalance"
-                        android:textColor="@color/trans_white"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
                         android:visibility="visible"
                         app:customTFont="CircularPro-Book.otf"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"/>
+                        app:layout_constraintRight_toRightOf="parent" />
 
                     <com.nyxwallet.presenter.customviews.BRText
                         android:id="@+id/syncing_label"
@@ -123,17 +122,17 @@
                         android:layout_width="30dp"
                         android:layout_height="3dp"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginBottom="62dp"
-                        android:layout_marginEnd="15dp"
-                        android:keepScreenOn="true"
+                        android:layout_marginBottom="52dp"
+                        android:layout_marginEnd="16dp"
                         android:indeterminate="false"
+                        android:keepScreenOn="true"
                         android:max="100"
                         android:progress="0"
                         android:progressBackgroundTint="#88ffffff"
                         android:progressDrawable="@drawable/wallet_sync_progress_bar"
                         android:progressTint="#ffffff"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                        app:layout_constraintEnd_toEndOf="parent" />
 
 
                     <com.nyxwallet.presenter.customviews.BRText

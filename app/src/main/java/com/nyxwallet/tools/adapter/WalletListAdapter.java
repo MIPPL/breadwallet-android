@@ -82,7 +82,7 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
 
         // Set wallet fields
         holder.mWalletName.setText(name);
-        holder.mTradePrice.setText(exchangeRate);
+        holder.mTradePrice.setText( String.format("%s per %s", exchangeRate, wallet.getIso(mContext)) );
         holder.mWalletBalanceUSD.setText(fiatBalance);
         holder.mWalletBalanceCurrency.setText(cryptoBalance);
         holder.mSyncingProgressBar.setVisibility(item.mShowSyncing ? View.VISIBLE : View.INVISIBLE);
