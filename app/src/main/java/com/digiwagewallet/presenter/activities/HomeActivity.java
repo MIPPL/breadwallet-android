@@ -55,6 +55,7 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
     private RecyclerView mWalletRecycler;
     private WalletListAdapter mAdapter;
     private BRText mFiatTotal;
+    private RelativeLayout mPlatform;
     private RelativeLayout mSettings;
     private RelativeLayout mSecurity;
     private RelativeLayout mSupport;
@@ -89,6 +90,7 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
         mWalletRecycler = findViewById(R.id.rv_wallet_list);
         mFiatTotal = findViewById(R.id.total_assets_usd);
 
+        mPlatform = findViewById(R.id.platform_row);
         mSettings = findViewById(R.id.settings_row);
         mSecurity = findViewById(R.id.security_row);
         mSupport = findViewById(R.id.support_row);
@@ -123,6 +125,14 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
             }
         }));
 
+        mPlatform.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, PlatformActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+            }
+        });
         mSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,7 +149,6 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
                 overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
         });
-
         mSupport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

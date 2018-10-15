@@ -99,6 +99,8 @@ public interface BaseWalletManager {
     //get the currency denomination e.g. BCH, mBCH, Bits
     String getDenomination(Context app);
 
+    BRCoreAddress[] getAllAddresses();
+
     //get the wallet's receive address
     BRCoreAddress getReceiveAddress(Context app);
 

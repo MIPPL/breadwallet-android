@@ -166,13 +166,52 @@
 
             </android.support.v7.widget.RecyclerView>
 
+            <RelativeLayout
+                android:id="@+id/platform_row"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_below="@id/rv_wallet_list"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/admin_card_shape">
+
+
+                <com.digiwagewallet.presenter.customviews.BRText
+                    android:id="@+id/platform_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="16dp"
+                    android:clickable="false"
+                    android:drawableLeft="@drawable/ic_pen"
+                    android:drawablePadding="8dp"
+                    android:focusable="false"
+                    android:paddingBottom="4dp"
+                    android:text="Platform"
+                    android:textSize="16sp"
+                    app:customTFont="CircularPro-Book.otf" />
+
+
+                <ImageButton
+                    android:id="@+id/arrow_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/ic_chevron_right"
+                    android:clickable="false"
+                    android:focusable="false" />
+            </RelativeLayout>
 
             <com.digiwagewallet.presenter.customviews.BRText
                 android:id="@+id/admin_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/rv_wallet_list"
+                android:layout_below="@id/platform_row"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="16dp"
                 android:text="@string/Admin"
@@ -208,7 +247,7 @@
 
 
                 <ImageButton
-                    android:id="@+id/arrow_right"
+                    android:id="@+id/platform_arrow_right"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

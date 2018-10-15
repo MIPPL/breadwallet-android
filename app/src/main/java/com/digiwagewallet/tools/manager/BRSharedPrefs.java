@@ -141,6 +141,28 @@ public class BRSharedPrefs {
         editor.apply();
     }
 
+    public static String getPlatformUsername(Context context, String iso) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getString("platform_username" + iso.toUpperCase(), "");
+    }
+
+    public static void putPlatformUsername(Context ctx, String tmpAddr, String iso) {
+        SharedPreferences.Editor editor = ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
+        editor.putString("platform_username" + iso.toUpperCase(), tmpAddr);
+        editor.apply();
+    }
+
+    public static String getPlatformAddress(Context context, String iso) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getString("platform_address" + iso.toUpperCase(), "");
+    }
+
+    public static void putPlatformAddress(Context ctx, String tmpAddr, String iso) {
+        SharedPreferences.Editor editor = ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
+        editor.putString("platform_address" + iso.toUpperCase(), tmpAddr);
+        editor.apply();
+    }
+
     public static String getFirstAddress(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return prefs.getString("firstAddress", "");

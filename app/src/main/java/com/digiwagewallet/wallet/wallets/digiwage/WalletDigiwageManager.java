@@ -331,6 +331,10 @@ public class WalletDigiwageManager extends BRCoreWalletManager implements BaseWa
         throw new RuntimeException("not implemented");
     }
 
+    public BRCoreAddress[] getAllAddresses() {
+        return getWallet().getAllAddresses();
+    }
+
     @Override
     public BRCoreAddress getReceiveAddress(Context app) {
         return getWallet().getReceiveAddress();

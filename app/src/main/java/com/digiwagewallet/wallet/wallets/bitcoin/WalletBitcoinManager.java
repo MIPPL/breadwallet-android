@@ -337,6 +337,11 @@ public class WalletBitcoinManager extends BRCoreWalletManager implements BaseWal
     }
 
     @Override
+    public BRCoreAddress[] getAllAddresses() {
+        return getWallet().getAllAddresses();
+    }
+
+    @Override
     public BRCoreAddress getReceiveAddress(Context app) {
         return getWallet().getReceiveAddress();
     }

@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.digiwagewallet.R;
 import com.digiwagewallet.presenter.activities.HomeActivity;
+import com.digiwagewallet.presenter.activities.PlatformActivity;
 import com.digiwagewallet.presenter.activities.WalletActivity;
 import com.digiwagewallet.presenter.activities.util.BRActivity;
 
@@ -86,6 +87,8 @@ public class BRNotificationBar extends android.support.v7.widget.Toolbar {
                     ((WalletActivity) activity).resetFlipper();
                 } else if (activity instanceof HomeActivity) {
                     ((HomeActivity) activity).closeNotificationBar();
+                } else if (activity instanceof PlatformActivity) {
+                    ((PlatformActivity) activity).resetFlipper();
                 }
             }
         });
