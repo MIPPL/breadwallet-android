@@ -34,6 +34,7 @@ import com.digiwagewallet.presenter.activities.camera.ScanQRActivity;
 import com.digiwagewallet.presenter.activities.intro.IntroActivity;
 import com.digiwagewallet.presenter.customviews.BRDialogView;
 import com.digiwagewallet.presenter.entities.CryptoRequest;
+import com.digiwagewallet.presenter.entities.DealUiHolder;
 import com.digiwagewallet.presenter.entities.TxUiHolder;
 import com.digiwagewallet.presenter.fragments.FragmentGreetings;
 import com.digiwagewallet.presenter.fragments.FragmentMenu;
@@ -43,6 +44,7 @@ import com.digiwagewallet.presenter.fragments.FragmentRequestAmount;
 import com.digiwagewallet.presenter.fragments.FragmentSend;
 import com.digiwagewallet.presenter.fragments.FragmentSupport;
 import com.digiwagewallet.presenter.fragments.FragmentTxDetails;
+import com.digiwagewallet.presenter.fragments.FragmentDealDetails;
 import com.digiwagewallet.presenter.interfaces.BROnSignalCompletion;
 import com.digiwagewallet.tools.threads.executor.BRExecutor;
 import com.digiwagewallet.tools.util.BRConstants;
@@ -250,6 +252,22 @@ public class BRAnimator {
         txDetails = new FragmentTxDetails();
         txDetails.setTransaction(item);
         txDetails.show(app.getFragmentManager(), "txDetails");
+
+    }
+
+    public static void showDealDetails(Activity app, DealUiHolder item, int position){
+
+        FragmentDealDetails txDetails = (FragmentDealDetails) app.getFragmentManager().findFragmentByTag(FragmentDealDetails.class.getName());
+
+        if(txDetails != null && txDetails.isAdded()){
+            Log.e(TAG, "showDealDetails: Already showing");
+
+            return;
+        }
+
+        txDetails = new FragmentDealDetails();
+        txDetails.setTransaction(item);
+        txDetails.show(app.getFragmentManager(), "DealDetails");
 
     }
 

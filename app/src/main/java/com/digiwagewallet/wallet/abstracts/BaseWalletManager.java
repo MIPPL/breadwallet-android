@@ -3,6 +3,7 @@ package com.digiwagewallet.wallet.abstracts;
 import android.content.Context;
 
 import com.digiwagewallet.core.BRCoreAddress;
+import com.digiwagewallet.core.BRCoreKey;
 import com.digiwagewallet.core.BRCoreMerkleBlock;
 import com.digiwagewallet.core.BRCorePeer;
 import com.digiwagewallet.core.BRCorePeerManager;
@@ -100,6 +101,8 @@ public interface BaseWalletManager {
     String getDenomination(Context app);
 
     BRCoreAddress[] getAllAddresses();
+
+    BRCoreKey getKeyFromAddress(Context app, String address);
 
     //get the wallet's receive address
     BRCoreAddress getReceiveAddress(Context app);

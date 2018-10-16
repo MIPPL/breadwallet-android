@@ -1,5 +1,7 @@
 package com.digiwagewallet.presenter.entities;
 
+import com.digiwagewallet.tools.manager.PlatformManager;
+
 /**
  * Digiwage Wallet
  * <p>
@@ -27,7 +29,7 @@ package com.digiwagewallet.presenter.entities;
 public class DealUiHolder {
     public static final String TAG = DealUiHolder.class.getName();
     public String DealId;
-    public long EscrowAmount;
+    public double EscrowAmount;
     public String JobTitle;
     public String ReceiverUserName;
     public String EscrowAddress;
@@ -37,14 +39,22 @@ public class DealUiHolder {
     public String RedeemScript;
     public String PaymentSignature1;
     public String SellerPubAddress;
-    public String PendingType;
+    public PendingTypeEnum PendingType;
+
+    private PlatformManager PlatformMgr;        // reference for actions
+
+    public enum PendingTypeEnum{
+            ESCROW, BUYER, SELLER, MEDIATED
+    }
 
     private DealUiHolder() {
     }
 
-    public DealUiHolder(String DealId, long EscrowAmount, String JobTitle, String ReceiverUserName, String EscrowAddress,
+    public DealUiHolder(PlatformManager platformMgr,
+                        String DealId, double EscrowAmount, String JobTitle, String ReceiverUserName, String EscrowAddress,
                         String Type, String EscrowTxId, float MediatedPercentage, String RedeemScript,
-                        String PaymentSignature1, String SellerPubAddress, String PendingType ) {
+                        String PaymentSignature1, String SellerPubAddress, PendingTypeEnum PendingType ) {
+        this.PlatformMgr = platformMgr;
         this.DealId = DealId;
         this.EscrowAmount = EscrowAmount;
         this.ReceiverUserName = ReceiverUserName;
@@ -57,5 +67,29 @@ public class DealUiHolder {
         this.PaymentSignature1 = PaymentSignature1;
         this.SellerPubAddress = SellerPubAddress;
         this.PendingType = PendingType;
+    }
+
+    public String getPendingTypeDescription()
+    {
+        String ret = "";
+        switch (PendingType)
+        {
+            case ESCROW: ret = "Escrow"; break;
+            case BUYER: ret = "Buyer Sig."; break;
+            case SELLER: ret = "Seller Sig."; break;
+            case MEDIATED: ret = "Mediated Deal"; break;
+        }
+        return ret;
+    }
+
+    public void DoActionForManager()
+    {
+        switch (PendingType)
+        {
+            case ESCROW: PlatformMgr.SendEscrow( this ); break;
+            case BUYER: PlatformMgr.SignBuyer( this ); break;
+            case SELLER: PlatformMgr.SignSeller( this ); break;
+            case MEDIATED: PlatformMgr.SignMediated( this ); break;
+        }
     }
 }

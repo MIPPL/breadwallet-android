@@ -156,14 +156,14 @@ public class DealListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         String commentString = "";
 
 
-        boolean received = true;  // item.getSent() == 0;
+        boolean signature = (item.PendingType!=DealUiHolder.PendingTypeEnum.ESCROW );
 
-        if (received)
+        if (signature)
             convertView.dealAmount.setTextColor(mContext.getResources().getColor(R.color.transaction_amount_received_color, null));
         else
             convertView.dealAmount.setTextColor(mContext.getResources().getColor(R.color.total_assets_usd_color, null));
 
-        BigDecimal cryptoAmount = new BigDecimal(item.EscrowAmount);
+        BigDecimal cryptoAmount = new BigDecimal(item.EscrowAmount*100000000);  // expecting SATS
         Log.e(TAG, "setTexts: crypto:" + cryptoAmount);
         boolean isCryptoPreferred = BRSharedPrefs.isCryptoPreferred(mContext);
         String preferredIso = isCryptoPreferred ? wallet.getIso(mContext) : BRSharedPrefs.getPreferredFiatIso(mContext);
@@ -171,7 +171,10 @@ public class DealListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         BigDecimal amount = isCryptoPreferred ? cryptoAmount : wallet.getFiatForSmallestCrypto(mContext, cryptoAmount, null);
         Log.e(TAG, "setTexts: amount:" + amount);
 
+        convertView.dealType.setText(item.JobTitle);
         convertView.dealAmount.setText(CurrencyUtils.getFormattedAmount(mContext, preferredIso, amount));
+        convertView.dealDetail.setText(item.getPendingTypeDescription());
+
 /*
         int blockHeight = item.getBlockHeight();
         int confirms = blockHeight == Integer.MAX_VALUE ? 0 : BRSharedPrefs.getLastBlockHeight(mContext, wallet.getIso(mContext)) - blockHeight + 1;
@@ -269,19 +272,19 @@ public class DealListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 } else {
                     boolean willAdd = true;
                     //filter by Escrow or Signature
-                    if (switches[0] && (item.PendingType != "Escrow")) {
+                    if (switches[0] && (item.PendingType != DealUiHolder.PendingTypeEnum.ESCROW)) {
                         willAdd = false;
                     }
                     //filter by received and this is sent
-                    if (switches[1] &&   item.PendingType != "Buyer"  ) {
+                    if (switches[1] &&   item.PendingType != DealUiHolder.PendingTypeEnum.BUYER ) {
                         willAdd = false;
                     }
 
-                    if (switches[2] &&   item.PendingType != "Seller" ) {
+                    if (switches[2] &&   item.PendingType != DealUiHolder.PendingTypeEnum.SELLER ) {
                         willAdd = false;
                     }
 
-                    if (switches[3] &&  item.PendingType != "Mediated" ) {
+                    if (switches[3] &&  item.PendingType != DealUiHolder.PendingTypeEnum.MEDIATED) {
                         willAdd = false;
                     }
 

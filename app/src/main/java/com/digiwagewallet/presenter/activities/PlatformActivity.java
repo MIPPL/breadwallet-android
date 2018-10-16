@@ -99,6 +99,7 @@ public class PlatformActivity extends BRActivity implements InternetManager.Conn
     private ImageButton mCopyIcon;
     private ImageButton mSwap;
     private ConstraintLayout toolBarConstraintLayout;
+
     private String publicKey;
 
     private BRNotificationBar mNotificationBar;
@@ -207,9 +208,24 @@ public class PlatformActivity extends BRActivity implements InternetManager.Conn
         mSearchIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ( !mEditUsername.getText().toString().isEmpty() ) {
-                    PlatformManager.getInstance().updateAddress(PlatformActivity.this, mEditUsername.getText().toString(), mPublicAddress.getText().toString(), );
-                }
+                BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        if ( !mEditUsername.getText().toString().isEmpty() ) {
+                            if (mEditUsername.getText().toString().equals("Platform Username...")) {
+                                mEditUsername.setText("");
+                                mEditUsername.requestFocus();
+                            }
+                            else {
+                                boolean res = PlatformManager.getInstance().updateAddress(PlatformActivity.this, mEditUsername.getText().toString(), mPublicAddress.getText().toString(), publicKey);
+                                if (res) {
+                                    saveSettings();
+                                }
+                            }
+                        }
+                    }
+                });
+
             }
         });
 
@@ -245,9 +261,23 @@ public class PlatformActivity extends BRActivity implements InternetManager.Conn
             }
         });
 
+        final BaseWalletManager wallet = WalletsMaster.getInstance(this).getCurrentWallet(this);
+        loadSettings();
+        BRCoreAddress[] addresses = wallet.getAllAddresses();
+        String address = addresses[0].stringify();
+        //String firstAddress = BRSharedPrefs.getFirstAddress(this);
+        mPublicAddress.setText(address);
+
+        BRCoreKey key = wallet.getKeyFromAddress(this, address);
+        if (key!=null) {
+            publicKey = Utils.bytesToHex(key.getPubKey());
+        }
+
         PlatformManager.getInstance().init(this);
+        PlatformManager.getInstance().setData( mEditUsername.getText().toString(), address, publicKey);
 
         onConnectionChanged(InternetManager.getInstance().isConnected(this));
+
 
         updateUi();
 //        exchangeTest();
@@ -290,20 +320,32 @@ public class PlatformActivity extends BRActivity implements InternetManager.Conn
         }
     }
 
+    private void saveSettings( )
+    {
+        BRSharedPrefs.putPlatformUsername(this, mEditUsername.getText().toString() );
+        BRSharedPrefs.putPlatformAddress(this, mPublicAddress.toString() );
+    }
+
+    private boolean loadSettings( )
+    {
+        String sUsername = BRSharedPrefs.getPlatformUsername(this );
+        //String sPublicAddress = BRSharedPrefs.getPlatformAddress(this );
+
+        if (!sUsername.equals(""))
+        {
+            mEditUsername.setText(sUsername);
+            return true;
+        }
+
+        return false;
+    }
+
     private void updateUi() {
         final BaseWalletManager wallet = WalletsMaster.getInstance(this).getCurrentWallet(this);
         if (wallet == null) {
             Log.e(TAG, "updateUi: wallet is null");
             return;
         }
-
-        BRCoreAddress[] addresses = wallet.getAllAddresses();
-        addresses[0].getPubKeyScript();
-        BRCoreKey key = new BRCoreKey();
-
-        mPublicAddress.setText(addresses[0].stringify());
-        BRKeyPubKey
-        publicKey = addresses[0].;
 
         if (wallet.getUiConfiguration().buyVisible) {
             mBuyButton.setHasShadow(false);
@@ -357,7 +399,13 @@ public class PlatformActivity extends BRActivity implements InternetManager.Conn
         mBuyButton.setColor(Color.parseColor(wallet.getUiConfiguration().colorHex));
         mReceiveButton.setColor(Color.parseColor(wallet.getUiConfiguration().colorHex));
 
-        PlatformManager.getInstance().updateDealList(PlatformActivity.this);
+        BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
+            @Override
+            public void run() {
+                PlatformManager.getInstance().updateDealList(PlatformActivity.this);
+            }
+        });
+
 /*
         if (!BRSharedPrefs.wasBchDialogShown(this)) {
             BRDialog.showHelpDialog(this, getString(R.string.Dialog_welcomeBchTitle), getString(R.string.Dialog_welcomeBchMessage), getString(R.string.Dialog_Home), getString(R.string.Dialog_Dismiss), new BRDialogView.BROnClickListener() {

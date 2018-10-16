@@ -141,25 +141,25 @@ public class BRSharedPrefs {
         editor.apply();
     }
 
-    public static String getPlatformUsername(Context context, String iso) {
+    public static String getPlatformUsername(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        return prefs.getString("platform_username" + iso.toUpperCase(), "");
+        return prefs.getString("platform_username" , "");
     }
 
-    public static void putPlatformUsername(Context ctx, String tmpAddr, String iso) {
+    public static void putPlatformUsername(Context ctx, String tmpUsername) {
         SharedPreferences.Editor editor = ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
-        editor.putString("platform_username" + iso.toUpperCase(), tmpAddr);
+        editor.putString("platform_username", tmpUsername);
         editor.apply();
     }
 
-    public static String getPlatformAddress(Context context, String iso) {
+    public static String getPlatformAddress(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        return prefs.getString("platform_address" + iso.toUpperCase(), "");
+        return prefs.getString("platform_address" , "");
     }
 
-    public static void putPlatformAddress(Context ctx, String tmpAddr, String iso) {
+    public static void putPlatformAddress(Context ctx, String tmpAddr) {
         SharedPreferences.Editor editor = ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
-        editor.putString("platform_address" + iso.toUpperCase(), tmpAddr);
+        editor.putString("platform_address" , tmpAddr);
         editor.apply();
     }
 

@@ -9,16 +9,24 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.digiwagewallet.DigiWageApp;
 import com.digiwagewallet.R;
+import com.digiwagewallet.core.BRCoreAddress;
+import com.digiwagewallet.core.BRCoreTransaction;
 import com.digiwagewallet.presenter.activities.PlatformActivity;
 import com.digiwagewallet.presenter.activities.util.ActivityUTILS;
+import com.digiwagewallet.presenter.entities.CryptoRequest;
+import com.digiwagewallet.presenter.entities.CurrencyEntity;
 import com.digiwagewallet.presenter.entities.DealUiHolder;
 import com.digiwagewallet.presenter.entities.TxUiHolder;
 import com.digiwagewallet.tools.adapter.DealListAdapter;
 import com.digiwagewallet.tools.animation.BRAnimator;
+import com.digiwagewallet.tools.animation.SpringAnimator;
 import com.digiwagewallet.tools.listeners.RecyclerItemClickListener;
+import com.digiwagewallet.tools.sqlite.CurrencyDataSource;
+import com.digiwagewallet.tools.threads.executor.BRExecutor;
 import com.digiwagewallet.tools.util.Utils;
 import com.digiwagewallet.wallet.WalletsMaster;
 import com.digiwagewallet.wallet.abstracts.BaseWalletManager;
@@ -30,6 +38,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,10 +47,13 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
+import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okio.BufferedSink;
 
 
 /**
@@ -75,6 +88,11 @@ public class PlatformManager {
     private static PlatformManager instance;
     private RecyclerView txList;
     public DealListAdapter adapter;
+    private PlatformActivity platformActivity;
+
+    private String UserName = "";
+    private String PublicAddress = "";
+    private String PublicKey = "";
 
     public static PlatformManager getInstance() {
         if (instance == null) instance = new PlatformManager();
@@ -82,6 +100,8 @@ public class PlatformManager {
     }
 
     public void init(final PlatformActivity app) {
+
+        platformActivity = app;
         txList = app.findViewById(R.id.tx_list);
         txList.setLayoutManager(new CustomLinearLayoutManager(app));
         txList.addOnItemTouchListener(new RecyclerItemClickListener(app,
@@ -90,12 +110,13 @@ public class PlatformManager {
             public void onItemClick(View view, int position, float x, float y) {
 
                 DealUiHolder item = adapter.getItems().get(position);
-                //BRAnimator.showTransactionDetails(app, item, position);
+                BRAnimator.showDealDetails(app, item, position);
             }
 
             @Override
             public void onLongItemClick(View view, int position) {
-
+                DealUiHolder item = adapter.getItems().get(position);
+                item.DoActionForManager();
             }
         }));
         if (adapter == null)
@@ -112,8 +133,21 @@ public class PlatformManager {
         crashIfNotMain();
     }
 
+    public void setData(String username, String publicaddress, String publickey)
+    {
+        UserName = (username==null)?"":username;
+        PublicAddress = (publicaddress==null)?"":publicaddress;
+        PublicKey = (publickey==null)?"":publickey;
+    }
+
     @WorkerThread
     public synchronized void updateDealList(final Context app) {
+
+        if (UserName.equals("") || PublicAddress.equals("") || PublicKey.equals("") || UserName.equals("Platform Username..."))
+        {
+            return;
+        }
+
         long start = System.currentTimeMillis();
         /*BaseWalletManager wallet = WalletsMaster.getInstance(app).getCurrentWallet(app);
         if (wallet == null) {
@@ -138,12 +172,52 @@ public class PlatformManager {
 
     }
 
+    public void addEscrowDeals( Context app, List<DealUiHolder> uiDeals )
+    {
+        String url = String.format("%s/getPendingEscrows?username=%s&address=%s&publicKey=%s", URL_PLATFORM, UserName, PublicAddress, PublicKey);
+        String jsonRes = urlSend( app, url, "GET");
+
+        JSONArray jsonObject = null;
+        if (jsonRes == null) {
+            jsonRes = urlSend( app, url, "GET");   // retry
+            if (jsonRes == null) {
+                Log.e(TAG, "getPendingEscrows: platform failed, response is null");
+                return;
+            }
+        }
+
+        try {
+            JSONObject obj = new JSONObject(jsonRes);
+            boolean result = obj.getBoolean("result");
+            JSONArray deals = obj.getJSONArray("data");
+            if (result)
+            {
+                for(int n = 0; n < deals.length(); n++)
+                {
+                    JSONObject deal = deals.getJSONObject(n);
+                    uiDeals.add(new DealUiHolder( this, deal.getString("DealId"), deal.getDouble("EscrowAmount"), deal.getString("JobTitle")
+                            ,deal.getString("ReceiverUserName"), deal.getString("EscrowAddress"), deal.getString("type"),"",0,
+                            "", "", "", DealUiHolder.PendingTypeEnum.ESCROW) );
+
+                }
+            }
+        } catch (JSONException ignored) {
+        }
+
+
+    }
+
+    public void addPendingDeals( Context app, List<DealUiHolder> uiDeals )
+    {
+
+    }
+
     public List<DealUiHolder> getDealUiHolders( Context app )
     {
         List<DealUiHolder> uiDeals = new ArrayList<>();
-        uiDeals.add(new DealUiHolder( "DealId", 100000,"TEST Jobtitle","ReceiverUserName", "EscrowAddress",
-            "Type", "EscrowTxId", 0.0f, "RedeemScript",
-            "PaymentSignature1", "SellerPubAddress", "PendingType") );
+
+        addEscrowDeals(app, uiDeals);
+        addPendingDeals(app, uiDeals);
 
 /*
         for (int i = txs.length - 1; i >= 0; i--) { //revere order
@@ -159,15 +233,88 @@ public class PlatformManager {
         return uiDeals;
     }
 
-    public String updateAddress( Context app, String username, String address, String pubkey )
+    public void SendEscrow(DealUiHolder uiHolder)
     {
-        String url = String.format("%s/updateAddress?username=%s&address=%s&publicKey=%s", URL_PLATFORM, username, address, pubkey);
-        String ret = urlSend( app, url, "POST");
+        WalletsMaster master = WalletsMaster.getInstance(platformActivity);
+        BaseWalletManager wallet = master.getWalletByIso(platformActivity, "WAGE");
+        String comment = uiHolder.DealId;
+        long amount = (long)(uiHolder.EscrowAmount*100000000);
+        long balance = wallet.getCachedBalance(platformActivity);
+        BigDecimal cryptoAmount = new BigDecimal(uiHolder.EscrowAmount);
+        boolean allFilled=true;
+
+        BRCoreAddress address = new BRCoreAddress(uiHolder.EscrowAddress);
+        BRCoreTransaction tx = wallet.getWallet().createTransaction(amount, address);
+
+        if ( cryptoAmount.longValue() > balance ) {
+            allFilled = false;
+            Toast.makeText(platformActivity, "Insufficient funds!", Toast.LENGTH_LONG).show();
+        }
+
+        //                if (tx == null) {
+//                    BRDialog.showCustomDialog(app, app.getString(R.string.Alert_error), app.getString(R.string.Send_creatTransactionError), app.getString(R.string.AccessibilityLabels_close), null, new BRDialogView.BROnClickListener() {
+//                        @Override
+//                        public void onClick(BRDialogView brDialogView) {
+//                            brDialogView.dismissWithAnimation();
+//                        }
+//                    }, null, null, 0);
+//                    return;
+//                }
+
+        if (false) {
+            CryptoRequest item = new CryptoRequest(tx, null, false, comment, uiHolder.EscrowAddress, cryptoAmount);
+            SendManager.sendTransaction(platformActivity, item, wallet);
+        }
+    }
+
+    public void SignBuyer(DealUiHolder uiHolder)
+    {
+
+    }
+
+    public void SignSeller(DealUiHolder uiHolder)
+    {
+
+    }
+
+    public void SignMediated(DealUiHolder uiHolder)
+    {
+
+    }
+
+    public boolean updateAddress( Context app, String username, String address, String pubkey )
+    {
+        boolean ret = false;
+
+        if ( username.equals("") || address.equals("") || pubkey.equals("") )
+            return ret;
+
+        String url = String.format("%s/updatePubAddress?username=%s&address=%s&publicKey=%s", URL_PLATFORM, username, address, pubkey);
+        String jsonRes = urlSend( app, url, "POST");
+
+        JSONArray jsonObject = null;
+        if (jsonRes == null) {
+            jsonRes = urlSend( app, url, "POST");   // retry
+            if (jsonRes == null) {
+                Log.e(TAG, "updatePubAddress: platform failed, response is null");
+                return false;
+            }
+        }
+
+        try {
+            JSONObject obj = new JSONObject(jsonRes);
+            boolean result = obj.getBoolean("result");
+            String message = obj.getString("message");
+            ret = result;
+        } catch (JSONException ignored) {
+        }
+
         return ret;
     }
 
+
     public static String urlSend(Context app, String myURL, String method) {
-//        System.out.println("Requested URL_EA:" + myURL);
+        //        System.out.println("Requested URL_EA:" + myURL);
         if (ActivityUTILS.isMainThread()) {
             Log.e(TAG, "urlGET: network on main thread");
             throw new RuntimeException("network on main thread");
@@ -186,8 +333,8 @@ public class PlatformManager {
         }
         else
         {
-            //RequestBody requestBody;
-            builder.post( null );
+            RequestBody requestBody = RequestBody.create( MediaType.parse("application/json; charset=utf-8"), "");
+            builder.post( requestBody  );
         }
         Iterator it = headers.entrySet().iterator();
         while (it.hasNext()) {
