@@ -31,6 +31,7 @@ import com.digiwagewallet.tools.util.Utils;
 import com.digiwagewallet.wallet.WalletsMaster;
 import com.digiwagewallet.wallet.abstracts.BaseWalletManager;
 import com.platform.APIClient;
+import com.platform.tools.KVStoreManager;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -237,10 +238,10 @@ public class PlatformManager {
     {
         WalletsMaster master = WalletsMaster.getInstance(platformActivity);
         BaseWalletManager wallet = master.getWalletByIso(platformActivity, "WAGE");
-        String comment = uiHolder.DealId;
+        String comment = "DealId: " + uiHolder.DealId;
         long amount = (long)(uiHolder.EscrowAmount*100000000);
         long balance = wallet.getCachedBalance(platformActivity);
-        BigDecimal cryptoAmount = new BigDecimal(uiHolder.EscrowAmount);
+        BigDecimal cryptoAmount = new BigDecimal(amount);
         boolean allFilled=true;
 
         BRCoreAddress address = new BRCoreAddress(uiHolder.EscrowAddress);
@@ -261,9 +262,12 @@ public class PlatformManager {
 //                    return;
 //                }
 
-        if (false) {
+        if (allFilled) {
             CryptoRequest item = new CryptoRequest(tx, null, false, comment, uiHolder.EscrowAddress, cryptoAmount);
             SendManager.sendTransaction(platformActivity, item, wallet);
+            String txId = new String(item.tx.getHash());
+            String txId2 = KVStoreManager.txKey(item.tx.getHash());
+            String txId3 = Utils.bytesToHex(item.tx.getHash());
         }
     }
 
