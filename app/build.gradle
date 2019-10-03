@@ -2,14 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion = 27
-    buildToolsVersion = '28.0.3'
     defaultConfig {
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
         applicationId = 'com.biblepaywallet'
         minSdkVersion 23
-        targetSdkVersion 27
-        versionCode 220
-        versionName "220"
+        targetSdkVersion 28
+        versionCode 222
+        versionName "222"
         multiDexEnabled true
 
         // Similar to other properties in the defaultConfig block,

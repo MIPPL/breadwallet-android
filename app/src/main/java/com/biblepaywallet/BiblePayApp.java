@@ -60,7 +60,8 @@ public class BiblePayApp extends Application {
     FingerprintManager mFingerprintManager;
     // host is the server(s) on which the API is hosted
     public static String HOST = "api.breadwallet.com";
-    public static String HOST_UTXO = "https://explorer.biblepay-central.org";
+    public static String HOST_UTXO = "https://chainz.cryptoid.info/";
+    public static String HOST_UTXO_KEY = "7f15255edf68";
     //public static String HOST_UTXO = "http://195.201.99.200";           // Lichtsucher test explorer
     public static String HOST_BOINC = "boinc.bakerlab.org";
     private static List<OnAppBackgrounded> listeners;
