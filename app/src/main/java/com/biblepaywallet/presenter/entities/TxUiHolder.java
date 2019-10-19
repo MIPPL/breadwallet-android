@@ -1,6 +1,8 @@
 package com.biblepaywallet.presenter.entities;
 
 
+import com.biblepaywallet.core.BRCoreAddress;
+import com.biblepaywallet.wallet.abstracts.BaseWalletManager;
 import com.platform.entities.TxMetaData;
 
 /**
@@ -120,6 +122,22 @@ public class TxUiHolder {
 
     public boolean isValid() {
         return isValid;
+    }
+
+    public String getToRecipient(BaseWalletManager wm, boolean received ) {
+        String ret = "";
+
+        for (final String s : getTo()) {
+            final BRCoreAddress address = new BRCoreAddress(s);
+            if (address.isValid()) {
+                boolean bInWallet = wm.getWallet().containsAddress(address);
+                if ( (received && bInWallet) || (!received && !bInWallet) ) {
+                    ret = s;
+                    break;
+                }
+            }
+        }
+        return ret;
     }
 
 }
