@@ -24,7 +24,7 @@ android {
     }
     defaultConfig {
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
-        applicationId = 'com.breadwallet'
+        applicationId = 'com.swyftwallet'
         minSdkVersion 23
         targetSdkVersion 28
 
