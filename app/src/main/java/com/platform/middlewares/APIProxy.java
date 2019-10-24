@@ -3,11 +3,10 @@ package com.platform.middlewares;
 import android.content.Context;
 import android.util.Log;
 
-import com.breadwallet.BreadApp;
-import com.breadwallet.tools.util.Utils;
-import com.breadwallet.ui.browser.BrdNativeJs;
+import com.swyftwallet.BreadApp;
+import com.swyftwallet.tools.util.Utils;
+import com.swyftwallet.ui.browser.BrdNativeJs;
 import com.platform.APIClient;
-import com.platform.interfaces.Middleware;
 
 import org.apache.commons.io.IOUtils;
 

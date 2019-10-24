@@ -4,8 +4,8 @@ import android.content.Context;
 import android.support.annotation.VisibleForTesting;
 import android.util.Log;
 
-import com.breadwallet.tools.security.BRKeyStore;
-import com.breadwallet.tools.util.Utils;
+import com.swyftwallet.tools.security.BRKeyStore;
+import com.swyftwallet.tools.util.Utils;
 import com.platform.APIClient;
 
 /**

@@ -11,23 +11,23 @@ import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 import android.util.Log;
 
-import com.breadwallet.BreadApp;
-import com.breadwallet.BuildConfig;
-import com.breadwallet.core.BRCoreKey;
-import com.breadwallet.repository.ExperimentsRepositoryImpl;
-import com.breadwallet.tools.animation.UiUtils;
-import com.breadwallet.tools.crypto.Base58;
-import com.breadwallet.tools.crypto.CryptoHelper;
-import com.breadwallet.tools.manager.BRReportsManager;
-import com.breadwallet.tools.manager.BRSharedPrefs;
-import com.breadwallet.tools.security.BRKeyStore;
-import com.breadwallet.tools.threads.executor.BRExecutor;
-import com.breadwallet.tools.util.BRCompressor;
-import com.breadwallet.tools.util.BRConstants;
-import com.breadwallet.tools.util.ServerBundlesHelper;
-import com.breadwallet.tools.util.Utils;
-import com.breadwallet.wallet.WalletsMaster;
-import com.breadwallet.wallet.abstracts.BaseWalletManager;
+import com.swyftwallet.BreadApp;
+import com.swyftwallet.BuildConfig;
+import com.swyftwallet.core.BRCoreKey;
+import com.swyftwallet.repository.ExperimentsRepositoryImpl;
+import com.swyftwallet.tools.animation.UiUtils;
+import com.swyftwallet.tools.crypto.Base58;
+import com.swyftwallet.tools.crypto.CryptoHelper;
+import com.swyftwallet.tools.manager.BRReportsManager;
+import com.swyftwallet.tools.manager.BRSharedPrefs;
+import com.swyftwallet.tools.security.BRKeyStore;
+import com.swyftwallet.tools.threads.executor.BRExecutor;
+import com.swyftwallet.tools.util.BRCompressor;
+import com.swyftwallet.tools.util.BRConstants;
+import com.swyftwallet.tools.util.ServerBundlesHelper;
+import com.swyftwallet.tools.util.Utils;
+import com.swyftwallet.wallet.WalletsMaster;
+import com.swyftwallet.wallet.abstracts.BaseWalletManager;
 import com.platform.kvstore.RemoteKVStore;
 import com.platform.kvstore.ReplicatedKVStore;
 import com.platform.tools.TokenHolder;
@@ -60,11 +60,11 @@ import okhttp3.ResponseBody;
 import okio.Buffer;
 import okio.BufferedSink;
 
-import static com.breadwallet.tools.util.BRConstants.CONTENT_TYPE_JSON_CHARSET_UTF8;
-import static com.breadwallet.tools.util.BRConstants.FALSE;
-import static com.breadwallet.tools.util.BRConstants.FEE_PER_KB;
-import static com.breadwallet.tools.util.BRConstants.HEADER_ACCEPT;
-import static com.breadwallet.tools.util.BRConstants.TRUE;
+import static com.swyftwallet.tools.util.BRConstants.CONTENT_TYPE_JSON_CHARSET_UTF8;
+import static com.swyftwallet.tools.util.BRConstants.FALSE;
+import static com.swyftwallet.tools.util.BRConstants.FEE_PER_KB;
+import static com.swyftwallet.tools.util.BRConstants.HEADER_ACCEPT;
+import static com.swyftwallet.tools.util.BRConstants.TRUE;
 
 
 /**

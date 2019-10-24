@@ -58,7 +58,7 @@ android {
     flavorDimensions "mode"
     productFlavors {
         brd {
-            applicationId = "com.breadwallet"
+            applicationId = "com.swyftwallet"
             dimension "mode"
             resValue "string", "app_name", "BRD"
             buildConfigField "boolean", "BITCOIN_TESTNET", "false"
@@ -66,7 +66,7 @@ android {
             missingDimensionStrategy 'network', 'onMainnet'
         }
         brdTestnet {
-            applicationId = "com.breadwallet.testnet"
+            applicationId = "com.swyftwallet.testnet"
             dimension "mode"
             resValue "string", "app_name", "BRD Testnet"
             buildConfigField "boolean", "BITCOIN_TESTNET", "true"

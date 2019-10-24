@@ -27,9 +27,9 @@ package com.platform.network.service
 
 import android.content.Context
 import android.util.Log
-import com.breadwallet.model.PriceChange
-import com.breadwallet.tools.util.Utils
-import com.breadwallet.model.PriceDataPoint
+import com.swyftwallet.model.PriceChange
+import com.swyftwallet.tools.util.Utils
+import com.swyftwallet.model.PriceDataPoint
 import com.platform.APIClient
 import okhttp3.Request
 import org.json.JSONException

@@ -24,8 +24,8 @@
  */
 package com.platform
 
-import com.breadwallet.tools.util.BRConstants
-import com.breadwallet.ui.browser.BrdNativeJs
+import com.swyftwallet.tools.util.BRConstants
+import com.swyftwallet.ui.browser.BrdNativeJs
 import okhttp3.Request
 import okhttp3.RequestBody
 import java.util.*
