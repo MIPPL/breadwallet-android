@@ -2,9 +2,11 @@ package com.swyftwallet.presenter.entities;
 
 import android.content.Context;
 
+import com.swyftwallet.core.BRCoreAddress;
 import com.swyftwallet.tools.manager.BRSharedPrefs;
 import com.swyftwallet.tools.util.BRConstants;
 import com.platform.entities.TxMetaData;
+import com.swyftwallet.wallet.abstracts.BaseWalletManager;
 
 import java.math.BigDecimal;
 
@@ -166,4 +168,5 @@ public class TxUiHolder {
                 0 : BRSharedPrefs.getLastBlockHeight(context, currencyCode) - blockHeight + 1;
         return confirms >= BRConstants.CONFIRMED_BLOCKS_NUMBER;
     }
+
 }

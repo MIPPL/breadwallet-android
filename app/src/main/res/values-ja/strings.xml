@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <!-- App name -->
-    <string name="About.appName.android">BRD</string>
+    <string name="About.appName.android">SWYFT</string>
     <!-- About screen blog label -->
     <string name="About.blog">ブログ</string>
     <!-- About screen footer -->
@@ -73,7 +73,7 @@
     <!-- Fingerprint was recognized by the scanner -->
     <string name="Alerts.touchIdSucceeded.android">指紋が認識されました</string>
     <!-- Tell the user where they can enable permissions to access device storage. -->
-    <string name="Android.allowFileSystemAccess">お使いのデバイスの設定でストレージの使用を許可して下さい: 「設定」&gt;「アプリ」&gt;「BRD」&gt;「許可」。</string>
+    <string name="Android.allowFileSystemAccess">お使いのデバイスの設定でストレージの使用を許可して下さい: 「設定」&gt;「アプリ」&gt;「SWYFT」&gt;「許可」。</string>
     <!-- The "home" screen is the name of the top level menu for the app. -->
     <string name="Android.BCH.welcome.message">お使いのウォレットのBCHには、ホーム画面からアクセスすることができます。</string>
     <!-- Warning about using apps that can alter the screen -->
@@ -238,7 +238,7 @@
     <string name="FaceIDSettings.label">自分の顔を使って、ブレッドのロックを解除して、設定された使用限度額までお金を送金しましょう。</string>
     <!-- Title of the screen for setting the Face ID Spending Limit -->
     <string name="FaceIDSettings.linkText">Face ID使用限度額画面</string>
-    <!-- Setting to turn on Face ID for BRD -->
+    <!-- Setting to turn on Face ID for SWYFT -->
     <string name="FaceIDSettings.switchLabel">ブレッド利用時にFace IDを有効にする</string>
     <!-- Face ID settings view title -->
     <string name="FaceIDSettings.title">Face ID</string>
@@ -518,7 +518,7 @@
     <string name="PushNotifications.disabledBody">BRDから特別オファーやアップデートを受信するには、通知を有効にします。</string>
     <!-- Body text when push notifications are enabled. -->
     <string name="PushNotifications.enabledBody">BRDから特別オファーや最新情報を受信します。</string>
-    <!-- Instructions to enable push notifications for BRD in the phone's system settings. -->
+    <!-- Instructions to enable push notifications for SWYFT in the phone's system settings. -->
     <string name="PushNotifications.enableInstructions">通知がオフになっている可能性があります。[設定] に移動して、BRDからの通知を有効にしてください。</string>
     <!-- Push notifications toggle switch label -->
     <string name="PushNotifications.label">プッシュ通知を受信</string>
@@ -616,14 +616,14 @@
     <string name="RecoveryKeyFlow.rememberToWriteDownReminder">単語はメモしましたか。忘れていたら,スワイプして戻ってください。</string>
     <!-- Instruction displayed when the user is resetting the PIN, which requires the recovery key to be entered -->
     <string name="RecoveryKeyFlow.resetPINInstruction">復元キーを入力して,PINコードをリセットしてください。</string>
-    <!-- Assures the user that BRD will keep the user's funds secure. -->
+    <!-- Assures the user that SWYFT will keep the user's funds secure. -->
     <string name="RecoveryKeyFlow.securityAssurance">お客様の資産は最も安全に個人情報を守りながら保護されていますので,安心して購入や取引ができます。</string>
     <!-- Recommends that the user stores the recovery key in a secure location -->
-    <string name="RecoveryKeyFlow.storeSecurelyRecommendation">キーは安全な場所に保管してください。ウォレットを復元できるのはこのキーだけです。BRD はキーを保存していません。</string>
+    <string name="RecoveryKeyFlow.storeSecurelyRecommendation">キーは安全な場所に保管してください。ウォレットを復元できるのはこのキーだけです。SWYFT はキーを保存していません。</string>
     <!-- Title for the success page after the recovery key has been set up -->
     <string name="RecoveryKeyFlow.successHeading">おつかれさまです ! 復元キーの設定は完了しました。</string>
     <!-- Subtitle for the success page after the recovery key has been set up -->
-    <string name="RecoveryKeyFlow.successSubheading">BRD ウォレットで仮想通貨を保管・購入・取引をする準備ができました。</string>
+    <string name="RecoveryKeyFlow.successSubheading">SWYFT ウォレットで仮想通貨を保管・購入・取引をする準備ができました。</string>
     <!-- Title displayed to the user on the intro screen when unlinking a wallet -->
     <string name="RecoveryKeyFlow.unlinkWallet">端末からウォレットを解除する。</string>
     <!-- Subtitle displayed to the user on the intro screen when unlinking a wallet. -->
@@ -971,7 +971,7 @@
     <string name="Transaction.sentTo">%1$sに送金済み</string>
     <!-- eg. Starting balance: $50.00 -->
     <string name="Transaction.starting">期首残高: %1$s</string>
-    <!-- e.g. "[The money you paid was a] Fee for token transfer: BRD" (BRD is the token that was transfered) -->
+    <!-- e.g. "[The money you paid was a] Fee for token transfer: SWYFT" (SWYFT is the token that was transfered) -->
     <string name="Transaction.tokenTransfer">トークン送金の手数料: %1$s</string>
     <!-- Waiting to be confirmed string -->
     <string name="Transaction.waiting">承認を待っています。トランザクションの完了には承認が必要となる場合があります。推定時間: 1-2時間。</string>

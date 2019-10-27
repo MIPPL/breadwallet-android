@@ -587,7 +587,7 @@ public abstract class BaseBitcoinWalletManager extends BRCoreWalletManager imple
 
     @Override
     public boolean useFixedNode(String node, int port) {
-        return false;
+        return getPeerManager().useFixedPeer(node, port);
     }
 
     /**
