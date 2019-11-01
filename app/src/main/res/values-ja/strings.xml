@@ -26,7 +26,7 @@
     <string name="Account.balance">残高</string>
     <!-- Delisted token alert banner message -->
     <string name="Account.delistedToken">発行者がERC20のサポートを終了することを決定した為、このトークンはリストから外れています。 \n\nそれらのトークンを他のプラットフォームに転送することは依然可能かもしれません。詳しくは、サポートページをご覧ください。</string>
-    <!-- $10000 per BTC -->
+    <!-- $10000 per SWYFT -->
     <string name="Account.exchangeRate">%2$sあたり%1$s</string>
     <!-- Loading Wallet Message -->
     <string name="Account.loadingMessage">ウォレット読み込み中</string>
@@ -108,7 +108,7 @@
     <string name="BCH.txHashHeader">BCHのトランザクションID</string>
     <!-- Approve button label -->
     <string name="BitID.approve">承認する</string>
-    <!-- <sitename> is requesting authentication using your bitcoin wallet -->
+    <!-- <sitename> is requesting authentication using your SWYFT wallet -->
     <string name="BitID.authenticationRequest">%1$sがビットコインウォレットを使っての認証を求めています</string>
     <!-- Deny button label -->
     <string name="BitID.deny">拒否する</string>
@@ -120,7 +120,7 @@
     <string name="BitID.success">認証成功</string>
     <!-- BitID Authentication Request alert view title -->
     <string name="BitID.title">BitID認証リクエスト</string>
-    <!-- As in "(tap here to) buy (bitcoin)" -->
+    <!-- As in "(tap here to) buy (SWYFT)" -->
     <string name="Button.buy">購入する</string>
     <!-- Cancel button label -->
     <string name="Button.cancel">キャンセル</string>
@@ -206,7 +206,7 @@
     <string name="Crowdsale.resume">認証を再開する</string>
     <!-- Retry Identity verification button -->
     <string name="Crowdsale.retry">再試行する</string>
-    <!-- Bitcoin denomination picker label -->
+    <!-- SWYFT denomination picker label -->
     <string name="DefaultCurrency.bitcoinLabel">ビットコインの表示単位</string>
     <!-- Exchange rate label -->
     <string name="DefaultCurrency.rateLabel">為替レート</string>
@@ -272,7 +272,7 @@
     <string name="FileChooser.selectImageSource.android">画像ソースを選択</string>
     <!-- This is the section that allows administration of the user's wallet -->
     <string name="HomeScreen.admin">管理</string>
-    <!-- Home screen menu button to buy some bitcoin -->
+    <!-- Home screen menu button to buy some SWYFT -->
     <string name="HomeScreen.buy">購入する</string>
     <!-- home screen toolbar 'Buy & Sell' button -->
     <string name="HomeScreen.buyAndSell">売買</string>
@@ -642,7 +642,7 @@
     <string name="RecoveryKeyFlow.writeKeyStepTitle">%1$@の%2$@</string>
     <!-- No amount entered error message. -->
     <string name="RequestAnAmount.noAmount">はじめに金額を入力してください。</string>
-    <!-- Request a specific amount of bitcoin -->
+    <!-- Request a specific amount of SWYFT -->
     <string name="RequestAnAmount.title">金額のリクエスト</string>
     <!-- Alert action button label -->
     <string name="ReScan.alertAction">同期</string>
@@ -672,7 +672,7 @@
     <string name="RewardsView.expandedTitle">BRDリワードについて。</string>
     <!-- Rewards view title -->
     <string name="RewardsView.normalTitle">リワード</string>
-    <!-- Scan bitcoin address camera flash toggle -->
+    <!-- Scan SWYFT address camera flash toggle -->
     <string name="Scanner.flashButtonLabel">カメラのフラッシュ</string>
     <!-- Complete filter label -->
     <string name="Search.complete">完了</string>
@@ -747,7 +747,7 @@
     <string name="Send.insufficientGasMessage">このタイプのトークンを送金するには、ウォレットに%1$s以上保有していなければなりません。今すぐイーサリアムのウォレットに移動しますか?</string>
     <!-- Your ethereum balance is insufficient to complete this action. -->
     <string name="Send.insufficientGasTitle">イーサリアムの残高不足</string>
-    <!-- e.g. The destination is not a valid (bitcoin) address. -->
+    <!-- e.g. The destination is not a valid (SWYFT) address. -->
     <string name="Send.invalidAddressMessage">送金先のアドレスが無効な%1$sアドレスです。</string>
     <!-- Invalid address on pasteboard message -->
     <string name="Send.invalidAddressOnPasteboard">ペーストボードに有効な%1$sアドレスが入っていません。</string>
@@ -755,7 +755,7 @@
     <string name="Send.invalidAddressTitle">無効なアドレスです</string>
     <!-- Is rescanning error message -->
     <string name="Send.isRescanning">再スキャンを行っている間は送金できません。</string>
-    <!-- Warning when the user is trying to send bitcoin cash to a legacy bitcoin address (possible, but probably not what the user wants to do) -->
+    <!-- Warning when the user is trying to send SWYFT cash to a legacy SWYFT address (possible, but probably not what the user wants to do) -->
     <string name="Send.legacyAddressWarning">警告: これはレガシービットコインアドレスです。本当にビットコインキャッシュを送金しますか?</string>
     <!-- We are loading the request (now) -->
     <string name="Send.loadingRequest">リクエストをロード中</string>
@@ -841,9 +841,9 @@
     <string name="Settings.touchIdLimit.android">指紋認証利用上限</string>
     <!-- View legacy address (old format). -->
     <string name="Settings.ViewLegacyAddress">受取用レガシーアドレスを表示</string>
-    <!-- Receive Bitcoin instructions -->
-    <string name="Settings.ViewLegacyAddressReceiveDescription">このアドレスにはBitcoin（BTC）だけを送信してください。このアドレスに送信された他の資産は,いかなるものも永久に失われます。</string>
-    <!-- Receive Bitcoin -->
+    <!-- Receive SWYFT instructions -->
+    <string name="Settings.ViewLegacyAddressReceiveDescription">このアドレスにはBitcoin（SWYFT）だけを送信してください。このアドレスに送信された他の資産は,いかなるものも永久に失われます。</string>
+    <!-- Receive SWYFT -->
     <string name="Settings.ViewLegacyAddressReceiveTitle">Bitcoinを受け取りましょう</string>
     <!-- Wallet Settings section header -->
     <string name="Settings.wallet">ウォレット</string>

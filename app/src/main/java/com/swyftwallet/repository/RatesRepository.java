@@ -109,7 +109,7 @@ public class RatesRepository {
     }
 
     /**
-     * Retrieves all rates for a given currency (e.g., BTC -> USD etc.).
+     * Retrieves all rates for a given currency (e.g., SWYFT -> USD etc.).
      * @param currencyCode the currency code for which rates are being retrieved
      * @return a list of currency entities, which encapsulate two currencies and the rate between
      * them, returns an empty list if no rates are found for the specified currency
@@ -119,8 +119,8 @@ public class RatesRepository {
     }
 
     /**
-     * Get the fiat value for a given amount of crypto. Because we only store the fiat exchange rate for BTC we have to
-     * calculate the crypto to fiat rate from crypto to BTC and BTC to fiat rates.
+     * Get the fiat value for a given amount of crypto. Because we only store the fiat exchange rate for SWYFT we have to
+     * calculate the crypto to fiat rate from crypto to SWYFT and SWYFT to fiat rates.
      *
      * @param cryptoAmount  Amount of crypto we want to calculate.
      * @param cryptoCode    Code of the crypto we want to calculate.
@@ -133,11 +133,11 @@ public class RatesRepository {
         //Btc rate for the given crypto
         CurrencyEntity cryptoBtcRate = getCurrencyByCode( cryptoCode, WalletBitcoinManager.BITCOIN_CURRENCY_CODE);
         if (btcRate == null) {
-            Log.e(TAG, "getFiatForBch: No " + fiatCode + " rates for BTC");
+            Log.e(TAG, "getFiatForBch: No " + fiatCode + " rates for SWYFT");
             return null;
         }
         if (cryptoBtcRate == null) {
-            Log.e(TAG, "getFiatForBch: No BTC rates for " + cryptoCode);
+            Log.e(TAG, "getFiatForBch: No SWYFT rates for " + cryptoCode);
             return null;
         }
 
@@ -161,7 +161,7 @@ public class RatesRepository {
 
     /**
      * Parses a cache key to return the 'from' currency. For example, given the cache key for
-     * BTC -> BCH, returns BTC.
+     * SWYFT -> BCH, returns SWYFT.
      * @param cacheKey the cache key being parsed
      * @return the 'from' currency, as encoded in the given cache key
      */

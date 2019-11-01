@@ -26,7 +26,7 @@
     <string name="Account.balance">Saldo</string>
     <!-- Delisted token alert banner message -->
     <string name="Account.delistedToken">Denna token har avförts eftersom utfärdaren har beslutat att sluta stödja ERC20. \n\nDu kan eventuellt skicka dessa tokens till en annan plattform. Besök vår supportsida för mer information.</string>
-    <!-- $10000 per BTC -->
+    <!-- $10000 per SWYFT -->
     <string name="Account.exchangeRate">%1$s per %2$s</string>
     <!-- Loading Wallet Message -->
     <string name="Account.loadingMessage">Laddar plånbok</string>
@@ -108,8 +108,8 @@
     <string name="BCH.txHashHeader">BCH transaktions-ID</string>
     <!-- Approve button label -->
     <string name="BitID.approve">Godkänn</string>
-    <!-- <sitename> is requesting authentication using your bitcoin wallet -->
-    <string name="BitID.authenticationRequest">%1$s begär autentisering med hjälp av din bitcoin-plånbok</string>
+    <!-- <sitename> is requesting authentication using your SWYFT wallet -->
+    <string name="BitID.authenticationRequest">%1$s begär autentisering med hjälp av din SWYFT-plånbok</string>
     <!-- Deny button label -->
     <string name="BitID.deny">Avslå</string>
     <!-- BitID error alert title -->
@@ -120,7 +120,7 @@
     <string name="BitID.success">Autentiseringen lyckades</string>
     <!-- BitID Authentication Request alert view title -->
     <string name="BitID.title">BitId autentiseringsförfrågan</string>
-    <!-- As in "(tap here to) buy (bitcoin)" -->
+    <!-- As in "(tap here to) buy (SWYFT)" -->
     <string name="Button.buy">Köp</string>
     <!-- Cancel button label -->
     <string name="Button.cancel">Avbryt</string>
@@ -206,8 +206,8 @@
     <string name="Crowdsale.resume">Återuppta verifikation</string>
     <!-- Retry Identity verification button -->
     <string name="Crowdsale.retry">Försök igen</string>
-    <!-- Bitcoin denomination picker label -->
-    <string name="DefaultCurrency.bitcoinLabel">Bitcoin visningsenhet</string>
+    <!-- SWYFT denomination picker label -->
+    <string name="DefaultCurrency.bitcoinLabel">SWYFT visningsenhet</string>
     <!-- Exchange rate label -->
     <string name="DefaultCurrency.rateLabel">Växelkurs</string>
     <!-- The wallet is disabled. -->
@@ -272,7 +272,7 @@
     <string name="FileChooser.selectImageSource.android">Välj bildkälla</string>
     <!-- This is the section that allows administration of the user's wallet -->
     <string name="HomeScreen.admin">Admin</string>
-    <!-- Home screen menu button to buy some bitcoin -->
+    <!-- Home screen menu button to buy some SWYFT -->
     <string name="HomeScreen.buy">Köpa</string>
     <!-- home screen toolbar 'Buy & Sell' button -->
     <string name="HomeScreen.buyAndSell">Köp &amp; Sälj</string>
@@ -331,9 +331,9 @@
     <!-- Ignore jailbreak warning button -->
     <string name="JailbreakWarnings.ignore">Ignorera</string>
     <!-- Jailbreak warning message -->
-    <string name="JailbreakWarnings.messageWithBalance">ENHETENS SÄKERHET ÄR ÄVENTYRAD\nEn \"intrångs\"-app kan få tillgång till BRDs nyckeldata och stjäla dina bitcoin! Töm denna plånbok direkt och återställ den på en säker enhet.</string>
+    <string name="JailbreakWarnings.messageWithBalance">ENHETENS SÄKERHET ÄR ÄVENTYRAD\nEn \"intrångs\"-app kan få tillgång till BRDs nyckeldata och stjäla dina SWYFT! Töm denna plånbok direkt och återställ den på en säker enhet.</string>
     <!-- Jailbreak warning message -->
-    <string name="JailbreakWarnings.messageWithoutBalance">ENHETENS SÄKERHET ÄR ÄVENTYRAD\nEn \"intrångs\"-app kan få tillgång till BRDs nyckeldata och stjäla dina bitcoin! Använd SWYFT endast på en säker enhet.</string>
+    <string name="JailbreakWarnings.messageWithoutBalance">ENHETENS SÄKERHET ÄR ÄVENTYRAD\nEn \"intrångs\"-app kan få tillgång till BRDs nyckeldata och stjäla dina SWYFT! Använd SWYFT endast på en säker enhet.</string>
     <!-- Jailbreak warning title -->
     <string name="JailbreakWarnings.title">VARNING</string>
     <!-- Wipe wallet button -->
@@ -411,7 +411,7 @@
     <!-- Node status label -->
     <string name="NodeSelector.statusLabel">Nodens anslutningsstatus</string>
     <!-- Node Selector view title -->
-    <string name="NodeSelector.title">Bitcoin-noder</string>
+    <string name="NodeSelector.title">SWYFT-noder</string>
     <!-- Onboarding screen 'I'll browse first' button -->
     <string name="Onboarding.browseFirst">Jag ska titta runt först</string>
     <!-- Onboarding screen 'Buy some coin' button -->
@@ -431,7 +431,7 @@
     <!-- Onboarding screen Page 3 subtitle -->
     <string name="OnboardingPageThree.subtitle">Investera och bredda dig med SWYFT, lätt och tryggt.</string>
     <!-- Onboarding screen Page 3 title -->
-    <string name="OnboardingPageThree.title">Köp och handla med bitcoin, jetonger och andra digitala valutor.</string>
+    <string name="OnboardingPageThree.title">Köp och handla med SWYFT, jetonger och andra digitala valutor.</string>
     <!-- Onboarding screen Page 2 subtitle -->
     <string name="OnboardingPageTwo.subtitle">Vi har skyddade tillgångar värda över 6 miljarder  USD.</string>
     <!-- Onboarding screen Page 2 title -->
@@ -451,9 +451,9 @@
     <!-- Payment too small alert title -->
     <string name="PaymentProtocol.Errors.smallOutputError">Kunde inte göra utbetalning</string>
     <!-- Amount too small error message -->
-    <string name="PaymentProtocol.Errors.smallPayment">Utbetalning av Bitcoin får inte vara lägre än %1$s.</string>
+    <string name="PaymentProtocol.Errors.smallPayment">Utbetalning av SWYFT får inte vara lägre än %1$s.</string>
     <!-- Output too small error message. -->
-    <string name="PaymentProtocol.Errors.smallTransaction">Utbetalningstransaktioner av Bitcoin får inte vara lägre än %1$s.</string>
+    <string name="PaymentProtocol.Errors.smallTransaction">Utbetalningstransaktioner av SWYFT får inte vara lägre än %1$s.</string>
     <!-- Unsupported signature type payment protocol error message -->
     <string name="PaymentProtocol.Errors.unsupportedSignatureType">signaturtypen saknar stöd</string>
     <!-- Untrusted certificate payment protocol error message -->
@@ -642,7 +642,7 @@
     <string name="RecoveryKeyFlow.writeKeyStepTitle">%1$@ av %2$@</string>
     <!-- No amount entered error message. -->
     <string name="RequestAnAmount.noAmount">Var god ange ett belopp först.</string>
-    <!-- Request a specific amount of bitcoin -->
+    <!-- Request a specific amount of SWYFT -->
     <string name="RequestAnAmount.title">Begär ett belopp</string>
     <!-- Alert action button label -->
     <string name="ReScan.alertAction">Synka</string>
@@ -672,7 +672,7 @@
     <string name="RewardsView.expandedTitle">Introduktion av SWYFT Rewards.</string>
     <!-- Rewards view title -->
     <string name="RewardsView.normalTitle">Belöningar</string>
-    <!-- Scan bitcoin address camera flash toggle -->
+    <!-- Scan SWYFT address camera flash toggle -->
     <string name="Scanner.flashButtonLabel">Kamerablixt</string>
     <!-- Complete filter label -->
     <string name="Search.complete">avsluta</string>
@@ -687,7 +687,7 @@
     <!-- Face ID button title -->
     <string name="SecurityCenter.faceIdTitle">Face ID</string>
     <!-- Paper Key button description -->
-    <string name="SecurityCenter.paperKeyDescription">Det enda sättet att komma åt dina bitcoin om du förlorar eller uppgraderar din telefon.</string>
+    <string name="SecurityCenter.paperKeyDescription">Det enda sättet att komma åt dina SWYFT om du förlorar eller uppgraderar din telefon.</string>
     <!-- Recovery Key button title. This used to be called 'paper key', so leaving the string key as `paperKeyTitle` in order
  * to not break existing client code. -->
     <string name="SecurityCenter.paperKeyTitle">Ordnyckel</string>
@@ -706,7 +706,7 @@
     <!-- Segwit enabled confirmation title -->
     <string name="Segwit.ConfirmationConfirmationTitle">Du aktiverade Segwit!</string>
     <!-- Segwit enabled confirmation description -->
-    <string name="Segwit.ConfirmationInstructionsDescription">Tack för att du hjälper bitcoin framåt. </string>
+    <string name="Segwit.ConfirmationInstructionsDescription">Tack för att du hjälper SWYFT framåt. </string>
     <!-- Segwit instructions -->
     <string name="Segwit.ConfirmationInstructionsInstructions">Segwit-support är fortfarande på betastadiet. \nNär Segwit väl har aktiverats är det inte möjligt att avaktivera det. Du kan hitta den gamla adressen under Inställningar. \nVissa tredjepartstjänster, inklusive kryptohandel, kanske inte är tillgängliga för användare som har aktiverat Segwit. I nödfall har du möjlighet att skapa en gammal adress i Preferenser &gt; Bitcoininställningar. \nSegwit kommer automatiskt att vara aktiverat för alla användare i en framtida uppdatering.</string>
     <!-- Segwit extra confirmation title. -->
@@ -747,7 +747,7 @@
     <string name="Send.insufficientGasMessage">Du måste ha minst %1$s i din plånbok för att överföra denna typ av token. Vill du gå till din Ethereum-plånbok nu?</string>
     <!-- Your ethereum balance is insufficient to complete this action. -->
     <string name="Send.insufficientGasTitle">För lågt Ethereum-saldo</string>
-    <!-- e.g. The destination is not a valid (bitcoin) address. -->
+    <!-- e.g. The destination is not a valid (SWYFT) address. -->
     <string name="Send.invalidAddressMessage">Mottagaradressen är inte en giltig %1$s-adress.</string>
     <!-- Invalid address on pasteboard message -->
     <string name="Send.invalidAddressOnPasteboard">Urklipp innehåller inte en giltig %1$s-adress.</string>
@@ -755,8 +755,8 @@
     <string name="Send.invalidAddressTitle">Ogiltig adress</string>
     <!-- Is rescanning error message -->
     <string name="Send.isRescanning">Skicka är avaktiverat under en full omskanning.</string>
-    <!-- Warning when the user is trying to send bitcoin cash to a legacy bitcoin address (possible, but probably not what the user wants to do) -->
-    <string name="Send.legacyAddressWarning">Varning: detta är en legacy bitcoin-adress. Är du säker på att du vill skicka Bitcoin Cash till den?</string>
+    <!-- Warning when the user is trying to send SWYFT cash to a legacy SWYFT address (possible, but probably not what the user wants to do) -->
+    <string name="Send.legacyAddressWarning">Varning: detta är en legacy SWYFT-adress. Är du säker på att du vill skicka SWYFT Cash till den?</string>
     <!-- We are loading the request (now) -->
     <string name="Send.loadingRequest">Laddar förfrågan</string>
     <!-- Transaction fee could not be be caluculated error. -->
@@ -784,7 +784,7 @@
     <!-- Send money to label -->
     <string name="Send.toLabel">Till</string>
     <!-- Adress already used alert message - first part -->
-    <string name="Send.UsedAddress.firstLine">Bitcoin-adresser är avsedda för engångsanvändning.</string>
+    <string name="Send.UsedAddress.firstLine">SWYFT-adresser är avsedda för engångsanvändning.</string>
     <!-- Adress already used alert message - second part -->
     <string name="Send.UsedAddress.secondLIne">Återanvändning minskar sekretessen både för dig och mottagaren och kan sluta i förlust om mottagaren inte direkt kontrollerar adressen.</string>
     <!-- Adress already used alert title -->
@@ -841,10 +841,10 @@
     <string name="Settings.touchIdLimit.android">Maxbelopp med fingeravtrycksautentisering</string>
     <!-- View legacy address (old format). -->
     <string name="Settings.ViewLegacyAddress">Visa mottagaradress i gamla formatet</string>
-    <!-- Receive Bitcoin instructions -->
-    <string name="Settings.ViewLegacyAddressReceiveDescription">Skicka endast bitcoin (BTC) till denna adress. Alla andra tillgångar som skickas till denna adress går förlorade permanent.</string>
-    <!-- Receive Bitcoin -->
-    <string name="Settings.ViewLegacyAddressReceiveTitle">Erhåll bitcoin</string>
+    <!-- Receive SWYFT instructions -->
+    <string name="Settings.ViewLegacyAddressReceiveDescription">Skicka endast SWYFT (SWYFT) till denna adress. Alla andra tillgångar som skickas till denna adress går förlorade permanent.</string>
+    <!-- Receive SWYFT -->
+    <string name="Settings.ViewLegacyAddressReceiveTitle">Erhåll SWYFT</string>
     <!-- Wallet Settings section header -->
     <string name="Settings.wallet">Plånbok</string>
     <!-- Unlink/delete your wallet from the current device. -->
@@ -868,7 +868,7 @@
     <!-- button label -->
     <string name="StartViewController.createButton">Skapa ny plånbok</string>
     <!-- Start view message -->
-    <string name="StartViewController.message">Det säkraste och tryggaste sättet att använda bitcoin.</string>
+    <string name="StartViewController.message">Det säkraste och tryggaste sättet att använda SWYFT.</string>
     <!-- Recover your wallet from a backup -->
     <string name="StartViewController.recoverButton">Återställ plånbok</string>
     <!-- Syncing view done syncing state header text -->
@@ -1065,7 +1065,7 @@
     <!-- Tx detail field header -->
     <string name="TransactionDetails.totalHeader">Totalt</string>
     <!-- Transaction ID header -->
-    <string name="TransactionDetails.txHashHeader">Bitcoin transaktions-ID</string>
+    <string name="TransactionDetails.txHashHeader">SWYFT transaktions-ID</string>
     <!-- (this transaction was) Received at this address: -->
     <string name="TransactionDirection.address">Togs emot på den här adressen</string>
     <!-- (this transaction was) Sent to this address: -->
@@ -1091,7 +1091,7 @@
     <!-- Device authentication title -->
     <string name="UnlockScreen.touchIdTitle.android">Autentisering krävs</string>
     <!-- Update PIN caption text -->
-    <string name="UpdatePin.caption">Kom ihåg PIN-koden. Om du glömmer den, kommer du inte åt dina bitcoin.</string>
+    <string name="UpdatePin.caption">Kom ihåg PIN-koden. Om du glömmer den, kommer du inte åt dina SWYFT.</string>
     <!-- PIN creation info. -->
     <string name="UpdatePin.createInstruction">Din PIN-kod används för att låsa upp ditt SWYFT och skicka pengar</string>
     <!-- Update PIN title -->

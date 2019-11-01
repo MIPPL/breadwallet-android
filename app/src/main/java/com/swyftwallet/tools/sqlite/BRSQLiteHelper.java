@@ -69,7 +69,7 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
     private static final String MB_DATABASE_CREATE = "create table if not exists " + MB_TABLE_NAME + " (" +
             MB_COLUMN_ID + " integer primary key autoincrement, " +
             MB_BUFF + " blob, " +
-            MB_ISO + " text DEFAULT 'BTC' , " +
+            MB_ISO + " text DEFAULT 'SWYFT' , " +
             MB_HEIGHT + " integer);";
 
     /**
@@ -89,7 +89,7 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
             TX_BUFF + " blob, " +
             TX_BLOCK_HEIGHT + " integer, " +
             TX_TIME_STAMP + " integer, " +
-            TX_ISO + " text DEFAULT 'BTC' );";
+            TX_ISO + " text DEFAULT 'SWYFT' );";
 
     /**
      * Peer table
@@ -108,7 +108,7 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
             PEER_ADDRESS + " blob," +
             PEER_PORT + " blob," +
             PEER_TIMESTAMP + " blob," +
-            PEER_ISO + "  text default 'BTC');";
+            PEER_ISO + "  text default 'SWYFT');";
     /**
      * Currency table
      */
@@ -118,13 +118,13 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
     public static final String CURRENCY_CODE = "code";
     public static final String CURRENCY_NAME = "name";
     public static final String CURRENCY_RATE = "rate";
-    public static final String CURRENCY_ISO = "iso";//iso for the currency of exchange (BTC, BCH, ETH)
+    public static final String CURRENCY_ISO = "iso";//iso for the currency of exchange (SWYFT, BCH, ETH)
 
     private static final String CURRENCY_DATABASE_CREATE = "create table if not exists " + CURRENCY_TABLE_NAME + " (" +
             CURRENCY_CODE + " text," +
             CURRENCY_NAME + " text," +
             CURRENCY_RATE + " integer," +
-            CURRENCY_ISO + " text DEFAULT 'BTC', " +
+            CURRENCY_ISO + " text DEFAULT 'SWYFT', " +
             "PRIMARY KEY (" + CURRENCY_CODE + ", " + CURRENCY_ISO + ")" +
             ");";
 
@@ -217,11 +217,11 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             cursorGet = db.query(BRSQLiteHelper.TX_TABLE_NAME,
-                    BtcBchTransactionDataStore.allColumns, BRSQLiteHelper.TX_ISO + "=? AND " + BRSQLiteHelper.TX_BLOCK_HEIGHT + " <?", new String[]{"BTC", String.valueOf(bCashForkBlockHeight)}, null, null, null);
+                    BtcBchTransactionDataStore.allColumns, BRSQLiteHelper.TX_ISO + "=? AND " + BRSQLiteHelper.TX_BLOCK_HEIGHT + " <?", new String[]{"SWYFT", String.valueOf(bCashForkBlockHeight)}, null, null, null);
 
             cursorGet.moveToFirst();
             while (!cursorGet.isAfterLast()) {
-                BRTransactionEntity transactionEntity = BtcBchTransactionDataStore.cursorToTransaction(null, "BTC", cursorGet);
+                BRTransactionEntity transactionEntity = BtcBchTransactionDataStore.cursorToTransaction(null, "SWYFT", cursorGet);
                 transactions.add(transactionEntity);
                 cursorGet.moveToNext();
             }

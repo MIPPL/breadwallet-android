@@ -26,7 +26,7 @@
     <string name="Account.balance">잔액</string>
     <!-- Delisted token alert banner message -->
     <string name="Account.delistedToken">발행자가 ERC20 지원을 중단하기로 결정했기 때문에 이 토큰은 목록에서 제외되었습니다. \n\n하지만 이 토큰을 다른 플랫폼으로 보낼 수는 있습니다. 자세한 내용은 지원 페이지를 방문하십시오.</string>
-    <!-- $10000 per BTC -->
+    <!-- $10000 per SWYFT -->
     <string name="Account.exchangeRate">%2$s 당 %1$s</string>
     <!-- Loading Wallet Message -->
     <string name="Account.loadingMessage">지갑 로딩</string>
@@ -108,7 +108,7 @@
     <string name="BCH.txHashHeader">BCH Transaction ID</string>
     <!-- Approve button label -->
     <string name="BitID.approve">승인</string>
-    <!-- <sitename> is requesting authentication using your bitcoin wallet -->
+    <!-- <sitename> is requesting authentication using your SWYFT wallet -->
     <string name="BitID.authenticationRequest">%1$s(이)가 귀하의 비트코인 월렛 이용에 대한 인증을 요청하고 있습니다.</string>
     <!-- Deny button label -->
     <string name="BitID.deny">거부</string>
@@ -120,7 +120,7 @@
     <string name="BitID.success">성공적으로 인증됨</string>
     <!-- BitID Authentication Request alert view title -->
     <string name="BitID.title">BitID 인증 요청</string>
-    <!-- As in "(tap here to) buy (bitcoin)" -->
+    <!-- As in "(tap here to) buy (SWYFT)" -->
     <string name="Button.buy">구매하기</string>
     <!-- Cancel button label -->
     <string name="Button.cancel">취소</string>
@@ -206,8 +206,8 @@
     <string name="Crowdsale.resume">인증 다시 하기</string>
     <!-- Retry Identity verification button -->
     <string name="Crowdsale.retry">다시 시도하기</string>
-    <!-- Bitcoin denomination picker label -->
-    <string name="DefaultCurrency.bitcoinLabel">Bitcoin Display Unit</string>
+    <!-- SWYFT denomination picker label -->
+    <string name="DefaultCurrency.bitcoinLabel">SWYFT Display Unit</string>
     <!-- Exchange rate label -->
     <string name="DefaultCurrency.rateLabel">환율</string>
     <!-- The wallet is disabled. -->
@@ -272,7 +272,7 @@
     <string name="FileChooser.selectImageSource.android">이미지 소스 선택</string>
     <!-- This is the section that allows administration of the user's wallet -->
     <string name="HomeScreen.admin">관리</string>
-    <!-- Home screen menu button to buy some bitcoin -->
+    <!-- Home screen menu button to buy some SWYFT -->
     <string name="HomeScreen.buy">사다</string>
     <!-- home screen toolbar 'Buy & Sell' button -->
     <string name="HomeScreen.buyAndSell">구매 및 판매</string>
@@ -642,7 +642,7 @@
     <string name="RecoveryKeyFlow.writeKeyStepTitle">%2$@ 중 %1$@</string>
     <!-- No amount entered error message. -->
     <string name="RequestAnAmount.noAmount">먼저 금액을 입력해 주세요.</string>
-    <!-- Request a specific amount of bitcoin -->
+    <!-- Request a specific amount of SWYFT -->
     <string name="RequestAnAmount.title">금액 요청</string>
     <!-- Alert action button label -->
     <string name="ReScan.alertAction">동기화</string>
@@ -672,7 +672,7 @@
     <string name="RewardsView.expandedTitle">SWYFT 리워즈를 소개합니다.</string>
     <!-- Rewards view title -->
     <string name="RewardsView.normalTitle">리워즈</string>
-    <!-- Scan bitcoin address camera flash toggle -->
+    <!-- Scan SWYFT address camera flash toggle -->
     <string name="Scanner.flashButtonLabel">카메라 플래시</string>
     <!-- Complete filter label -->
     <string name="Search.complete">완료</string>
@@ -706,9 +706,9 @@
     <!-- Segwit enabled confirmation title -->
     <string name="Segwit.ConfirmationConfirmationTitle">SegWit을 활성화했습니다!</string>
     <!-- Segwit enabled confirmation description -->
-    <string name="Segwit.ConfirmationInstructionsDescription">Bitcoin 발전에 일조해 주셔서 감사합니다.</string>
+    <string name="Segwit.ConfirmationInstructionsDescription">SWYFT 발전에 일조해 주셔서 감사합니다.</string>
     <!-- Segwit instructions -->
-    <string name="Segwit.ConfirmationInstructionsInstructions">SegWit 지원은 아직 베타 기능입니다.\nSegWit이 활성화되면 비활성화할 수\n없습니다. 유산 주소는 아래 설정에서 찾을 수 있습니다.\nSegWit를 활성화하면 암호화 거래 등 일부 제3자 서비스를 이용할 수 없을 수도 있습니다. 비상 시에는 선호도 &gt; Bitcoin 설정에서 유산 주소를 생성할 수 있습니다.\nSegWit는 향후 업데이트 시 모든 사용자에게 \n자동으로 활성화됩니다.</string>
+    <string name="Segwit.ConfirmationInstructionsInstructions">SegWit 지원은 아직 베타 기능입니다.\nSegWit이 활성화되면 비활성화할 수\n없습니다. 유산 주소는 아래 설정에서 찾을 수 있습니다.\nSegWit를 활성화하면 암호화 거래 등 일부 제3자 서비스를 이용할 수 없을 수도 있습니다. 비상 시에는 선호도 &gt; SWYFT 설정에서 유산 주소를 생성할 수 있습니다.\nSegWit는 향후 업데이트 시 모든 사용자에게 \n자동으로 활성화됩니다.</string>
     <!-- Segwit extra confirmation title. -->
     <string name="Segwit.ConfirmChoiceLayout">SegWit을 활성화는 취소할 수 없는 기능입니다. 계속하시겠습니까?</string>
     <!-- Segwit enableButton -->
@@ -747,7 +747,7 @@
     <string name="Send.insufficientGasMessage">이 종류의 토큰을 전송하려면 지갑에 최소 %1$s가 있어야 합니다. 지금 이더리움 지갑으로 가시겠습니까?</string>
     <!-- Your ethereum balance is insufficient to complete this action. -->
     <string name="Send.insufficientGasTitle">이더리움 잔액이 부족합니다</string>
-    <!-- e.g. The destination is not a valid (bitcoin) address. -->
+    <!-- e.g. The destination is not a valid (SWYFT) address. -->
     <string name="Send.invalidAddressMessage">해당 수취인 주소는 %1$s에서 유효하지 않은 주소입니다.</string>
     <!-- Invalid address on pasteboard message -->
     <string name="Send.invalidAddressOnPasteboard">클립보드가 유효한 %1$s 주소를 가지고 있지 않습니다</string>
@@ -755,7 +755,7 @@
     <string name="Send.invalidAddressTitle">유효하지 않은 주소입니다</string>
     <!-- Is rescanning error message -->
     <string name="Send.isRescanning">전체 재검색 중에는 송금이 비활성화됩니다.</string>
-    <!-- Warning when the user is trying to send bitcoin cash to a legacy bitcoin address (possible, but probably not what the user wants to do) -->
+    <!-- Warning when the user is trying to send SWYFT cash to a legacy SWYFT address (possible, but probably not what the user wants to do) -->
     <string name="Send.legacyAddressWarning">경고: 이것은 레거시 비트코인 주소입니다. 비트코인 캐시를 보내시겠습니까?</string>
     <!-- We are loading the request (now) -->
     <string name="Send.loadingRequest">요청 불러오는 중</string>
@@ -841,10 +841,10 @@
     <string name="Settings.touchIdLimit.android">지문 본인확인 사용 한계</string>
     <!-- View legacy address (old format). -->
     <string name="Settings.ViewLegacyAddress">유산 수령 주소 보기</string>
-    <!-- Receive Bitcoin instructions -->
-    <string name="Settings.ViewLegacyAddressReceiveDescription">이 주소에는 Bitcoin(BTC)만 보낼 수 있습니다. 이 주소로 다른 자산을 보낼 경우 모두 영구 소실됩니다.</string>
-    <!-- Receive Bitcoin -->
-    <string name="Settings.ViewLegacyAddressReceiveTitle">Bitcoin 수령</string>
+    <!-- Receive SWYFT instructions -->
+    <string name="Settings.ViewLegacyAddressReceiveDescription">이 주소에는 SWYFT(SWYFT)만 보낼 수 있습니다. 이 주소로 다른 자산을 보낼 경우 모두 영구 소실됩니다.</string>
+    <!-- Receive SWYFT -->
+    <string name="Settings.ViewLegacyAddressReceiveTitle">SWYFT 수령</string>
     <!-- Wallet Settings section header -->
     <string name="Settings.wallet">지갑</string>
     <!-- Unlink/delete your wallet from the current device. -->
@@ -1065,7 +1065,7 @@
     <!-- Tx detail field header -->
     <string name="TransactionDetails.totalHeader">합계</string>
     <!-- Transaction ID header -->
-    <string name="TransactionDetails.txHashHeader">Bitcoin Transaction ID</string>
+    <string name="TransactionDetails.txHashHeader">SWYFT Transaction ID</string>
     <!-- (this transaction was) Received at this address: -->
     <string name="TransactionDirection.address">이 주소에서 받음</string>
     <!-- (this transaction was) Sent to this address: -->

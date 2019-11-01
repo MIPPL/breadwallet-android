@@ -52,7 +52,7 @@ class RecoveryKeyViewModel(application: Application) : AndroidViewModel(applicat
         }
         BRExecutor.getInstance().forBackgroundTasks().execute {
             cleanPhrase?.let { PostAuth.getInstance().setCachedPaperKey(it) }
-            //Disallow BTC and BCH sending.
+            //Disallow SWYFT and BCH sending.
             BRSharedPrefs.putAllowSpend(getApplication(),
                     BaseBitcoinWalletManager.BITCASH_CURRENCY_CODE, false)
             BRSharedPrefs.putAllowSpend(getApplication(),

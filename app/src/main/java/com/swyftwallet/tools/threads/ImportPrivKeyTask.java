@@ -116,7 +116,7 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
         mCurrencyCode = BaseBitcoinWalletManager.BITCOIN_CURRENCY_CODE;
         String errorMessage = trySweep(mCurrencyCode, mKey);
 
-        //If not success then we don't have BTC in this private key, check BCH
+        //If not success then we don't have SWYFT in this private key, check BCH
         if (errorMessage != null) {
             mCurrencyCode = BaseBitcoinWalletManager.BITCASH_CURRENCY_CODE;
             errorMessage = trySweep(mCurrencyCode, mKey);
@@ -217,7 +217,7 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
             } else {
                 BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(() -> {
                     mTransaction.getCoreTx().sign(mKey, walletManager.getForkId());
-                    BRCorePeerManager peerManager = mCurrencyCode.equalsIgnoreCase("BTC") ? ((WalletBitcoinManager) walletManager).getPeerManager() : ((WalletBchManager) walletManager).getPeerManager();
+                    BRCorePeerManager peerManager = mCurrencyCode.equalsIgnoreCase("SWYFT") ? ((WalletBitcoinManager) walletManager).getPeerManager() : ((WalletBchManager) walletManager).getPeerManager();
 
                     if (!mTransaction.getCoreTx().isSigned()) {
                         String err = "transaction is not signed";
@@ -269,8 +269,8 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
                 return null;
             }
 
-            CryptoAddress address = walletManager.getReceiveAddress(app); //cast, assuming it's BTC or BCH for now
-            BRCoreAddress coreAddr = (BRCoreAddress) address.getCoreObject(); //assume BTC and BCH for now
+            CryptoAddress address = walletManager.getReceiveAddress(app); //cast, assuming it's SWYFT or BCH for now
+            BRCoreAddress coreAddr = (BRCoreAddress) address.getCoreObject(); //assume SWYFT and BCH for now
 
             BigDecimal fee = walletManager.getFeeForTransactionSize(new BigDecimal(transaction.getSize() + 34 + (mKey.getPubKey().length - 33) * transaction.getInputs().length));
             transaction.addOutput(new BRCoreTransactionOutput(new BigDecimal(totalAmount).subtract(fee).longValue(), coreAddr.getPubKeyScript()));

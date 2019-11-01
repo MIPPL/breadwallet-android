@@ -82,7 +82,7 @@ public class SendManager {
             sending = true;
             long now = System.currentTimeMillis();
 
-            // Check whether the fee (for BTC and BCH) value we have is old, then try updating the fee
+            // Check whether the fee (for SWYFT and BCH) value we have is old, then try updating the fee
             if (walletManager.getCurrencyCode().equalsIgnoreCase(WalletBitcoinManager.BITCOIN_CURRENCY_CODE) ||
                 walletManager.getCurrencyCode().equalsIgnoreCase(WalletBchManager.BITCASH_CURRENCY_CODE)) {
 

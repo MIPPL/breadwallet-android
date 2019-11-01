@@ -26,7 +26,7 @@
     <string name="Account.balance">余额</string>
     <!-- Delisted token alert banner message -->
     <string name="Account.delistedToken">这种代币已被摘牌，因为发行者决定停止支持 ERC20。\n\n您仍然可以将这些代币汇到别的平台。请访问我们的支持页面获取更多细节。</string>
-    <!-- $10000 per BTC -->
+    <!-- $10000 per SWYFT -->
     <string name="Account.exchangeRate">%1$s / %2$s</string>
     <!-- Loading Wallet Message -->
     <string name="Account.loadingMessage">正在加载钱包</string>
@@ -108,7 +108,7 @@
     <string name="BCH.txHashHeader">BCH 交易 ID</string>
     <!-- Approve button label -->
     <string name="BitID.approve">批准</string>
-    <!-- <sitename> is requesting authentication using your bitcoin wallet -->
+    <!-- <sitename> is requesting authentication using your SWYFT wallet -->
     <string name="BitID.authenticationRequest">%1$s 正使用您的比特币钱包请求验证</string>
     <!-- Deny button label -->
     <string name="BitID.deny">拒绝</string>
@@ -120,7 +120,7 @@
     <string name="BitID.success">验证成功</string>
     <!-- BitID Authentication Request alert view title -->
     <string name="BitID.title">BitID 验证请求</string>
-    <!-- As in "(tap here to) buy (bitcoin)" -->
+    <!-- As in "(tap here to) buy (SWYFT)" -->
     <string name="Button.buy">购买</string>
     <!-- Cancel button label -->
     <string name="Button.cancel">取消</string>
@@ -206,7 +206,7 @@
     <string name="Crowdsale.resume">重新验证</string>
     <!-- Retry Identity verification button -->
     <string name="Crowdsale.retry">重试</string>
-    <!-- Bitcoin denomination picker label -->
+    <!-- SWYFT denomination picker label -->
     <string name="DefaultCurrency.bitcoinLabel">比特币显示单位</string>
     <!-- Exchange rate label -->
     <string name="DefaultCurrency.rateLabel">汇率</string>
@@ -272,7 +272,7 @@
     <string name="FileChooser.selectImageSource.android">选择图像源</string>
     <!-- This is the section that allows administration of the user's wallet -->
     <string name="HomeScreen.admin">管理</string>
-    <!-- Home screen menu button to buy some bitcoin -->
+    <!-- Home screen menu button to buy some SWYFT -->
     <string name="HomeScreen.buy">购买</string>
     <!-- home screen toolbar 'Buy & Sell' button -->
     <string name="HomeScreen.buyAndSell">买卖</string>
@@ -642,7 +642,7 @@
     <string name="RecoveryKeyFlow.writeKeyStepTitle">共 %2$@ 步,第 %1$@ 步</string>
     <!-- No amount entered error message. -->
     <string name="RequestAnAmount.noAmount">请先输入金额。</string>
-    <!-- Request a specific amount of bitcoin -->
+    <!-- Request a specific amount of SWYFT -->
     <string name="RequestAnAmount.title">申请金额</string>
     <!-- Alert action button label -->
     <string name="ReScan.alertAction">同步</string>
@@ -672,7 +672,7 @@
     <string name="RewardsView.expandedTitle">介绍BRD奖励计划。</string>
     <!-- Rewards view title -->
     <string name="RewardsView.normalTitle">奖励</string>
-    <!-- Scan bitcoin address camera flash toggle -->
+    <!-- Scan SWYFT address camera flash toggle -->
     <string name="Scanner.flashButtonLabel">相机闪光灯</string>
     <!-- Complete filter label -->
     <string name="Search.complete">完成</string>
@@ -708,7 +708,7 @@
     <!-- Segwit enabled confirmation description -->
     <string name="Segwit.ConfirmationInstructionsDescription">感谢您帮助比特币发展。</string>
     <!-- Segwit instructions -->
-    <string name="Segwit.ConfirmationInstructionsInstructions">SegWit 支持还是一项不成熟的测试功能。\n启用 SegWit 后,将无法将其禁用。\n您可以在\"设置\"下找到传统地址。\n启用了 SegWit 的用户可能无法使用包括加密货币交易在内的部分第三方服务。如果出现紧急情况,您可以通过\"首选项\"(Preferences) &gt;\"比特币设置\"(Bitcoin Settings) 生成一个传统地址。\n在将来的更新中,将自动为所有用户\n启用 SegWit。</string>
+    <string name="Segwit.ConfirmationInstructionsInstructions">SegWit 支持还是一项不成熟的测试功能。\n启用 SegWit 后,将无法将其禁用。\n您可以在\"设置\"下找到传统地址。\n启用了 SegWit 的用户可能无法使用包括加密货币交易在内的部分第三方服务。如果出现紧急情况,您可以通过\"首选项\"(Preferences) &gt;\"比特币设置\"(SWYFT Settings) 生成一个传统地址。\n在将来的更新中,将自动为所有用户\n启用 SegWit。</string>
     <!-- Segwit extra confirmation title. -->
     <string name="Segwit.ConfirmChoiceLayout">启用 SegWit 是不可逆转的功能。是否确定要继续？</string>
     <!-- Segwit enableButton -->
@@ -747,7 +747,7 @@
     <string name="Send.insufficientGasMessage">您的钱包里必须至少有 %1$s 才能够转让此种类型的代币。您现在想前往您的以太坊钱包吗？</string>
     <!-- Your ethereum balance is insufficient to complete this action. -->
     <string name="Send.insufficientGasTitle">以太坊余额不足</string>
-    <!-- e.g. The destination is not a valid (bitcoin) address. -->
+    <!-- e.g. The destination is not a valid (SWYFT) address. -->
     <string name="Send.invalidAddressMessage">目标地址不是有效的%1$s地址。</string>
     <!-- Invalid address on pasteboard message -->
     <string name="Send.invalidAddressOnPasteboard">粘贴板中没有有效的%1$s地址</string>
@@ -755,7 +755,7 @@
     <string name="Send.invalidAddressTitle">无效地址</string>
     <!-- Is rescanning error message -->
     <string name="Send.isRescanning">完全扫描期间发送功能已被禁用。</string>
-    <!-- Warning when the user is trying to send bitcoin cash to a legacy bitcoin address (possible, but probably not what the user wants to do) -->
+    <!-- Warning when the user is trying to send SWYFT cash to a legacy SWYFT address (possible, but probably not what the user wants to do) -->
     <string name="Send.legacyAddressWarning">警告：这是已停用的比特币地址。您确定要向这个地址发送比特币现金吗？</string>
     <!-- We are loading the request (now) -->
     <string name="Send.loadingRequest">加载请求中</string>
@@ -841,9 +841,9 @@
     <string name="Settings.touchIdLimit.android">指纹认证支出限额</string>
     <!-- View legacy address (old format). -->
     <string name="Settings.ViewLegacyAddress">查看传统接收地址</string>
-    <!-- Receive Bitcoin instructions -->
-    <string name="Settings.ViewLegacyAddressReceiveDescription">请仅发送比特币 (BTC) 至此地址。发送至此地址的任何其他资产将永久丢失。</string>
-    <!-- Receive Bitcoin -->
+    <!-- Receive SWYFT instructions -->
+    <string name="Settings.ViewLegacyAddressReceiveDescription">请仅发送比特币 (SWYFT) 至此地址。发送至此地址的任何其他资产将永久丢失。</string>
+    <!-- Receive SWYFT -->
     <string name="Settings.ViewLegacyAddressReceiveTitle">接收比特币</string>
     <!-- Wallet Settings section header -->
     <string name="Settings.wallet">钱包</string>

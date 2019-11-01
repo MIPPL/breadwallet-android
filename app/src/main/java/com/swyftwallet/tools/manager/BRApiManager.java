@@ -79,7 +79,7 @@ public final class BRApiManager {
     private static final String PRICE_BTC = "price_btc";
     private static final String SYMBOL = "symbol";
     private static final String TOKEN_RATES_URL_PREFIX = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=";
-    private static final String TOKEN_RATES_URL_SUFFIX = "&tsyms=BTC";
+    private static final String TOKEN_RATES_URL_SUFFIX = "&tsyms=SWYFT";
     private static final int FSYMS_CHAR_LIMIT = 300;
     private static final String CONTRACT_INITIAL_VALUE = "contract_initial_value";
     private static final String FEE_URL_FORMAT = "%s/fee-per-kb?currency=%s";
@@ -203,7 +203,7 @@ public final class BRApiManager {
         List<String> codeList = WalletsMaster.getInstance().getAllCurrencyCodesPossible(context);
         updateCryptoRates(context, codeList);
 
-        //Update BTC/Fiat rates
+        //Update SWYFT/Fiat rates
         updateFiatRates(context);
     }
 
@@ -229,7 +229,7 @@ public final class BRApiManager {
         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
             @Override
             public void run() {
-                //Update BTC/Fiat rates
+                //Update SWYFT/Fiat rates
                 updateFiatRates(context);
             }
         });
@@ -256,6 +256,9 @@ public final class BRApiManager {
                 //One chunk is full, add it and create new builder.
                 currencyCodeListChunks.add(chunkStringBuilder.toString());
                 chunkStringBuilder = new StringBuilder();
+            }
+            if (currencyCode.equals(WalletBitcoinManager.BITCOIN_CURRENCY_CODE))    {
+                currencyCode = "BTC";
             }
             chunkStringBuilder.append(currencyCode);
             chunkStringBuilder.append(',');
@@ -326,7 +329,7 @@ public final class BRApiManager {
 
     @WorkerThread
     private static JSONArray fetchFiatRates(Context app) {
-        //Fetch the BTC-Fiat rates
+        //Fetch the SWYFT-Fiat rates
         String url = APIClient.getBaseURL() + CURRENCY_QUERY_STRING + WalletBitcoinManager.BITCOIN_CURRENCY_CODE;
         String jsonString = urlGET(app, url);
         JSONArray jsonArray = null;

@@ -26,7 +26,7 @@
     <string name="Account.balance">Balans</string>
     <!-- Delisted token alert banner message -->
     <string name="Account.delistedToken">Dit token is verwijderd omdat de uitgever besloot de ERC20-ondersteuning stop te zetten. \n\nMogelijk kunt u deze tokens nog steeds naar een ander platform verzenden. Ga voor meer informatie naar onze ondersteuningspagina.</string>
-    <!-- $10000 per BTC -->
+    <!-- $10000 per SWYFT -->
     <string name="Account.exchangeRate">%1$s per %2$s</string>
     <!-- Loading Wallet Message -->
     <string name="Account.loadingMessage">Portemonnee laden</string>
@@ -108,8 +108,8 @@
     <string name="BCH.txHashHeader">BCH Transactie-ID.</string>
     <!-- Approve button label -->
     <string name="BitID.approve">Goedkeuren</string>
-    <!-- <sitename> is requesting authentication using your bitcoin wallet -->
-    <string name="BitID.authenticationRequest">%1$s vraagt om authenticatie om je bitcoin-portemonnee te gebruiken</string>
+    <!-- <sitename> is requesting authentication using your SWYFT wallet -->
+    <string name="BitID.authenticationRequest">%1$s vraagt om authenticatie om je SWYFT-portemonnee te gebruiken</string>
     <!-- Deny button label -->
     <string name="BitID.deny">Weigeren</string>
     <!-- BitID error alert title -->
@@ -120,7 +120,7 @@
     <string name="BitID.success">Succesvol geïdentificeerd</string>
     <!-- BitID Authentication Request alert view title -->
     <string name="BitID.title">BitID Authenticatieverzoek</string>
-    <!-- As in "(tap here to) buy (bitcoin)" -->
+    <!-- As in "(tap here to) buy (SWYFT)" -->
     <string name="Button.buy">Kopen</string>
     <!-- Cancel button label -->
     <string name="Button.cancel">Annuleren</string>
@@ -206,8 +206,8 @@
     <string name="Crowdsale.resume">Verificatie Voortzetten</string>
     <!-- Retry Identity verification button -->
     <string name="Crowdsale.retry">Opnieuw proberen</string>
-    <!-- Bitcoin denomination picker label -->
-    <string name="DefaultCurrency.bitcoinLabel">Bitcoin-eenheid</string>
+    <!-- SWYFT denomination picker label -->
+    <string name="DefaultCurrency.bitcoinLabel">SWYFT-eenheid</string>
     <!-- Exchange rate label -->
     <string name="DefaultCurrency.rateLabel">Wisselkoers</string>
     <!-- The wallet is disabled. -->
@@ -272,7 +272,7 @@
     <string name="FileChooser.selectImageSource.android">Selecteer Afbeeldingsbron</string>
     <!-- This is the section that allows administration of the user's wallet -->
     <string name="HomeScreen.admin">Beheerder</string>
-    <!-- Home screen menu button to buy some bitcoin -->
+    <!-- Home screen menu button to buy some SWYFT -->
     <string name="HomeScreen.buy">Kopen</string>
     <!-- home screen toolbar 'Buy & Sell' button -->
     <string name="HomeScreen.buyAndSell">Kopen &amp; Verkopen</string>
@@ -411,7 +411,7 @@
     <!-- Node status label -->
     <string name="NodeSelector.statusLabel">Connectiestatus van de node</string>
     <!-- Node Selector view title -->
-    <string name="NodeSelector.title">Bitcoin-nodes</string>
+    <string name="NodeSelector.title">SWYFT-nodes</string>
     <!-- Onboarding screen 'I'll browse first' button -->
     <string name="Onboarding.browseFirst">Ik kijk eerst even rond</string>
     <!-- Onboarding screen 'Buy some coin' button -->
@@ -431,7 +431,7 @@
     <!-- Onboarding screen Page 3 subtitle -->
     <string name="OnboardingPageThree.subtitle">Investeer en diversifieer met SWYFT, snel en veilig.</string>
     <!-- Onboarding screen Page 3 title -->
-    <string name="OnboardingPageThree.title">Koop en handel in bitcoin, tokens en andere digitale valuta.</string>
+    <string name="OnboardingPageThree.title">Koop en handel in SWYFT, tokens en andere digitale valuta.</string>
     <!-- Onboarding screen Page 2 subtitle -->
     <string name="OnboardingPageTwo.subtitle">We hebben meer dan $6 miljard USD waard aan aandelen onder onze bescherming.</string>
     <!-- Onboarding screen Page 2 title -->
@@ -451,9 +451,9 @@
     <!-- Payment too small alert title -->
     <string name="PaymentProtocol.Errors.smallOutputError">Kon de betaling niet uitvoeren</string>
     <!-- Amount too small error message -->
-    <string name="PaymentProtocol.Errors.smallPayment">Bitcoin betalingen kunnen niet minder zijn dan %1$s.</string>
+    <string name="PaymentProtocol.Errors.smallPayment">SWYFT betalingen kunnen niet minder zijn dan %1$s.</string>
     <!-- Output too small error message. -->
-    <string name="PaymentProtocol.Errors.smallTransaction">Bitcoin transactie outputs kunnen niet minder zijn dan %1$s.</string>
+    <string name="PaymentProtocol.Errors.smallTransaction">SWYFT transactie outputs kunnen niet minder zijn dan %1$s.</string>
     <!-- Unsupported signature type payment protocol error message -->
     <string name="PaymentProtocol.Errors.unsupportedSignatureType">niet-ondersteund handtekening type</string>
     <!-- Untrusted certificate payment protocol error message -->
@@ -642,7 +642,7 @@
     <string name="RecoveryKeyFlow.writeKeyStepTitle">%1$@ van %2$@</string>
     <!-- No amount entered error message. -->
     <string name="RequestAnAmount.noAmount">Vul alstublieft eerst een bedrag in.</string>
-    <!-- Request a specific amount of bitcoin -->
+    <!-- Request a specific amount of SWYFT -->
     <string name="RequestAnAmount.title">Een bedrag aanvragen</string>
     <!-- Alert action button label -->
     <string name="ReScan.alertAction">Synchroniseren</string>
@@ -653,7 +653,7 @@
     <!-- extimated time -->
     <string name="ReScan.body1">20-45 minuten</string>
     <!-- Syncing explanation -->
-    <string name="ReScan.body2">Als een transactie als voltooid staat op het Bitcoin netwerk maar niet in je SWYFT.</string>
+    <string name="ReScan.body2">Als een transactie als voltooid staat op het SWYFT netwerk maar niet in je SWYFT.</string>
     <!-- Syncing explanation -->
     <string name="ReScan.body3">Je kreeg herhaaldelijk een foutmelding die zei dat je transactie werd afgewezen.</string>
     <!-- Start Sync button label -->
@@ -672,7 +672,7 @@
     <string name="RewardsView.expandedTitle">Introductie van SWYFT-beloningen.</string>
     <!-- Rewards view title -->
     <string name="RewardsView.normalTitle">Beloningen</string>
-    <!-- Scan bitcoin address camera flash toggle -->
+    <!-- Scan SWYFT address camera flash toggle -->
     <string name="Scanner.flashButtonLabel">Camera Flits</string>
     <!-- Complete filter label -->
     <string name="Search.complete">complete</string>
@@ -706,7 +706,7 @@
     <!-- Segwit enabled confirmation title -->
     <string name="Segwit.ConfirmationConfirmationTitle">U hebt SegWit geactiveerd!</string>
     <!-- Segwit enabled confirmation description -->
-    <string name="Segwit.ConfirmationInstructionsDescription">Bedankt voor het ondersteunen van Bitcoin.</string>
+    <string name="Segwit.ConfirmationInstructionsDescription">Bedankt voor het ondersteunen van SWYFT.</string>
     <!-- Segwit instructions -->
     <string name="Segwit.ConfirmationInstructionsInstructions">SegWit-support is nog een bèta-functie.\nZodra SegWit is geactiveerd, zal het niet langer mogelijk zijn om de functie te deactiveren. U kunt de het legacyadres vinden onder Instellingen.\nSommige externe diensten, waaronder de cryptotrade, zijn mogelijk niet beschikbaar voor gebruikers die SegWit hebben geactiveerd. In geval van nood kunt u een legacyadres genereren via Voorkeuren &gt; Bitcoininstellingen.\nSegWit zal automatisch worden geactiveerd voor alle gebruikers in een toekomstige update.</string>
     <!-- Segwit extra confirmation title. -->
@@ -747,7 +747,7 @@
     <string name="Send.insufficientGasMessage">Je moet minstens %1$s in je wallet hebben om dit type token te versturen. Wil je graag nu naar je Ethereum wallet gaan?</string>
     <!-- Your ethereum balance is insufficient to complete this action. -->
     <string name="Send.insufficientGasTitle">Onvoldoende Ethereum Saldo</string>
-    <!-- e.g. The destination is not a valid (bitcoin) address. -->
+    <!-- e.g. The destination is not a valid (SWYFT) address. -->
     <string name="Send.invalidAddressMessage">Het bestemmingsadres is geen geldig %1$s-adres.</string>
     <!-- Invalid address on pasteboard message -->
     <string name="Send.invalidAddressOnPasteboard">Plakbord bevat geen geldig %1$s adres.</string>
@@ -755,7 +755,7 @@
     <string name="Send.invalidAddressTitle">Ongeldig Adres</string>
     <!-- Is rescanning error message -->
     <string name="Send.isRescanning">Zenden is uitgeschakeld tijdens volledig opnieuw scannen</string>
-    <!-- Warning when the user is trying to send bitcoin cash to a legacy bitcoin address (possible, but probably not what the user wants to do) -->
+    <!-- Warning when the user is trying to send SWYFT cash to a legacy SWYFT address (possible, but probably not what the user wants to do) -->
     <string name="Send.legacyAddressWarning">Waarschuwing: dit is een verouderd bitcoinadres. Weet je zeker dat je er bitcoincash naartoe wilt sturen?</string>
     <!-- We are loading the request (now) -->
     <string name="Send.loadingRequest">Verzoek aan het laden</string>
@@ -784,7 +784,7 @@
     <!-- Send money to label -->
     <string name="Send.toLabel">Naar</string>
     <!-- Adress already used alert message - first part -->
-    <string name="Send.UsedAddress.firstLine">Bitcoin adressen zijn alleen bedoeld voor enkel gebruik.</string>
+    <string name="Send.UsedAddress.firstLine">SWYFT adressen zijn alleen bedoeld voor enkel gebruik.</string>
     <!-- Adress already used alert message - second part -->
     <string name="Send.UsedAddress.secondLIne">Hergebruikt vermindert privacy voor zowel jou en de ontvanger en kan resulteren in verlies als de ontvanger niet direct het adres beheert.</string>
     <!-- Adress already used alert title -->
@@ -841,10 +841,10 @@
     <string name="Settings.touchIdLimit.android">Uitgavelimiet voor authenticatie met vingerafdruk</string>
     <!-- View legacy address (old format). -->
     <string name="Settings.ViewLegacyAddress">Bekijk Legacyontvangstadres</string>
-    <!-- Receive Bitcoin instructions -->
-    <string name="Settings.ViewLegacyAddressReceiveDescription">Verzend enkel Bitcoin (BTC) naar dit adres. Elk ander activum dat naar dit adres wordt verzonden, zal permanent verloren gaan.</string>
-    <!-- Receive Bitcoin -->
-    <string name="Settings.ViewLegacyAddressReceiveTitle">Ontvang Bitcoin</string>
+    <!-- Receive SWYFT instructions -->
+    <string name="Settings.ViewLegacyAddressReceiveDescription">Verzend enkel SWYFT (SWYFT) naar dit adres. Elk ander activum dat naar dit adres wordt verzonden, zal permanent verloren gaan.</string>
+    <!-- Receive SWYFT -->
+    <string name="Settings.ViewLegacyAddressReceiveTitle">Ontvang SWYFT</string>
     <!-- Wallet Settings section header -->
     <string name="Settings.wallet">Portemonnee</string>
     <!-- Unlink/delete your wallet from the current device. -->
@@ -868,7 +868,7 @@
     <!-- button label -->
     <string name="StartViewController.createButton">Nieuwe wallet maken</string>
     <!-- Start view message -->
-    <string name="StartViewController.message">De veiligste en betrouwbaarste manier om bitcoin te gebruiken.</string>
+    <string name="StartViewController.message">De veiligste en betrouwbaarste manier om SWYFT te gebruiken.</string>
     <!-- Recover your wallet from a backup -->
     <string name="StartViewController.recoverButton">Wallet herstellen</string>
     <!-- Syncing view done syncing state header text -->
@@ -1065,7 +1065,7 @@
     <!-- Tx detail field header -->
     <string name="TransactionDetails.totalHeader">Totaal</string>
     <!-- Transaction ID header -->
-    <string name="TransactionDetails.txHashHeader">Bitcoin Transactie-ID</string>
+    <string name="TransactionDetails.txHashHeader">SWYFT Transactie-ID</string>
     <!-- (this transaction was) Received at this address: -->
     <string name="TransactionDirection.address">Ontvangen op dit adres</string>
     <!-- (this transaction was) Sent to this address: -->

@@ -40,7 +40,7 @@ public class SendViewModel extends AndroidViewModel {
 
     private String mAddress;
     private String mMemo;
-    //Raw amount, ETH, BTC..
+    //Raw amount, ETH, SWYFT..
     private String mAmount;
     private String mChosenCode;
 

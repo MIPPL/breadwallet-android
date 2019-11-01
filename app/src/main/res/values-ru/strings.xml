@@ -26,7 +26,7 @@
     <string name="Account.balance">Баланс</string>
     <!-- Delisted token alert banner message -->
     <string name="Account.delistedToken">Регистрация этого токена была отменена из-за того, что эмитент решил прекратить поддержку ERC20. \n\nВероятно, вы все равно можете отправлять эти токены на другую платформу. Для получения дополнительной информации посетите нашу страницу поддержки.</string>
-    <!-- $10000 per BTC -->
+    <!-- $10000 per SWYFT -->
     <string name="Account.exchangeRate">%1$s за %2$s</string>
     <!-- Loading Wallet Message -->
     <string name="Account.loadingMessage">Загружаем кошелек</string>
@@ -108,7 +108,7 @@
     <string name="BCH.txHashHeader">Идентификатор транзакции BCH</string>
     <!-- Approve button label -->
     <string name="BitID.approve">Одобрить</string>
-    <!-- <sitename> is requesting authentication using your bitcoin wallet -->
+    <!-- <sitename> is requesting authentication using your SWYFT wallet -->
     <string name="BitID.authenticationRequest">%1$s запрашивает аутентификацию, используя ваш биткойн-кошелек</string>
     <!-- Deny button label -->
     <string name="BitID.deny">Отказаться</string>
@@ -120,7 +120,7 @@
     <string name="BitID.success">Аутентификация пройдена успешно</string>
     <!-- BitID Authentication Request alert view title -->
     <string name="BitID.title">Запрос на аутентификацию BitID</string>
-    <!-- As in "(tap here to) buy (bitcoin)" -->
+    <!-- As in "(tap here to) buy (SWYFT)" -->
     <string name="Button.buy">Купить</string>
     <!-- Cancel button label -->
     <string name="Button.cancel">Отменить</string>
@@ -206,7 +206,7 @@
     <string name="Crowdsale.resume">Возобновить проверку</string>
     <!-- Retry Identity verification button -->
     <string name="Crowdsale.retry">Повторить попытку</string>
-    <!-- Bitcoin denomination picker label -->
+    <!-- SWYFT denomination picker label -->
     <string name="DefaultCurrency.bitcoinLabel">Единица отображения биткойна</string>
     <!-- Exchange rate label -->
     <string name="DefaultCurrency.rateLabel">Обменный курс</string>
@@ -272,7 +272,7 @@
     <string name="FileChooser.selectImageSource.android">Выберите источник изображения</string>
     <!-- This is the section that allows administration of the user's wallet -->
     <string name="HomeScreen.admin">Админ</string>
-    <!-- Home screen menu button to buy some bitcoin -->
+    <!-- Home screen menu button to buy some SWYFT -->
     <string name="HomeScreen.buy">Купить</string>
     <!-- home screen toolbar 'Buy & Sell' button -->
     <string name="HomeScreen.buyAndSell">Купить и продать</string>
@@ -642,7 +642,7 @@
     <string name="RecoveryKeyFlow.writeKeyStepTitle">%1$@ из %2$@</string>
     <!-- No amount entered error message. -->
     <string name="RequestAnAmount.noAmount">Сначала введите сумму.</string>
-    <!-- Request a specific amount of bitcoin -->
+    <!-- Request a specific amount of SWYFT -->
     <string name="RequestAnAmount.title">Запросить сумму</string>
     <!-- Alert action button label -->
     <string name="ReScan.alertAction">Синхронизация</string>
@@ -672,7 +672,7 @@
     <string name="RewardsView.expandedTitle">Представляем Бонусы SWYFT.</string>
     <!-- Rewards view title -->
     <string name="RewardsView.normalTitle">Бонусы</string>
-    <!-- Scan bitcoin address camera flash toggle -->
+    <!-- Scan SWYFT address camera flash toggle -->
     <string name="Scanner.flashButtonLabel">Вспышка камеры</string>
     <!-- Complete filter label -->
     <string name="Search.complete">выполнено</string>
@@ -708,7 +708,7 @@
     <!-- Segwit enabled confirmation description -->
     <string name="Segwit.ConfirmationInstructionsDescription">Благодарим вас за продвижение биткоина.</string>
     <!-- Segwit instructions -->
-    <string name="Segwit.ConfirmationInstructionsInstructions">Поддержка SegWit еще является бета-функцией.\nС момента активации функции SegWit ее нельзя будет отключить. Вы сможете найти унаследованный адрес в Настройках. \nНекоторые услуги третьей стороны, включая крипто-трейдинг, могут быть недоступными для пользователей, которые активировали SegWit. В случае крайней необходимости, вы сможете генерировать унаследованный адрес, зайдя в Preferences (Параметры) &gt; Bitcoin Settings (Настройки биткоина). \nВ будущем обновлении SegWit будет автоматически активирована для всех пользователей.</string>
+    <string name="Segwit.ConfirmationInstructionsInstructions">Поддержка SegWit еще является бета-функцией.\nС момента активации функции SegWit ее нельзя будет отключить. Вы сможете найти унаследованный адрес в Настройках. \nНекоторые услуги третьей стороны, включая крипто-трейдинг, могут быть недоступными для пользователей, которые активировали SegWit. В случае крайней необходимости, вы сможете генерировать унаследованный адрес, зайдя в Preferences (Параметры) &gt; SWYFT Settings (Настройки биткоина). \nВ будущем обновлении SegWit будет автоматически активирована для всех пользователей.</string>
     <!-- Segwit extra confirmation title. -->
     <string name="Segwit.ConfirmChoiceLayout">Активация SegWit является необратимой функцией. Вы уверены, что хотите продолжить?</string>
     <!-- Segwit enableButton -->
@@ -747,7 +747,7 @@
     <string name="Send.insufficientGasMessage">Чтобы передать токен этого типа, у вас в кошельке должно быть хотя бы %1$s. Вы хотите перейти к своему Ethereum-кошельку?</string>
     <!-- Your ethereum balance is insufficient to complete this action. -->
     <string name="Send.insufficientGasTitle">Недостаточно Ethereum</string>
-    <!-- e.g. The destination is not a valid (bitcoin) address. -->
+    <!-- e.g. The destination is not a valid (SWYFT) address. -->
     <string name="Send.invalidAddressMessage">Недействительный %1$s-адрес получателя.</string>
     <!-- Invalid address on pasteboard message -->
     <string name="Send.invalidAddressOnPasteboard">В буфере обмена нет действительного %1$s-адреса.</string>
@@ -755,8 +755,8 @@
     <string name="Send.invalidAddressTitle">Недействительный адрес</string>
     <!-- Is rescanning error message -->
     <string name="Send.isRescanning">Отправка отключена во время полного сканирования.</string>
-    <!-- Warning when the user is trying to send bitcoin cash to a legacy bitcoin address (possible, but probably not what the user wants to do) -->
-    <string name="Send.legacyAddressWarning">Внимание: это унаследованный биткойн-адрес. Вы уверены, что хотите отправить криптовалюту Bitcoin Cash на него?</string>
+    <!-- Warning when the user is trying to send SWYFT cash to a legacy SWYFT address (possible, but probably not what the user wants to do) -->
+    <string name="Send.legacyAddressWarning">Внимание: это унаследованный биткойн-адрес. Вы уверены, что хотите отправить криптовалюту SWYFT Cash на него?</string>
     <!-- We are loading the request (now) -->
     <string name="Send.loadingRequest">Загрузка запроса</string>
     <!-- Transaction fee could not be be caluculated error. -->
@@ -841,9 +841,9 @@
     <string name="Settings.touchIdLimit.android">Расходный лимит с аутентификацией по отпечаткам пальцев</string>
     <!-- View legacy address (old format). -->
     <string name="Settings.ViewLegacyAddress">Просмотреть унаследованный адрес</string>
-    <!-- Receive Bitcoin instructions -->
-    <string name="Settings.ViewLegacyAddressReceiveDescription">Отправляйте на этот адрес только биткоин (BTC). Любые другие активы, отправленные на этот адрес, будут безвозвратно потеряны.</string>
-    <!-- Receive Bitcoin -->
+    <!-- Receive SWYFT instructions -->
+    <string name="Settings.ViewLegacyAddressReceiveDescription">Отправляйте на этот адрес только биткоин (SWYFT). Любые другие активы, отправленные на этот адрес, будут безвозвратно потеряны.</string>
+    <!-- Receive SWYFT -->
     <string name="Settings.ViewLegacyAddressReceiveTitle">Получить биткоин</string>
     <!-- Wallet Settings section header -->
     <string name="Settings.wallet">Кошелек</string>

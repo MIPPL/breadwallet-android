@@ -61,7 +61,7 @@ public class NodesActivity extends BRActivity {
         ImageButton faq = findViewById(R.id.faq_button);
         faq.setVisibility(View.GONE);
 
-        BRSharedPrefs.putCurrentWalletCurrencyCode(this, "BTC");
+        BRSharedPrefs.putCurrentWalletCurrencyCode(this, "SWYFT");
 
         nodeStatus = findViewById(R.id.node_status);
         trustNode = findViewById(R.id.node_text);

@@ -102,6 +102,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/notification_title"
             app:layout_constraintWidth_percent="0.75"
-            tools:text="Buy 1 bitcoin and win a Christmas party at the Nakatomi Plaza in Los Angeles hosted by Hans Gruber" />
+            tools:text="Buy 1 SWYFT and win a Christmas party at the Nakatomi Plaza in Los Angeles hosted by Hans Gruber" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

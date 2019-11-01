@@ -545,18 +545,18 @@ public class WalletEthManager extends BaseEthereumWalletManager implements BREth
     }
 
     //pass in a fiat amount and return the specified amount in ETH
-    //ETH rates are in BTC (thus this math)
+    //ETH rates are in SWYFT (thus this math)
     private BigDecimal getEthForFiat(Context app, BigDecimal fiatAmount, String code) {
         //fiat rate for btc
         CurrencyEntity btcRate = RatesRepository.getInstance(app).getCurrencyByCode(WalletBitcoinManager.BITCOIN_CURRENCY_CODE, code);
         //Btc rate for ether
         CurrencyEntity ethBtcRate = RatesRepository.getInstance(app).getCurrencyByCode(getCurrencyCode(), WalletBitcoinManager.BITCOIN_CURRENCY_CODE);
         if (btcRate == null) {
-            Log.e(TAG, "getUsdFromBtc: No USD rates for BTC");
+            Log.e(TAG, "getUsdFromBtc: No USD rates for SWYFT");
             return null;
         }
         if (ethBtcRate == null) {
-            Log.e(TAG, "getUsdFromBtc: No BTC rates for ETH");
+            Log.e(TAG, "getUsdFromBtc: No SWYFT rates for ETH");
             return null;
         }
 

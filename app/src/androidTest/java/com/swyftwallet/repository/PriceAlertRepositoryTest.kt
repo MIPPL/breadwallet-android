@@ -150,7 +150,7 @@ class PriceAlertRepositoryTest {
     @Test
     fun testToggleHasBeenTriggeredWritesToCache() {
         val alerts = listOf(
-                priceTargetIncrease("BTC", 50f, "USD"),
+                priceTargetIncrease("SWYFT", 50f, "USD"),
                 priceTargetIncrease("ETH", 500f, "USD")
                         .copy(hasBeenTriggered = true)
         )
@@ -168,7 +168,7 @@ class PriceAlertRepositoryTest {
     @Test
     fun testToggleHasBeenTriggeredWritesToDisk() {
         val alerts = listOf(
-                priceTargetIncrease("BTC", 50f, "USD"),
+                priceTargetIncrease("SWYFT", 50f, "USD"),
                 priceTargetIncrease("ETH", 500f, "USD")
                         .copy(hasBeenTriggered = true)
         )

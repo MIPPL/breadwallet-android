@@ -88,7 +88,7 @@ public class DisplayCurrencyActivity extends BaseSettingsActivity {
             }
         });
 
-        int unit = BRSharedPrefs.getCryptoDenomination(this, "BTC"); // any iso, using one for all for now
+        int unit = BRSharedPrefs.getCryptoDenomination(this, "SWYFT"); // any iso, using one for all for now
         if (unit == BRConstants.CURRENT_UNIT_BITS) {
             setButton(true);
         } else {
@@ -131,23 +131,23 @@ public class DisplayCurrencyActivity extends BaseSettingsActivity {
     private void updateExchangeRate() {
         //set the rate from the last saved
         String iso = BRSharedPrefs.getPreferredFiatIso(this);
-        CurrencyEntity entity = RatesRepository.getInstance(this).getCurrencyByCode("BTC", iso);//hard code BTC for this one
+        CurrencyEntity entity = RatesRepository.getInstance(this).getCurrencyByCode("SWYFT", iso);//hard code SWYFT for this one
         if (entity != null) {
             String formattedExchangeRate = CurrencyUtils.getFormattedAmount(DisplayCurrencyActivity.this, BRSharedPrefs.getPreferredFiatIso(this), new BigDecimal(entity.rate));
-            mExchangeText.setText(String.format("%s = %s", CurrencyUtils.getFormattedAmount(this, "BTC", new BigDecimal(100000000)), formattedExchangeRate));
+            mExchangeText.setText(String.format("%s = %s", CurrencyUtils.getFormattedAmount(this, "SWYFT", new BigDecimal(100000000)), formattedExchangeRate));
         }
         mAdapter.notifyDataSetChanged();
     }
 
     private void setButton(boolean left) {
         if (left) {
-            BRSharedPrefs.putCryptoDenomination(this, "BTC", BRConstants.CURRENT_UNIT_BITS);
+            BRSharedPrefs.putCryptoDenomination(this, "SWYFT", BRConstants.CURRENT_UNIT_BITS);
             mLeftButton.setTextColor(getColor(R.color.white));
             mLeftButton.setBackground(getDrawable(R.drawable.b_half_left_blue));
             mRightButton.setTextColor(getColor(R.color.dark_blue));
             mRightButton.setBackground(getDrawable(R.drawable.b_half_right_blue_stroke));
         } else {
-            BRSharedPrefs.putCryptoDenomination(this, "BTC", BRConstants.CURRENT_UNIT_BITCOINS);
+            BRSharedPrefs.putCryptoDenomination(this, "SWYFT", BRConstants.CURRENT_UNIT_BITCOINS);
             mLeftButton.setTextColor(getColor(R.color.dark_blue));
             mLeftButton.setBackground(getDrawable(R.drawable.b_half_left_blue_stroke));
             mRightButton.setTextColor(getColor(R.color.white));

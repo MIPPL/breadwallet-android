@@ -397,7 +397,7 @@ public class WalletPlugin implements Plugin {
 
         final BaseWalletManager wm = WalletsMaster.getInstance().getWalletByIso(app, currency);
 
-        // If BTC, set trade fee option and wallet fee rate to 'priority'
+        // If SWYFT, set trade fee option and wallet fee rate to 'priority'
         if (currency.equalsIgnoreCase(WalletBitcoinManager.BITCOIN_CURRENCY_CODE)) {
             FeeRepository.getInstance(app).putPreferredFeeOptionForCurrency(currency, FeeOption.PRIORITY);
             BigDecimal fee = FeeRepository.getInstance(app).getFeeByCurrency(currency, FeeOption.PRIORITY);

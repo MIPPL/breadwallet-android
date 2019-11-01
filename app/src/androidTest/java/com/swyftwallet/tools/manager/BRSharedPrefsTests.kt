@@ -29,7 +29,7 @@ class BRSharedPrefsTests {
     @Test
     fun testReceiveAddressGet() {
         val storedAddress = "17EW5WDJ3NScoLP9YvyAXV3onKtkw39aWb"
-        val iso = "BTC"
+        val iso = "SWYFT"
 
         sharedPrefs.edit { putString(BRSharedPrefs.RECEIVE_ADDRESS + iso.toUpperCase(), storedAddress) }
 
@@ -41,7 +41,7 @@ class BRSharedPrefsTests {
     @Test
     fun testReceiveAddressSet() {
         val insertedAddress = "17EW5WDJ3NScoLP9YvyAXV3onKtkw39aWb"
-        val iso = "BTC"
+        val iso = "SWYFT"
         BRSharedPrefs.putReceiveAddress(tmpAddr = insertedAddress, iso = iso)
 
         val storedAddress = sharedPrefs.getString(BRSharedPrefs.RECEIVE_ADDRESS + iso.toUpperCase(), "")

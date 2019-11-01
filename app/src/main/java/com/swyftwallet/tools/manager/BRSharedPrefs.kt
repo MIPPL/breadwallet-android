@@ -339,13 +339,13 @@ object BRSharedPrefs {
     fun putBchPreForkSynced(context: Context? = null, synced: Boolean) =
             brdPrefs.edit { putBoolean(PREFORK_SYNCED, synced) }
 
-    // BTC, mBTC, Bits
+    // SWYFT, mBTC, Bits
     //ignore iso, using same denomination for both for now
     @JvmStatic
     fun getCryptoDenomination(context: Context? = null, iso: String): Int =
             brdPrefs.getInt(CURRENCY_UNIT, BRConstants.CURRENT_UNIT_BITCOINS)
 
-    // BTC, mBTC, Bits
+    // SWYFT, mBTC, Bits
     //ignore iso, using same denomination for both for now
     @JvmStatic
     fun putCryptoDenomination(context: Context? = null, iso: String, unit: Int) =

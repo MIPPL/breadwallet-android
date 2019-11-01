@@ -30,6 +30,7 @@ import com.swyftwallet.tools.util.Utils;
 import com.platform.entities.TokenListMetaData;
 import com.platform.tools.KVStoreManager;
 import com.squareup.picasso.Picasso;
+import com.swyftwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -68,20 +69,25 @@ public class ManageTokenListAdapter extends RecyclerView.Adapter<ManageTokenList
 
             String tokenIconPath = TokenUtil.getTokenIconPath(mContext, currencyCode, true);
             GradientDrawable iconDrawable = (GradientDrawable) holder.iconParent.getBackground();
+            boolean useLetter = false;
 
             if (!Utils.isNullOrEmpty(tokenIconPath)) {
-                holder.tokenIcon.setVisibility(View.VISIBLE);
-                holder.tokenLetter.setVisibility(View.GONE);
                 File iconFile = new File(tokenIconPath);
                 Picasso.get().load(iconFile).into(holder.tokenIcon);
                 iconDrawable.setColor(Color.TRANSPARENT);
             } else {
-                // If no icon is present, then use the capital first letter of the token currency code instead.
-                holder.tokenIcon.setVisibility(View.GONE);
-                holder.tokenLetter.setVisibility(View.VISIBLE);
-                holder.tokenLetter.setText(currencyCode.substring(0, 1).toUpperCase());
-                iconDrawable.setColor(Color.parseColor(TokenUtil.getTokenStartColor(currencyCode)));
+                if (currencyCode.equals(WalletBitcoinManager.BITCOIN_CURRENCY_CODE.toLowerCase()))    {
+                    Picasso.get().load(R.drawable.swyft).into(holder.tokenIcon);
+                }
+                else {
+                    // If no icon is present, then use the capital first letter of the token currency code instead.
+                    holder.tokenLetter.setText(currencyCode.substring(0, 1).toUpperCase());
+                    iconDrawable.setColor(Color.parseColor(TokenUtil.getTokenStartColor(currencyCode)));
+                    useLetter = true;
+                }
             }
+            holder.tokenIcon.setVisibility((useLetter)?View.GONE:View.VISIBLE);
+            holder.tokenLetter.setVisibility((!useLetter)?View.GONE:View.VISIBLE);
 
             holder.tokenName.setText(mTokens.get(position).name);
             holder.tokenTicker.setText(mTokens.get(position).symbol);

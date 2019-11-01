@@ -26,7 +26,7 @@
     <string name="Account.balance">Balance</string>
     <!-- Delisted token alert banner message -->
     <string name="Account.delistedToken">This token has been delisted because the issuer decided to cease ERC20 support. \n\nYou may still be able to send these tokens to another platform. For more details, visit our support page.</string>
-    <!-- $10000 per BTC -->
+    <!-- $10000 per SWYFT -->
     <string name="Account.exchangeRate">%1$s per %2$s</string>
     <!-- Loading Wallet Message -->
     <string name="Account.loadingMessage">Loading Wallet</string>
@@ -108,8 +108,8 @@
     <string name="BCH.txHashHeader">BCH Transaction ID</string>
     <!-- Approve button label -->
     <string name="BitID.approve">Approve</string>
-    <!-- <sitename> is requesting authentication using your bitcoin wallet -->
-    <string name="BitID.authenticationRequest">%1$s is requesting authentication using your bitcoin wallet</string>
+    <!-- <sitename> is requesting authentication using your SWYFT wallet -->
+    <string name="BitID.authenticationRequest">%1$s is requesting authentication using your SWYFT wallet</string>
     <!-- Deny button label -->
     <string name="BitID.deny">Deny</string>
     <!-- BitID error alert title -->
@@ -120,7 +120,7 @@
     <string name="BitID.success">Successfully Authenticated</string>
     <!-- BitID Authentication Request alert view title -->
     <string name="BitID.title">BitID Authentication Request</string>
-    <!-- As in "(tap here to) buy (bitcoin)" -->
+    <!-- As in "(tap here to) buy (SWYFT)" -->
     <string name="Button.buy">Buy</string>
     <!-- Cancel button label -->
     <string name="Button.cancel">Cancel</string>
@@ -206,8 +206,8 @@
     <string name="Crowdsale.resume">Resume Verification</string>
     <!-- Retry Identity verification button -->
     <string name="Crowdsale.retry">Retry</string>
-    <!-- Bitcoin denomination picker label -->
-    <string name="DefaultCurrency.bitcoinLabel">Bitcoin Display Unit</string>
+    <!-- SWYFT denomination picker label -->
+    <string name="DefaultCurrency.bitcoinLabel">SWYFT Display Unit</string>
     <!-- Exchange rate label -->
     <string name="DefaultCurrency.rateLabel">Exchange Rate</string>
     <!-- The wallet is disabled. -->
@@ -272,7 +272,7 @@
     <string name="FileChooser.selectImageSource.android">Select Image Source</string>
     <!-- This is the section that allows administration of the user's wallet -->
     <string name="HomeScreen.admin">Admin</string>
-    <!-- Home screen menu button to buy some bitcoin -->
+    <!-- Home screen menu button to buy some SWYFT -->
     <string name="HomeScreen.buy">Buy</string>
     <!-- home screen toolbar 'Buy & Sell' button -->
     <string name="HomeScreen.buyAndSell">Buy &amp; Sell</string>
@@ -287,7 +287,7 @@
     <!-- Checking private key balance progress view text -->
     <string name="Import.checking">Checking private key balance...</string>
     <!-- Sweep private key confirmation message -->
-    <string name="Import.confirm">Send %1$s from this private key into your wallet? The bitcoin network will receive a fee of %2$s.</string>
+    <string name="Import.confirm">Send %1$s from this private key into your wallet? The SWYFT network will receive a fee of %2$s.</string>
     <!-- Duplicate key error message -->
     <string name="Import.Error.duplicate">This private key is already in your wallet.</string>
     <!-- empty private key error message -->
@@ -331,9 +331,9 @@
     <!-- Ignore jailbreak warning button -->
     <string name="JailbreakWarnings.ignore">Ignore</string>
     <!-- Jailbreak warning message -->
-    <string name="JailbreakWarnings.messageWithBalance">DEVICE SECURITY COMPROMISED\n Any \'jailbreak\' app can access SWYFT\'s keychain data and steal your bitcoin! Wipe this wallet immediately and restore on a secure device.</string>
+    <string name="JailbreakWarnings.messageWithBalance">DEVICE SECURITY COMPROMISED\n Any \'jailbreak\' app can access SWYFT\'s keychain data and steal your SWYFT! Wipe this wallet immediately and restore on a secure device.</string>
     <!-- Jailbreak warning message -->
-    <string name="JailbreakWarnings.messageWithoutBalance">DEVICE SECURITY COMPROMISED\n Any \'jailbreak\' app can access SWYFT\'s keychain data and steal your bitcoin. Please only use SWYFT on a non-jailbroken device.</string>
+    <string name="JailbreakWarnings.messageWithoutBalance">DEVICE SECURITY COMPROMISED\n Any \'jailbreak\' app can access SWYFT\'s keychain data and steal your SWYFT. Please only use SWYFT on a non-jailbroken device.</string>
     <!-- Jailbreak warning title -->
     <string name="JailbreakWarnings.title">WARNING</string>
     <!-- Wipe wallet button -->
@@ -411,7 +411,7 @@
     <!-- Node status label -->
     <string name="NodeSelector.statusLabel">Node Connection Status</string>
     <!-- Node Selector view title -->
-    <string name="NodeSelector.title">Bitcoin Nodes</string>
+    <string name="NodeSelector.title">SWYFT Nodes</string>
     <!-- Onboarding screen 'I'll browse first' button -->
     <string name="Onboarding.browseFirst">I\'ll browse first</string>
     <!-- Onboarding screen 'Buy some coin' button -->
@@ -431,7 +431,7 @@
     <!-- Onboarding screen Page 3 subtitle -->
     <string name="OnboardingPageThree.subtitle">Invest and diversify with SWYFT, easily and securely.</string>
     <!-- Onboarding screen Page 3 title -->
-    <string name="OnboardingPageThree.title">Buy and trade bitcoin, tokens, and other digital currencies.</string>
+    <string name="OnboardingPageThree.title">Buy and trade SWYFT, tokens, and other digital currencies.</string>
     <!-- Onboarding screen Page 2 subtitle -->
     <string name="OnboardingPageTwo.subtitle">We have over $6 billion USD worth of assets under protection.</string>
     <!-- Onboarding screen Page 2 title -->
@@ -451,9 +451,9 @@
     <!-- Payment too small alert title -->
     <string name="PaymentProtocol.Errors.smallOutputError">Couldn\'t make payment</string>
     <!-- Amount too small error message -->
-    <string name="PaymentProtocol.Errors.smallPayment">Payment can’t be less than %1$s. Bitcoin transaction fees are more than the amount of this transaction. Please increase the amount and try again. </string>
+    <string name="PaymentProtocol.Errors.smallPayment">Payment can’t be less than %1$s. SWYFT transaction fees are more than the amount of this transaction. Please increase the amount and try again. </string>
     <!-- Output too small error message. -->
-    <string name="PaymentProtocol.Errors.smallTransaction">Bitcoin transaction outputs can\'t be less than %1$s.</string>
+    <string name="PaymentProtocol.Errors.smallTransaction">SWYFT transaction outputs can\'t be less than %1$s.</string>
     <!-- Unsupported signature type payment protocol error message -->
     <string name="PaymentProtocol.Errors.unsupportedSignatureType">unsupported signature type</string>
     <!-- Untrusted certificate payment protocol error message -->
@@ -642,7 +642,7 @@
     <string name="RecoveryKeyFlow.writeKeyStepTitle">%1$@ of %2$@</string>
     <!-- No amount entered error message. -->
     <string name="RequestAnAmount.noAmount">Please enter an amount first.</string>
-    <!-- Request a specific amount of bitcoin -->
+    <!-- Request a specific amount of SWYFT -->
     <string name="RequestAnAmount.title">Request an Amount</string>
     <!-- Alert action button label -->
     <string name="ReScan.alertAction">Sync</string>
@@ -672,7 +672,7 @@
     <string name="RewardsView.expandedTitle">Introducing SWYFT Rewards.</string>
     <!-- Rewards view title -->
     <string name="RewardsView.normalTitle">Rewards</string>
-    <!-- Scan bitcoin address camera flash toggle -->
+    <!-- Scan SWYFT address camera flash toggle -->
     <string name="Scanner.flashButtonLabel">Camera Flash</string>
     <!-- Complete filter label -->
     <string name="Search.complete">complete</string>
@@ -706,9 +706,9 @@
     <!-- Segwit enabled confirmation title -->
     <string name="Segwit.ConfirmationConfirmationTitle">You have enabled SegWit!</string>
     <!-- Segwit enabled confirmation description -->
-    <string name="Segwit.ConfirmationInstructionsDescription">Thank you for helping move bitcoin forward.</string>
+    <string name="Segwit.ConfirmationInstructionsDescription">Thank you for helping move SWYFT forward.</string>
     <!-- Segwit instructions -->
-    <string name="Segwit.ConfirmationInstructionsInstructions">SegWit support is still a beta feature.\n\nOnce SegWit is enabled, it will not be possible\nto disable it. You will be able to find the legacy address under Settings. \n\nSome third-party services, including crypto trading, may be unavailable to users who have enabled SegWit. In case of emergency, you will be able to generate a legacy address from Preferences &gt; Bitcoin Settings. \n\nSegWit will automatically be enabled for all\nusers in a future update. </string>
+    <string name="Segwit.ConfirmationInstructionsInstructions">SegWit support is still a beta feature.\n\nOnce SegWit is enabled, it will not be possible\nto disable it. You will be able to find the legacy address under Settings. \n\nSome third-party services, including crypto trading, may be unavailable to users who have enabled SegWit. In case of emergency, you will be able to generate a legacy address from Preferences &gt; SWYFT Settings. \n\nSegWit will automatically be enabled for all\nusers in a future update. </string>
     <!-- Segwit extra confirmation title. -->
     <string name="Segwit.ConfirmChoiceLayout">Enabling SegWit is an irreversible feature. Are you sure you want to continue?</string>
     <!-- Segwit enableButton -->
@@ -747,7 +747,7 @@
     <string name="Send.insufficientGasMessage">You must have at least %1$s in your wallet in order to transfer this type of token. Would you like to go to your Ethereum wallet now?</string>
     <!-- Your ethereum balance is insufficient to complete this action. -->
     <string name="Send.insufficientGasTitle">Insufficient Ethereum Balance</string>
-    <!-- e.g. The destination is not a valid (bitcoin) address. -->
+    <!-- e.g. The destination is not a valid (SWYFT) address. -->
     <string name="Send.invalidAddressMessage">The destination address is not a valid %1$s address.</string>
     <!-- Invalid address on pasteboard message -->
     <string name="Send.invalidAddressOnPasteboard">Pasteboard does not contain a valid %1$s address.</string>
@@ -755,8 +755,8 @@
     <string name="Send.invalidAddressTitle">Invalid Address</string>
     <!-- Is rescanning error message -->
     <string name="Send.isRescanning">Sending is disabled during a full rescan.</string>
-    <!-- Warning when the user is trying to send bitcoin cash to a legacy bitcoin address (possible, but probably not what the user wants to do) -->
-    <string name="Send.legacyAddressWarning">Warning: this is a legacy bitcoin address. Are you sure you want to send Bitcoin Cash to it?</string>
+    <!-- Warning when the user is trying to send SWYFT cash to a legacy SWYFT address (possible, but probably not what the user wants to do) -->
+    <string name="Send.legacyAddressWarning">Warning: this is a legacy SWYFT address. Are you sure you want to send SWYFT Cash to it?</string>
     <!-- We are loading the request (now) -->
     <string name="Send.loadingRequest">Loading Request</string>
     <!-- Transaction fee could not be be caluculated error. -->
@@ -784,7 +784,7 @@
     <!-- Send money to label -->
     <string name="Send.toLabel">To</string>
     <!-- Adress already used alert message - first part -->
-    <string name="Send.UsedAddress.firstLine">Bitcoin addresses are intended for single use only.</string>
+    <string name="Send.UsedAddress.firstLine">SWYFT addresses are intended for single use only.</string>
     <!-- Adress already used alert message - second part -->
     <string name="Send.UsedAddress.secondLIne">Re-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn\'t directly control the address.</string>
     <!-- Adress already used alert title -->
@@ -841,10 +841,10 @@
     <string name="Settings.touchIdLimit.android">Fingerprint Authentication Spending Limit</string>
     <!-- View legacy address (old format). -->
     <string name="Settings.ViewLegacyAddress">View Legacy Receive Address</string>
-    <!-- Receive Bitcoin instructions -->
-    <string name="Settings.ViewLegacyAddressReceiveDescription">Only send Bitcoin (BTC) to this address. Any other asset sent to this address will be lost permanently.</string>
-    <!-- Receive Bitcoin -->
-    <string name="Settings.ViewLegacyAddressReceiveTitle">Receive Bitcoin</string>
+    <!-- Receive SWYFT instructions -->
+    <string name="Settings.ViewLegacyAddressReceiveDescription">Only send SWYFT (SWYFT) to this address. Any other asset sent to this address will be lost permanently.</string>
+    <!-- Receive SWYFT -->
+    <string name="Settings.ViewLegacyAddressReceiveTitle">Receive SWYFT</string>
     <!-- Wallet Settings section header -->
     <string name="Settings.wallet">Wallets</string>
     <!-- Unlink/delete your wallet from the current device. -->

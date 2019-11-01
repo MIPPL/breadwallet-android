@@ -24,6 +24,7 @@ import com.swyftwallet.tools.util.TokenUtil;
 import com.swyftwallet.tools.util.Utils;
 import com.swyftwallet.wallet.WalletsMaster;
 import com.swyftwallet.wallet.configs.WalletUiConfiguration;
+import com.swyftwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
 import com.swyftwallet.wallet.wallets.ethereum.WalletTokenManager;
 import com.squareup.picasso.Picasso;
 
@@ -182,18 +183,23 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
 
             // Get icon for currency
             String tokenIconPath = TokenUtil.getTokenIconPath(mContext, currencyCode, false);
+            boolean useLetter = false;
 
             if (!Utils.isNullOrEmpty(tokenIconPath)) {
                 File iconFile = new File(tokenIconPath);
                 Picasso.get().load(iconFile).into(decoratedHolderView.mLogoIcon);
-                decoratedHolderView.mIconLetter.setVisibility(View.GONE);
-                decoratedHolderView.mLogoIcon.setVisibility(View.VISIBLE);
             } else {
-                // If no icon is present, then use the capital first letter of the token currency code instead.
-                decoratedHolderView.mIconLetter.setVisibility(View.VISIBLE);
-                decoratedHolderView.mLogoIcon.setVisibility(View.GONE);
-                decoratedHolderView.mIconLetter.setText(currencyCode.substring(0, 1).toUpperCase());
+                if (currencyCode.equals(WalletBitcoinManager.BITCOIN_CURRENCY_CODE))    {
+                    Picasso.get().load(R.drawable.swyft).into(decoratedHolderView.mLogoIcon);
+
+                }
+                else {    // If no icon is present, then use the capital first letter of the token currency code instead.
+                    useLetter = true;
+                    decoratedHolderView.mIconLetter.setText(currencyCode.substring(0, 1).toUpperCase());
+                }
             }
+            decoratedHolderView.mIconLetter.setVisibility((useLetter)?View.VISIBLE:View.GONE);
+            decoratedHolderView.mLogoIcon.setVisibility((!useLetter)?View.VISIBLE:View.GONE);
 
             WalletUiConfiguration uiConfiguration = WalletsMaster.getInstance().getWalletByIso(mContext, wallet.getCurrencyCode()).getUiConfiguration();
             String startColor = uiConfiguration.getStartColor();

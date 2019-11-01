@@ -56,7 +56,7 @@ public class TokenListMetaData {
         if (this.enabledCurrencies == null) {
             this.enabledCurrencies = new ArrayList<>();
             this.enabledCurrencies.add(new TokenInfo(WalletBitcoinManager.BITCOIN_CURRENCY_CODE, false, null));
-            this.enabledCurrencies.add(new TokenInfo(WalletBchManager.BITCASH_CURRENCY_CODE, false, null));
+            //this.enabledCurrencies.add(new TokenInfo(WalletBchManager.BITCASH_CURRENCY_CODE, false, null));
             this.enabledCurrencies.add(new TokenInfo(WalletEthManager.ETH_CURRENCY_CODE, false, null));
         }
         if (this.hiddenCurrencies == null) this.hiddenCurrencies = new ArrayList<>();

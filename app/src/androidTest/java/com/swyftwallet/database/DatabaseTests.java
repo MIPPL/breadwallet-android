@@ -105,7 +105,7 @@ public class DatabaseTests {
     @Test
     public void testSetLocal() {
 
-        // Test BTC transaction insert
+        // Test SWYFT transaction insert
         Activity app = mActivityRule.getActivity();
         BtcBchTransactionDataStore tds = BtcBchTransactionDataStore.getInstance(app);
         tds.putTransaction(app, WalletBitcoinManager.BITCOIN_CURRENCY_CODE,
@@ -191,7 +191,7 @@ public class DatabaseTests {
         Assert.assertEquals(cs.get(0).code, "OMG");
         Assert.assertEquals(cs.get(0).rate, 8.43f, 0);
 
-        // Test inserting BTC as a currency
+        // Test inserting SWYFT as a currency
         toInsert = new ArrayList<>();
 
         CurrencyEntity btcEntity = new CurrencyEntity();

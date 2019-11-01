@@ -108,7 +108,7 @@ public interface BaseWalletManager {
     void rescan(Context app);
 
     @WorkerThread
-        //get a list of all the transactions sorted by timestamp (e.g. BRCoreTransaction[] for BTC)
+        //get a list of all the transactions sorted by timestamp (e.g. BRCoreTransaction[] for SWYFT)
     CryptoTransaction[] getTxs(Context app);
 
     //get the transaction fee
@@ -158,7 +158,7 @@ public interface BaseWalletManager {
     //get the currency symbol e.g. Bitcoin - ₿, Ether - Ξ
     String getSymbol(Context app);
 
-    //get the currency denomination e.g. Bitcoin - BTC, Ether - ETH
+    //get the currency denomination e.g. Bitcoin - SWYFT, Ether - ETH
     String getCurrencyCode();
 
     //get the currency scheme (bitcoin or bitcoincash)
@@ -240,19 +240,19 @@ public interface BaseWalletManager {
 
     /**
      * @param amount - the amount in the user's favorite fiat currency (e.g. dollars)
-     * @return - the crypto value of the amount in the current favorite denomination (e.g. BTC, mBTC, Bits..)
+     * @return - the crypto value of the amount in the current favorite denomination (e.g. SWYFT, mBTC, Bits..)
      * or null if there is no fiat exchange data from the API yet
      */
     BigDecimal getCryptoForFiat(Context app, BigDecimal amount);
 
     /**
      * @param amount - the smallest denomination amount in crypto (e.g. satoshis)
-     * @return - the crypto value of the amount in the current favorite denomination (e.g. BTC, mBTC, Bits..)
+     * @return - the crypto value of the amount in the current favorite denomination (e.g. SWYFT, mBTC, Bits..)
      */
     BigDecimal getCryptoForSmallestCrypto(Context app, BigDecimal amount);
 
     /**
-     * @param amount - the crypto value of the amount in the current favorite denomination (e.g. BTC, mBTC, Bits..)
+     * @param amount - the crypto value of the amount in the current favorite denomination (e.g. SWYFT, mBTC, Bits..)
      * @return - the smallest denomination amount in crypto (e.g. satoshis)
      */
     BigDecimal getSmallestCryptoForCrypto(Context app, BigDecimal amount);

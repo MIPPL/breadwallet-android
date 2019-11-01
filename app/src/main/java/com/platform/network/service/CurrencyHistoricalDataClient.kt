@@ -91,7 +91,7 @@ object CurrencyHistoricalDataClient {
     /**
      * Retrieve the currency's history for the past 24 hours.
      *
-     * @param fromCurrency the currency you are looking up, eg BTC
+     * @param fromCurrency the currency you are looking up, eg SWYFT
      * @param toCurrency the currency you are converting to, eg USD
      */
     @JvmStatic
@@ -106,7 +106,7 @@ object CurrencyHistoricalDataClient {
     /**
      * Retrieve the currency's history for the past 7 days.
      *
-     * @param fromCurrency the currency you are looking up, eg BTC
+     * @param fromCurrency the currency you are looking up, eg SWYFT
      * @param toCurrency the currency you are converting to, eg USD
      */
     @JvmStatic
@@ -121,7 +121,7 @@ object CurrencyHistoricalDataClient {
     /**
      * Retrieve the currency's history for the past month.
      *
-     * @param fromCurrency the currency you are looking up, eg BTC
+     * @param fromCurrency the currency you are looking up, eg SWYFT
      * @param toCurrency the currency you are converting to, eg USD
      */
     @JvmStatic
@@ -136,7 +136,7 @@ object CurrencyHistoricalDataClient {
     /**
      * Retrieve the currency's history for the past 3 months.
      *
-     * @param fromCurrency the currency you are looking up, eg BTC
+     * @param fromCurrency the currency you are looking up, eg SWYFT
      * @param toCurrency the currency you are converting to, eg USD
      */
     @JvmStatic
@@ -151,7 +151,7 @@ object CurrencyHistoricalDataClient {
     /**
      * Retrieve the currency's history for the past year.
      *
-     * @param fromCurrency the currency you are looking up, eg BTC
+     * @param fromCurrency the currency you are looking up, eg SWYFT
      * @param toCurrency the currency you are converting to, eg USD
      */
     @JvmStatic
@@ -166,7 +166,7 @@ object CurrencyHistoricalDataClient {
     /**
      * Retrieve the currency's history for the past 3 years.
      *
-     * @param fromCurrency the currency you are looking up, eg BTC
+     * @param fromCurrency the currency you are looking up, eg SWYFT
      * @param toCurrency the currency you are converting to, eg USD
      */
     @JvmStatic

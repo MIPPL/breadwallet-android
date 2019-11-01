@@ -697,7 +697,7 @@ public class FragmentSend extends ModalDialogFragment implements BRKeyboard.OnIn
 
         BigDecimal rawFee = wm.getEstimatedFee(cryptoAmount, mAddressEdit.getText().toString());
 
-        //get the fee for iso (dollars, bits, BTC..)
+        //get the fee for iso (dollars, bits, SWYFT..)
         BigDecimal isoFee = isIsoCrypto ? rawFee : wm.getFiatForSmallestCrypto(context, rawFee, null);
 
         //format the fee to the selected ISO
@@ -792,7 +792,7 @@ public class FragmentSend extends ModalDialogFragment implements BRKeyboard.OnIn
                 break;
         }
 
-        // Editing the fee option is only available for BTC wallets
+        // Editing the fee option is only available for SWYFT wallets
         BaseBitcoinWalletManager walletManager = (BaseBitcoinWalletManager) WalletsMaster.getInstance().getWalletByIso(getActivity(), BaseBitcoinWalletManager.BITCOIN_CURRENCY_CODE);
         mViewModel.updateFeeOptionPreference(walletManager, feeOption);
 

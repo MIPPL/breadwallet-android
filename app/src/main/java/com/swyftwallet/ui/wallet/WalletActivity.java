@@ -74,7 +74,7 @@ import java.util.Locale;
  * <p>
  * <p>
  * This activity will display pricing and transaction information for any currency the user has access to
- * (BTC, BCH, ETH)
+ * (SWYFT, BCH, ETH)
  */
 
 public class WalletActivity extends BRActivity implements InternetManager.ConnectionReceiverListener, SyncListener,

@@ -103,8 +103,8 @@ class PriceAlertWorkerTest {
     @Test
     @Throws(Exception::class)
     fun testTogglesHasBeenTriggeredWhenTriggered() {
-        putAlerts(PriceAlert.priceTargetIncrease("BTC", 100f, "USD"))
-        putRates(CurrencyEntity("USD", "Dollar", 101f, "BTC"))
+        putAlerts(PriceAlert.priceTargetIncrease("SWYFT", 100f, "USD"))
+        putRates(CurrencyEntity("USD", "Dollar", 101f, "SWYFT"))
 
         PriceAlertWorker.scheduleWork(updateRates = false)
         advanceTestDriver()
@@ -118,8 +118,8 @@ class PriceAlertWorkerTest {
     @Test
     @Throws(Exception::class)
     fun testDoesNotToggleHasBeenTriggeredWhenNotTriggered() {
-        putAlerts(PriceAlert.priceTargetIncrease("BTC", 100f, "USD"))
-        putRates(CurrencyEntity("USD", "Dollar", 100f, "BTC"))
+        putAlerts(PriceAlert.priceTargetIncrease("SWYFT", 100f, "USD"))
+        putRates(CurrencyEntity("USD", "Dollar", 100f, "SWYFT"))
 
         PriceAlertWorker.scheduleWork(updateRates = false)
         advanceTestDriver()
@@ -132,8 +132,8 @@ class PriceAlertWorkerTest {
     @Test
     @Throws(Exception::class)
     fun testTogglesHasBeenTriggeredWhenTriggerUnmet() {
-        putAlerts(PriceAlert.priceTargetIncrease("BTC", 100f, "USD"))
-        putRates(CurrencyEntity("USD", "Dollar", 99f, "BTC"))
+        putAlerts(PriceAlert.priceTargetIncrease("SWYFT", 100f, "USD"))
+        putRates(CurrencyEntity("USD", "Dollar", 99f, "SWYFT"))
 
         PriceAlertWorker.scheduleWork(updateRates = false)
         advanceTestDriver()
@@ -146,8 +146,8 @@ class PriceAlertWorkerTest {
     @Test
     @Throws(Exception::class)
     fun testUpdatesPinnedPriceWhenTriggered() {
-        putAlerts(PriceAlert.percentageChanged("BTC", 10f, "USD", 100f))
-        putRates(CurrencyEntity("USD", "Dollar", 90f, "BTC"))
+        putAlerts(PriceAlert.percentageChanged("SWYFT", 10f, "USD", 100f))
+        putRates(CurrencyEntity("USD", "Dollar", 90f, "SWYFT"))
 
         PriceAlertWorker.scheduleWork(updateRates = false)
         advanceTestDriver()
@@ -161,8 +161,8 @@ class PriceAlertWorkerTest {
     @Throws(Exception::class)
     fun testUpdatesStartTimeWhenOutOfWindow() {
         val now = Date().time - (24 * 60 * 60 * 1000) - 1 // Over one day ago
-        putAlerts(PriceAlert.percentageDecreasedInDay("BTC", 10f, "USD", now, 100f))
-        putRates(CurrencyEntity("USD", "Dollar", 100f, "BTC"))
+        putAlerts(PriceAlert.percentageDecreasedInDay("SWYFT", 10f, "USD", now, 100f))
+        putRates(CurrencyEntity("USD", "Dollar", 100f, "SWYFT"))
 
         PriceAlertWorker.scheduleWork(updateRates = false)
         advanceTestDriver()
@@ -176,8 +176,8 @@ class PriceAlertWorkerTest {
     @Throws(Exception::class)
     fun testDoesNotUpdateStartTimeWhenInWindow() {
         val now = Date().time - (24 * 60 * 60 * 1000) // One day ago
-        putAlerts(PriceAlert.percentageDecreasedInDayAndWeek("BTC", 10f, "USD", now, 100f))
-        putRates(CurrencyEntity("USD", "Dollar", 100f, "BTC"))
+        putAlerts(PriceAlert.percentageDecreasedInDayAndWeek("SWYFT", 10f, "USD", now, 100f))
+        putRates(CurrencyEntity("USD", "Dollar", 100f, "SWYFT"))
 
         PriceAlertWorker.scheduleWork(updateRates = false)
         advanceTestDriver()

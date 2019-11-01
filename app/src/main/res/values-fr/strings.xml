@@ -26,7 +26,7 @@
     <string name="Account.balance">Solde</string>
     <!-- Delisted token alert banner message -->
     <string name="Account.delistedToken">Ce jeton a été retiré de la liste car l\'émetteur a décidé de cesser le support ERC20. \n\nVous pourrez peut-être encore envoyer ces jetons sur une autre plate-forme. Pour plus de détails, visitez notre page de support.</string>
-    <!-- $10000 per BTC -->
+    <!-- $10000 per SWYFT -->
     <string name="Account.exchangeRate">%1$s par %2$s</string>
     <!-- Loading Wallet Message -->
     <string name="Account.loadingMessage">Chargement du portefeuille</string>
@@ -108,8 +108,8 @@
     <string name="BCH.txHashHeader">ID de transaction BCH</string>
     <!-- Approve button label -->
     <string name="BitID.approve">Approuver</string>
-    <!-- <sitename> is requesting authentication using your bitcoin wallet -->
-    <string name="BitID.authenticationRequest">%1$s requiert l\'authentification en utilisant votre portefeuille bitcoin</string>
+    <!-- <sitename> is requesting authentication using your SWYFT wallet -->
+    <string name="BitID.authenticationRequest">%1$s requiert l\'authentification en utilisant votre portefeuille SWYFT</string>
     <!-- Deny button label -->
     <string name="BitID.deny">Refuser</string>
     <!-- BitID error alert title -->
@@ -120,7 +120,7 @@
     <string name="BitID.success">Authentification réussie</string>
     <!-- BitID Authentication Request alert view title -->
     <string name="BitID.title">Demande d\'authentification BitID</string>
-    <!-- As in "(tap here to) buy (bitcoin)" -->
+    <!-- As in "(tap here to) buy (SWYFT)" -->
     <string name="Button.buy">Acheter</string>
     <!-- Cancel button label -->
     <string name="Button.cancel">Annuler</string>
@@ -206,8 +206,8 @@
     <string name="Crowdsale.resume">Reprendre la vérification</string>
     <!-- Retry Identity verification button -->
     <string name="Crowdsale.retry">Réessayer</string>
-    <!-- Bitcoin denomination picker label -->
-    <string name="DefaultCurrency.bitcoinLabel">Unité d\'affichage Bitcoin</string>
+    <!-- SWYFT denomination picker label -->
+    <string name="DefaultCurrency.bitcoinLabel">Unité d\'affichage SWYFT</string>
     <!-- Exchange rate label -->
     <string name="DefaultCurrency.rateLabel">Taux de change</string>
     <!-- The wallet is disabled. -->
@@ -272,7 +272,7 @@
     <string name="FileChooser.selectImageSource.android">Sélectionner une source d\'image</string>
     <!-- This is the section that allows administration of the user's wallet -->
     <string name="HomeScreen.admin">Admin</string>
-    <!-- Home screen menu button to buy some bitcoin -->
+    <!-- Home screen menu button to buy some SWYFT -->
     <string name="HomeScreen.buy">Acheter</string>
     <!-- home screen toolbar 'Buy & Sell' button -->
     <string name="HomeScreen.buyAndSell">Achat et Vente</string>
@@ -287,7 +287,7 @@
     <!-- Checking private key balance progress view text -->
     <string name="Import.checking">Vérification du solde des clés privées...</string>
     <!-- Sweep private key confirmation message -->
-    <string name="Import.confirm">Envoyer %1$s de cette clé privée dans votre portefeuille ? Le réseau bitcoin recevra des frais de %2$s.</string>
+    <string name="Import.confirm">Envoyer %1$s de cette clé privée dans votre portefeuille ? Le réseau SWYFT recevra des frais de %2$s.</string>
     <!-- Duplicate key error message -->
     <string name="Import.Error.duplicate">Cette clé privée est déjà dans votre portefeuille.</string>
     <!-- empty private key error message -->
@@ -411,7 +411,7 @@
     <!-- Node status label -->
     <string name="NodeSelector.statusLabel">Statut de connexion du nœud</string>
     <!-- Node Selector view title -->
-    <string name="NodeSelector.title">Nœuds Bitcoin</string>
+    <string name="NodeSelector.title">Nœuds SWYFT</string>
     <!-- Onboarding screen 'I'll browse first' button -->
     <string name="Onboarding.browseFirst">Je vais d\'abord explorer le site</string>
     <!-- Onboarding screen 'Buy some coin' button -->
@@ -451,9 +451,9 @@
     <!-- Payment too small alert title -->
     <string name="PaymentProtocol.Errors.smallOutputError">Impossible de faire un paiement</string>
     <!-- Amount too small error message -->
-    <string name="PaymentProtocol.Errors.smallPayment">Les paiements par Bitcoin ne peuvent être inférieurs à %1$s.</string>
+    <string name="PaymentProtocol.Errors.smallPayment">Les paiements par SWYFT ne peuvent être inférieurs à %1$s.</string>
     <!-- Output too small error message. -->
-    <string name="PaymentProtocol.Errors.smallTransaction">Les résultats des transactions de Bitcoin ne peuvent pas être inférieurs à %1$s.</string>
+    <string name="PaymentProtocol.Errors.smallTransaction">Les résultats des transactions de SWYFT ne peuvent pas être inférieurs à %1$s.</string>
     <!-- Unsupported signature type payment protocol error message -->
     <string name="PaymentProtocol.Errors.unsupportedSignatureType">type de signature non pris en charge</string>
     <!-- Untrusted certificate payment protocol error message -->
@@ -642,7 +642,7 @@
     <string name="RecoveryKeyFlow.writeKeyStepTitle">%1$@ de %2$@</string>
     <!-- No amount entered error message. -->
     <string name="RequestAnAmount.noAmount">Veuillez d\'abord entrer un montant.</string>
-    <!-- Request a specific amount of bitcoin -->
+    <!-- Request a specific amount of SWYFT -->
     <string name="RequestAnAmount.title">Demander un montant</string>
     <!-- Alert action button label -->
     <string name="ReScan.alertAction">Synchroniser</string>
@@ -653,7 +653,7 @@
     <!-- extimated time -->
     <string name="ReScan.body1">20-45 minutes</string>
     <!-- Syncing explanation -->
-    <string name="ReScan.body2">Si une transaction apparaît comme achevée sur le réseau de bitcoin mais pas dans votre SWYFT.</string>
+    <string name="ReScan.body2">Si une transaction apparaît comme achevée sur le réseau de SWYFT mais pas dans votre SWYFT.</string>
     <!-- Syncing explanation -->
     <string name="ReScan.body3">Vous recevez de manière répétée un message d\'erreur vous informant du rejet de votre transaction.</string>
     <!-- Start Sync button label -->
@@ -672,7 +672,7 @@
     <string name="RewardsView.expandedTitle">Présentation des Récompenses SWYFT.</string>
     <!-- Rewards view title -->
     <string name="RewardsView.normalTitle">Récompenses</string>
-    <!-- Scan bitcoin address camera flash toggle -->
+    <!-- Scan SWYFT address camera flash toggle -->
     <string name="Scanner.flashButtonLabel">Flash d\'appareil photo</string>
     <!-- Complete filter label -->
     <string name="Search.complete">terminé</string>
@@ -687,7 +687,7 @@
     <!-- Face ID button title -->
     <string name="SecurityCenter.faceIdTitle">Face ID</string>
     <!-- Paper Key button description -->
-    <string name="SecurityCenter.paperKeyDescription">La seule façon d\'accéder à votre bitcoin si vous perdez ou mettez à niveau votre téléphone.</string>
+    <string name="SecurityCenter.paperKeyDescription">La seule façon d\'accéder à votre SWYFT si vous perdez ou mettez à niveau votre téléphone.</string>
     <!-- Recovery Key button title. This used to be called 'paper key', so leaving the string key as `paperKeyTitle` in order
  * to not break existing client code. -->
     <string name="SecurityCenter.paperKeyTitle">Clé papier</string>
@@ -706,9 +706,9 @@
     <!-- Segwit enabled confirmation title -->
     <string name="Segwit.ConfirmationConfirmationTitle">Vous avez activé SegWit !</string>
     <!-- Segwit enabled confirmation description -->
-    <string name="Segwit.ConfirmationInstructionsDescription">Merci de nous aider à faire progresser le bitcoin.</string>
+    <string name="Segwit.ConfirmationInstructionsDescription">Merci de nous aider à faire progresser le SWYFT.</string>
     <!-- Segwit instructions -->
-    <string name="Segwit.ConfirmationInstructionsInstructions">La prise en charge de SegWit est toujours une fonctionnalité bêta.\nUne fois que SegWit est activé, il ne sera plus possible de le désactiver. Vous trouverez l\'adresse du patrimoine sous Paramètres. \nCertains services tiers, y compris l\'échange de cryptomonnaies, peuvent ne pas être disponibles pour les utilisateurs qui ont activé SegWit. En cas d\'urgence, vous pourrez créer une adresse de patrimoine depuis Préférences &gt; Bitcoin &gt; Paramètres . \nSegWit sera automatiquement activé pour tous les utilisateurs lors d\'une future mise à jour.</string>
+    <string name="Segwit.ConfirmationInstructionsInstructions">La prise en charge de SegWit est toujours une fonctionnalité bêta.\nUne fois que SegWit est activé, il ne sera plus possible de le désactiver. Vous trouverez l\'adresse du patrimoine sous Paramètres. \nCertains services tiers, y compris l\'échange de cryptomonnaies, peuvent ne pas être disponibles pour les utilisateurs qui ont activé SegWit. En cas d\'urgence, vous pourrez créer une adresse de patrimoine depuis Préférences &gt; SWYFT &gt; Paramètres . \nSegWit sera automatiquement activé pour tous les utilisateurs lors d\'une future mise à jour.</string>
     <!-- Segwit extra confirmation title. -->
     <string name="Segwit.ConfirmChoiceLayout">L\'activation de SegWit est une fonctionnalité irréversible. Êtes-vous sûr(e) de vouloir continuer ?</string>
     <!-- Segwit enableButton -->
@@ -747,7 +747,7 @@
     <string name="Send.insufficientGasMessage">Vous devez avoir au moins %1$s dans votre portefeuille pour transférer ce type de jeton. Souhaitez-vous être redirigé vers votre portefeuille Ethereum maintenant ?</string>
     <!-- Your ethereum balance is insufficient to complete this action. -->
     <string name="Send.insufficientGasTitle">Solde d\'Ethereum insuffisant</string>
-    <!-- e.g. The destination is not a valid (bitcoin) address. -->
+    <!-- e.g. The destination is not a valid (SWYFT) address. -->
     <string name="Send.invalidAddressMessage">L\'adresse de destination n\'est pas une adresse %1$s valide.</string>
     <!-- Invalid address on pasteboard message -->
     <string name="Send.invalidAddressOnPasteboard">Le champ d\'entrée ne contient aucune adresse %1$s valide.</string>
@@ -755,8 +755,8 @@
     <string name="Send.invalidAddressTitle">Adresse non valide</string>
     <!-- Is rescanning error message -->
     <string name="Send.isRescanning">L\'envoi est désactivé pendant un re-scan complet.</string>
-    <!-- Warning when the user is trying to send bitcoin cash to a legacy bitcoin address (possible, but probably not what the user wants to do) -->
-    <string name="Send.legacyAddressWarning">Attention : il s\'agit d\'une ancienne adresse bitcoin. Etes-vous sûr de vouloir y envoyer des Bitcoins Cash ?</string>
+    <!-- Warning when the user is trying to send SWYFT cash to a legacy SWYFT address (possible, but probably not what the user wants to do) -->
+    <string name="Send.legacyAddressWarning">Attention : il s\'agit d\'une ancienne adresse SWYFT. Etes-vous sûr de vouloir y envoyer des Bitcoins Cash ?</string>
     <!-- We are loading the request (now) -->
     <string name="Send.loadingRequest">Chargement de la demande</string>
     <!-- Transaction fee could not be be caluculated error. -->
@@ -784,7 +784,7 @@
     <!-- Send money to label -->
     <string name="Send.toLabel">A</string>
     <!-- Adress already used alert message - first part -->
-    <string name="Send.UsedAddress.firstLine">Les adresses Bitcoin sont destinées à une utilisation unique.</string>
+    <string name="Send.UsedAddress.firstLine">Les adresses SWYFT sont destinées à une utilisation unique.</string>
     <!-- Adress already used alert message - second part -->
     <string name="Send.UsedAddress.secondLIne">La réutilisation réduit la confidentialité pour vous et le destinataire et peut entraîner une perte si le destinataire ne contrôle pas directement l\'adresse.</string>
     <!-- Adress already used alert title -->
@@ -841,9 +841,9 @@
     <string name="Settings.touchIdLimit.android">Limite de dépenses par identification avec empreinte digitale</string>
     <!-- View legacy address (old format). -->
     <string name="Settings.ViewLegacyAddress">Voir l\'adresse de réception du patrimoine</string>
-    <!-- Receive Bitcoin instructions -->
-    <string name="Settings.ViewLegacyAddressReceiveDescription">N\'envoyez de bitcoins (BTC) qu\'à cette adresse. Tout autre actif envoyé à cette adresse sera définitivement perdu.</string>
-    <!-- Receive Bitcoin -->
+    <!-- Receive SWYFT instructions -->
+    <string name="Settings.ViewLegacyAddressReceiveDescription">N\'envoyez de bitcoins (SWYFT) qu\'à cette adresse. Tout autre actif envoyé à cette adresse sera définitivement perdu.</string>
+    <!-- Receive SWYFT -->
     <string name="Settings.ViewLegacyAddressReceiveTitle">Recevoir des bitcoins</string>
     <!-- Wallet Settings section header -->
     <string name="Settings.wallet">Portefeuille</string>
@@ -868,7 +868,7 @@
     <!-- button label -->
     <string name="StartViewController.createButton">Créer un nouveau portefeuille</string>
     <!-- Start view message -->
-    <string name="StartViewController.message">La façon la plus facile et sécurisée  d\'utiliser bitcoin.</string>
+    <string name="StartViewController.message">La façon la plus facile et sécurisée  d\'utiliser SWYFT.</string>
     <!-- Recover your wallet from a backup -->
     <string name="StartViewController.recoverButton">Récupérer le portefeuille</string>
     <!-- Syncing view done syncing state header text -->
@@ -1091,7 +1091,7 @@
     <!-- Device authentication title -->
     <string name="UnlockScreen.touchIdTitle.android">Identification nécessaire</string>
     <!-- Update PIN caption text -->
-    <string name="UpdatePin.caption">Souvenez-vous de ce code PIN. Si vous l\'oubliez, vous ne pourrez pas accéder à votre bitcoin.</string>
+    <string name="UpdatePin.caption">Souvenez-vous de ce code PIN. Si vous l\'oubliez, vous ne pourrez pas accéder à votre SWYFT.</string>
     <!-- PIN creation info. -->
     <string name="UpdatePin.createInstruction">Votre PIN sera utilisé pour débloquer votre SWYFT et envoyer de l\'argent.</string>
     <!-- Update PIN title -->

@@ -104,15 +104,15 @@ public class WalletsMaster implements WalletEthManager.OnTokenLoadedListener {
 
             if (!mTokenListMetaData.isCurrencyHidden(enabled.symbol)) {
                 if (enabled.symbol.equalsIgnoreCase(BaseBitcoinWalletManager.BITCOIN_CURRENCY_CODE)) {
-                    //BTC wallet
+                    //SWYFT wallet
                     mWallets.add(WalletBitcoinManager.getInstance(app));
-                } /*else if (enabled.symbol.equalsIgnoreCase(BaseBitcoinWalletManager.BITCASH_CURRENCY_CODE)) {
+                } else if (enabled.symbol.equalsIgnoreCase(BaseBitcoinWalletManager.BITCASH_CURRENCY_CODE)) {
                     //BCH wallet
                     mWallets.add(WalletBchManager.getInstance(app));
-                }*/ else if (enabled.symbol.equalsIgnoreCase(WalletEthManager.ETH_CURRENCY_CODE)) {
+                } else if (enabled.symbol.equalsIgnoreCase(WalletEthManager.ETH_CURRENCY_CODE)) {
                     //ETH wallet
                     mWallets.add(ethWallet);
-                } else {
+                } /*else {
                     //add ERC20 wallet
                     WalletTokenManager tokenWallet = WalletTokenManager.getTokenWalletByIso(app, enabled.symbol);
                     if (tokenWallet == null) {
@@ -121,7 +121,7 @@ public class WalletsMaster implements WalletEthManager.OnTokenLoadedListener {
                     } else {
                         mWallets.add(tokenWallet);
                     }
-                }
+                }*/
             }
 
         }
