@@ -10,7 +10,6 @@
     android:clipToPadding="false"
     tools:showIn="@layout/activity_wallet">
 
-
     <com.swyftwallet.presenter.customviews.BaseTextView
         android:id="@+id/currency_usd_price"
         android:layout_width="wrap_content"
@@ -19,8 +18,8 @@
         android:textColor="@color/white"
         android:textSize="@dimen/large_header"
         app:brdFont="@string/Font.CircularPro_Medium"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="$16,904.34" />
 

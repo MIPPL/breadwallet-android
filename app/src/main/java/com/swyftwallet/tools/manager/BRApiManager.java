@@ -79,7 +79,7 @@ public final class BRApiManager {
     private static final String PRICE_BTC = "price_btc";
     private static final String SYMBOL = "symbol";
     private static final String TOKEN_RATES_URL_PREFIX = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=";
-    private static final String TOKEN_RATES_URL_SUFFIX = "&tsyms=SWYFT";
+    private static final String TOKEN_RATES_URL_SUFFIX = "&tsyms=BTC";
     private static final int FSYMS_CHAR_LIMIT = 300;
     private static final String CONTRACT_INITIAL_VALUE = "contract_initial_value";
     private static final String FEE_URL_FORMAT = "%s/fee-per-kb?currency=%s";
@@ -169,11 +169,15 @@ public final class BRApiManager {
                         currencyEntity.name = tmpObj.getString(NAME);
                         currencyEntity.code = tmpObj.getString(CODE);
                         currencyEntity.rate = Float.valueOf(tmpObj.getString(RATE));
-                        currencyEntity.iso = WalletBitcoinManager.BITCOIN_CURRENCY_CODE;
+                        currencyEntity.iso = "BTC";     //WalletBitcoinManager.BITCOIN_CURRENCY_CODE;
                     } catch (JSONException e) {
                         Log.e(TAG, "updateFiatRates: ", e);
                     }
                     set.add(currencyEntity);
+                }
+                CurrencyEntity swyftCurrency= fetchSwyftRates(context, true);
+                if (swyftCurrency != null)    {
+                    set.add(swyftCurrency);
                 }
             } else {
                 Log.e(TAG, "getCurrencies: failed to get currencies, response string: " + arr);
@@ -294,11 +298,14 @@ public final class BRApiManager {
             while (keys.hasNext()) {
                 String currencyCode = keys.next();
                 JSONObject jsonObject = ratesJsonObject.getJSONObject(currencyCode);
-                String code = WalletBitcoinManager.BITCOIN_CURRENCY_CODE;
+                String code = "BTC"; //WalletBitcoinManager.BITCOIN_CURRENCY_CODE;
                 String rate = jsonObject.getString(code);
                 CurrencyEntity currencyEntity = new CurrencyEntity(code, "", Float.valueOf(rate), currencyCode);
                 ratesList.add(currencyEntity);
             }
+            // add BTC/SWYFT rate
+            CurrencyEntity currencyEntity = fetchSwyftRates(context, false);
+            ratesList.add(currencyEntity);
             RatesRepository.getInstance(context).putCurrencyRates(ratesList);
         } catch (JSONException e) {
             BRReportsManager.reportBug(e);
@@ -346,6 +353,31 @@ public final class BRApiManager {
         return jsonArray == null ? backupFetchRates(app) : jsonArray;
     }
 
+    @WorkerThread
+    private static CurrencyEntity fetchSwyftRates(Context app, boolean reverseRate ) {
+        //Fetch the SWYFT-Fiat rates
+        CurrencyEntity ret = null;
+        String url = "https://graviex.net/api/v2/tickers/swyftbtc.json";
+        String jsonString = urlGET(app, url);
+        JSONArray jsonArray = null;
+        if (jsonString == null) {
+            Log.e(TAG, "fetchSwyftRates: failed, response is null");
+            return null;
+        }
+        try {
+            JSONObject obj = new JSONObject(jsonString);
+            JSONObject objTicker = obj.getJSONObject("ticker");
+            float last = (float)objTicker.getDouble("last");
+            ret = new CurrencyEntity();
+            ret.code=(reverseRate)?"SWYFT":"BTC";
+            ret.iso=(reverseRate)?"BTC":"SWYFT";
+            ret.name="SWYFT";
+            ret.rate=(reverseRate)?1/last:last;
+        } catch (JSONException ex) {
+            Log.e(TAG, "fetchSwyftRates: ", ex);
+        }
+        return ret;
+    }
     /**
      * Fetches data from /currencies api meant for new icos and tokens with no public rates yet.
      *

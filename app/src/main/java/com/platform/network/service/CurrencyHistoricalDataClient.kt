@@ -292,7 +292,7 @@ object CurrencyHistoricalDataClient {
                 }
                 priceChangeMap
             } catch (e: JSONException) {
-                Log.e(TAG, "Failed to parse the price variation", e)
+                //Log.e(TAG, "Failed to parse the price variation", e)
                 emptyMap()
             }
 

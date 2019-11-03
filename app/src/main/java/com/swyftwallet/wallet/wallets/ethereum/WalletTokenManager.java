@@ -458,19 +458,19 @@ public class WalletTokenManager extends BaseEthereumWalletManager {
     }
 
     //pass in a fiat amount and return the specified amount in tokens
-    //Token rates are in SWYFT (thus this math)
+    //Token rates are in BTC (thus this math)
     private BigDecimal getTokensForFiat(Context context, BigDecimal fiatAmount, String
             code) {
         //fiat rate for btc
-        CurrencyEntity btcRate = RatesRepository.getInstance(context).getCurrencyByCode(WalletBitcoinManager.BITCOIN_CURRENCY_CODE, code);
+        CurrencyEntity btcRate = RatesRepository.getInstance(context).getCurrencyByCode("BTC" /*WalletBitcoinManager.BITCOIN_CURRENCY_CODE*/, code);
         //Btc rate for token
-        CurrencyEntity tokenBtcRate = RatesRepository.getInstance(context).getCurrencyByCode(getCurrencyCode(), WalletBitcoinManager.BITCOIN_CURRENCY_CODE);
+        CurrencyEntity tokenBtcRate = RatesRepository.getInstance(context).getCurrencyByCode(getCurrencyCode(), "BTC" /*WalletBitcoinManager.BITCOIN_CURRENCY_CODE*/ );
         if (btcRate == null) {
-            Log.e(TAG, "getUsdFromBtc: No USD rates for SWYFT");
+            Log.e(TAG, "getUsdFromBtc: No USD rates for BTC");
             return null;
         }
         if (tokenBtcRate == null) {
-            Log.e(TAG, "getUsdFromBtc: No SWYFT rates for ETH");
+            Log.e(TAG, "getUsdFromBtc: No BTC rates for ETH");
             return null;
         }
 

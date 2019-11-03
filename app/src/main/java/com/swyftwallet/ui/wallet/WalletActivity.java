@@ -317,7 +317,22 @@ public class WalletActivity extends BRActivity implements InternetManager.Connec
         Button moreInfoButton = mDelistedTokenBanner.findViewById(R.id.more_info_button);
         moreInfoButton.setOnClickListener(view -> UiUtils.showSupportFragment(WalletActivity.this, BRConstants.FAQ_UNSUPPORTED_TOKEN, null));
 
+        if ( mCurrencyCode.equals(BaseBitcoinWalletManager.BITCOIN_CURRENCY_CODE) )  {
+            hideChart();
+        }
+
         EventUtils.pushEvent(String.format(EventUtils.EVENT_WALLET_APPEARED, mCurrencyCode));
+    }
+
+    protected void hideChart()  {
+        mSparkView.setVisibility(View.GONE);
+        mChartLabel.setVisibility(View.GONE);
+        mOneDay.setVisibility(View.GONE);
+        mOneWeek.setVisibility(View.GONE);
+        mOneMonth.setVisibility(View.GONE);
+        mOneYear.setVisibility(View.GONE);
+        mThreeMonths.setVisibility(View.GONE);
+        mThreeYears.setVisibility(View.GONE);
     }
 
     /**

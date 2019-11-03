@@ -63,7 +63,7 @@ public class AboutActivity extends BaseSettingsActivity {
         redditShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(BRConstants.URL_REDDIT));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(BRConstants.URL_MEDIUM));
                 startActivity(browserIntent);
                 AboutActivity.this.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
@@ -79,7 +79,7 @@ public class AboutActivity extends BaseSettingsActivity {
         blogShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(BRConstants.URL_BLOG));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(BRConstants.URL_TELEGRAM));
                 startActivity(browserIntent);
                 AboutActivity.this.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }

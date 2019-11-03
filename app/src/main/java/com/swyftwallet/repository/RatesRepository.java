@@ -129,11 +129,11 @@ public class RatesRepository {
      */
     public BigDecimal getFiatForCrypto(BigDecimal cryptoAmount, String cryptoCode, String fiatCode) {
         //fiat rate for btc
-        CurrencyEntity btcRate = getCurrencyByCode(WalletBitcoinManager.BITCOIN_CURRENCY_CODE, fiatCode);
+        CurrencyEntity btcRate = getCurrencyByCode("BTC" /* WalletBitcoinManager.BITCOIN_CURRENCY_CODE*/, fiatCode);
         //Btc rate for the given crypto
-        CurrencyEntity cryptoBtcRate = getCurrencyByCode( cryptoCode, WalletBitcoinManager.BITCOIN_CURRENCY_CODE);
+        CurrencyEntity cryptoBtcRate = getCurrencyByCode( cryptoCode, "BTC" /* WalletBitcoinManager.BITCOIN_CURRENCY_CODE*/ );
         if (btcRate == null) {
-            Log.e(TAG, "getFiatForBch: No " + fiatCode + " rates for SWYFT");
+            Log.e(TAG, "getFiatForBch: No " + fiatCode + " rates for BTC");
             return null;
         }
         if (cryptoBtcRate == null) {
