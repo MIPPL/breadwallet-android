@@ -1,5 +1,5 @@
 /**
- * BreadWallet
+ * swyftwallet
  *
  * Created by Pablo Budelli on <pablo.budelli@breadwallet.com> 9/26/19.
  * Copyright (c) 2019 breadwallet LLC
@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.breadwallet.ui.auth
+package com.swyftwallet.ui.auth
 
 import android.app.Fragment
 import android.os.Bundle
@@ -30,9 +30,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
-import com.breadwallet.R
-import com.breadwallet.model.FeeOption
-import com.breadwallet.model.TxConfirmationDetail
+import com.swyftwallet.R
+import com.swyftwallet.model.FeeOption
+import com.swyftwallet.model.TxConfirmationDetail
 import kotlinx.android.synthetic.main.fragment_tx_detail_confirmation.*
 
 /**

@@ -11,7 +11,7 @@ android {
         brdMarketingVersion = 3   // Major version. Usually affected by marketing. Maximum value: 99
         brdProductVersion = 14    // Minor version. Usually affected by product. Maximum value: 99
         brdEngineeringVersion = 2 // Hot fix version. Usually affected by engineering. Maximum value: 9
-        brdBuildVersion = 1       // Build version. Increase for each new build. Maximum value: 999
+        brdBuildVersion = 2       // Build version. Increase for each new build. Maximum value: 999
 
         // The version code must be monotonically increasing. It is used by Android to maintain upgrade/downgrade
         // relationship between builds with a max value of 2 100 000 000.
@@ -24,7 +24,7 @@ android {
     }
     defaultConfig {
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
-        applicationId = 'com.breadwallet'
+        applicationId = 'com.swyftwallet'
         minSdkVersion 23
         targetSdkVersion 28
 
@@ -58,7 +58,7 @@ android {
     flavorDimensions "mode"
     productFlavors {
         brd {
-            applicationId = "com.breadwallet"
+            applicationId = "com.swyftwallet"
             dimension "mode"
             resValue "string", "app_name", "BRD"
             buildConfigField "boolean", "BITCOIN_TESTNET", "false"
@@ -66,7 +66,7 @@ android {
             missingDimensionStrategy 'network', 'onMainnet'
         }
         brdTestnet {
-            applicationId = "com.breadwallet.testnet"
+            applicationId = "com.swyftwallet.testnet"
             dimension "mode"
             resValue "string", "app_name", "BRD Testnet"
             buildConfigField "boolean", "BITCOIN_TESTNET", "true"
