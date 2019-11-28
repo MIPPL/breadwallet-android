@@ -66,7 +66,8 @@ public class ManageWalletsActivity extends BaseSettingsActivity implements OnSta
             String tokenSymbol = mTokens.get(i).symbol;
 
             if (!tokenSymbol.equalsIgnoreCase(WalletBitcoinManager.BITCOIN_CURRENCY_CODE) && !tokenSymbol.equalsIgnoreCase(WalletBchManager.BITCASH_CURRENCY_CODE) &&
-                    !tokenSymbol.equalsIgnoreCase(WalletEthManager.ETH_CURRENCY_CODE) && !tokenSymbol.equalsIgnoreCase(WalletTokenManager.BRD_CURRENCY_CODE)) {
+                    !tokenSymbol.equalsIgnoreCase(WalletEthManager.ETH_CURRENCY_CODE) && !tokenSymbol.equalsIgnoreCase(WalletTokenManager.STQ_CURRENCY_CODE)
+                && !tokenSymbol.equalsIgnoreCase(WalletTokenManager.SWYFTT_CURRENCY_CODE)) {
 
                 BREthereumToken tk = WalletEthManager.getInstance(getApplicationContext()).node.lookupToken(info.contractAddress);
                 if (tk == null) {
@@ -83,9 +84,10 @@ public class ManageWalletsActivity extends BaseSettingsActivity implements OnSta
                 tokenItem = new TokenItem(null, WalletBchManager.BITCASH_CURRENCY_CODE, WalletBchManager.NAME, null, true);*/
             else if (tokenSymbol.equalsIgnoreCase(WalletEthManager.ETH_CURRENCY_CODE))
                 tokenItem = new TokenItem(null, WalletEthManager.ETH_CURRENCY_CODE, WalletEthManager.NAME, null, true);
-            else if (tokenSymbol.equalsIgnoreCase(WalletTokenManager.BRD_CURRENCY_CODE))
-                tokenItem = new TokenItem(null, WalletTokenManager.BRD_CURRENCY_CODE, WalletTokenManager.BRD_CURRENCY_CODE, null, true);
-
+            else if (tokenSymbol.equalsIgnoreCase(WalletTokenManager.STQ_CURRENCY_CODE))
+                tokenItem = new TokenItem(null, WalletTokenManager.STQ_CURRENCY_CODE, WalletTokenManager.STQ_CURRENCY_CODE, null, true);
+            else if (tokenSymbol.equalsIgnoreCase(WalletTokenManager.SWYFTT_CURRENCY_CODE))
+                tokenItem = new TokenItem(null, WalletTokenManager.SWYFTT_CURRENCY_CODE, WalletTokenManager.SWYFTT_CURRENCY_CODE, null, true);
 
             if (tokenItem != null) {
                 tokenItems.add(tokenItem);

@@ -4,6 +4,7 @@ package com.platform.entities;
 import com.swyftwallet.wallet.wallets.bitcoin.WalletBchManager;
 import com.swyftwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
 import com.swyftwallet.wallet.wallets.ethereum.WalletEthManager;
+import com.swyftwallet.wallet.wallets.ethereum.WalletTokenManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,8 @@ public class TokenListMetaData {
             this.enabledCurrencies.add(new TokenInfo(WalletBitcoinManager.BITCOIN_CURRENCY_CODE, false, null));
             //this.enabledCurrencies.add(new TokenInfo(WalletBchManager.BITCASH_CURRENCY_CODE, false, null));
             this.enabledCurrencies.add(new TokenInfo(WalletEthManager.ETH_CURRENCY_CODE, false, null));
+            this.enabledCurrencies.add(new TokenInfo(WalletTokenManager.STQ_CURRENCY_CODE, true, WalletTokenManager.STQ_CONTRACT_ADDRESS));
+            this.enabledCurrencies.add(new TokenInfo(WalletTokenManager.SWYFTT_CURRENCY_CODE, true, WalletTokenManager.SWYFTT_CONTRACT_ADDRESS));
         }
         if (this.hiddenCurrencies == null) this.hiddenCurrencies = new ArrayList<>();
     }

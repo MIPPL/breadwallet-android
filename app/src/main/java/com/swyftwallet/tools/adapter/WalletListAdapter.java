@@ -191,7 +191,9 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
             } else {
                 if (currencyCode.equals(WalletBitcoinManager.BITCOIN_CURRENCY_CODE))    {
                     Picasso.get().load(R.drawable.swyft).into(decoratedHolderView.mLogoIcon);
-
+                }
+                else if (currencyCode.equals(WalletTokenManager.SWYFTT_CURRENCY_CODE))    {
+                    Picasso.get().load(R.drawable.swyftt).into(decoratedHolderView.mLogoIcon);
                 }
                 else {    // If no icon is present, then use the capital first letter of the token currency code instead.
                     useLetter = true;

@@ -69,6 +69,14 @@ public class WalletTokenManager extends BaseEthereumWalletManager {
     public static final String TUSD_CONTRACT_ADDRESS = BuildConfig.BITCOIN_TESTNET ? "0x7108ca7c4718efa810457f228305c9c71390931a" : "0x8Dd5fbCE2F6a956c3022bA3663759011Dd51E73E";
     public static final String TUSD_CURRENCY_CODE = "TUSD";
 
+    // Storiqa
+    public static final String STQ_CONTRACT_ADDRESS = "0x5C3A228510d246b78A3765c20221CBf3082b44A4";
+    public static final String STQ_CURRENCY_CODE = "STQ";
+
+    // SWYFT Token
+    public static final String SWYFTT_CONTRACT_ADDRESS = "0xA1248c718d52752b2cC257eeb0eBa900408dAeB8";
+    public static final String SWYFTT_CURRENCY_CODE = "SWYFTT";
+
     private WalletTokenManager(WalletEthManager walletEthManager, BREthereumWallet tokenWallet) {
         mWalletEthManager = walletEthManager;
         mWalletToken = tokenWallet;
@@ -228,7 +236,7 @@ public class WalletTokenManager extends BaseEthereumWalletManager {
         } else {
             String feeString = mWalletToken.transferEstimatedFee(amount.toPlainString(),
                     BREthereumAmount.Unit.TOKEN_INTEGER, BREthereumAmount.Unit.ETHER_WEI);
-            fee = Utils.isNullOrEmpty(feeString) ? BigDecimal.ZERO : new BigDecimal(feeString);
+            fee = Utils.isNullOrEmpty(feeString) ? BigDecimal.ZERO : new BigDecimal(feeString).multiply(new BigDecimal(4));
         }
         return fee;
     }

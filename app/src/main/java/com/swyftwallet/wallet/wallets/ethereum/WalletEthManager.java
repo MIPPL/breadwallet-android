@@ -700,7 +700,8 @@ public class WalletEthManager extends BaseEthereumWalletManager implements BREth
                 JSONObject responseObject = new JSONObject(jsonResult);
 
                 if (responseObject.has(BRConstants.RESULT)) {
-                    String gasEstimate = responseObject.getString(BRConstants.RESULT);
+                    //String gasEstimate = responseObject.getString(BRConstants.RESULT);
+                    String gasEstimate = "0x13d0a";
                     Log.d(TAG, "onRpcRequestCompleted: getGasEstimate: " + gasEstimate);
                     node.announceGasEstimate(walletIdentifier, transactionIdentifier, gasEstimate, requestIdentifer);
                 } else {

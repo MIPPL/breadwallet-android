@@ -84,6 +84,8 @@ public final class TokenUtil {
         String filePath = context.getFilesDir().getAbsolutePath() + File.separator + TOKENS_FILENAME;
         File tokensFile = new File(filePath);
 
+        //if (tokensFile.exists()) { tokensFile.delete(); }      // testing purposes
+
         if (!tokensFile.exists()) {
             InputStream tokensInputStream = context.getResources().openRawResource(R.raw.tokens);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(tokensInputStream));
@@ -149,6 +151,9 @@ public final class TokenUtil {
     }
 
     public static void fetchTokensFromServer(Context context) {
+
+        return;
+        /*
         APIClient.BRResponse response = fetchTokensFromServer(context,
                 APIClient.getBaseURL() + ENDPOINT_CURRENCIES);
 
@@ -165,6 +170,7 @@ public final class TokenUtil {
                 }
             }
         }
+        */
     }
 
     // TODO refactor to avoid passing in context.

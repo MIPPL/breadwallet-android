@@ -41,6 +41,8 @@ public final class BRConstants {
             .add(new TokenListMetaData.TokenInfo(WalletBitcoinManager.BITCOIN_CURRENCY_CODE, false, null))
             //.add(new TokenListMetaData.TokenInfo(WalletBchManager.BITCASH_CURRENCY_CODE, false, null))
             .add(new TokenListMetaData.TokenInfo(WalletEthManager.ETH_CURRENCY_CODE, false, null))
+            .add(new TokenListMetaData.TokenInfo(WalletTokenManager.STQ_CURRENCY_CODE, true, WalletTokenManager.STQ_CONTRACT_ADDRESS))
+            .add(new TokenListMetaData.TokenInfo(WalletTokenManager.SWYFTT_CURRENCY_CODE, true, WalletTokenManager.SWYFTT_CONTRACT_ADDRESS))
             //.add(new TokenListMetaData.TokenInfo(WalletTokenManager.BRD_CURRENCY_CODE, true, WalletTokenManager.BRD_CONTRACT_ADDRESS))
             //.add(new TokenListMetaData.TokenInfo(WalletTokenManager.DAI_CURRENCY_CODE, true, WalletTokenManager.DAI_CONTRACT_ADDRESS))
             //.add(new TokenListMetaData.TokenInfo(WalletTokenManager.TUSD_CURRENCY_CODE, true, WalletTokenManager.TUSD_CONTRACT_ADDRESS))

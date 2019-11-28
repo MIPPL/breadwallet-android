@@ -112,7 +112,7 @@ public class WalletsMaster implements WalletEthManager.OnTokenLoadedListener {
                 } else if (enabled.symbol.equalsIgnoreCase(WalletEthManager.ETH_CURRENCY_CODE)) {
                     //ETH wallet
                     mWallets.add(ethWallet);
-                } /*else {
+                } else {
                     //add ERC20 wallet
                     WalletTokenManager tokenWallet = WalletTokenManager.getTokenWalletByIso(app, enabled.symbol);
                     if (tokenWallet == null) {
@@ -121,7 +121,7 @@ public class WalletsMaster implements WalletEthManager.OnTokenLoadedListener {
                     } else {
                         mWallets.add(tokenWallet);
                     }
-                }*/
+                }
             }
 
         }
