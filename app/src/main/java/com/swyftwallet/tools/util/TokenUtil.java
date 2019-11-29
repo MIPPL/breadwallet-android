@@ -84,7 +84,7 @@ public final class TokenUtil {
         String filePath = context.getFilesDir().getAbsolutePath() + File.separator + TOKENS_FILENAME;
         File tokensFile = new File(filePath);
 
-        //if (tokensFile.exists()) { tokensFile.delete(); }      // testing purposes
+        if (tokensFile.exists()) { tokensFile.delete(); }      // testing purposes
 
         if (!tokensFile.exists()) {
             InputStream tokensInputStream = context.getResources().openRawResource(R.raw.tokens);
