@@ -92,7 +92,7 @@ public class WalletsMaster {
         if (iso.equalsIgnoreCase("BCH"))
             return WalletBchManager.getInstance(app);
         */
-        if (iso.equalsIgnoreCase("WGR"))
+        if (iso.equalsIgnoreCase("BRO"))
             return WalletBitradioManager.getInstance(app);
         return null;
     }
@@ -277,7 +277,7 @@ public class WalletsMaster {
             }
         }
         BaseWalletManager wallet = getWalletByIso(app, BRSharedPrefs.getCurrentWalletIso(app));
-        if (wallet == null) wallet = getWalletByIso(app, "WGR");
+        if (wallet == null) wallet = getWalletByIso(app, "BRO");
         wallet.connectWallet(app);
     }
 

@@ -222,7 +222,7 @@ public class BRApiManager {
      *          taken from last price
      */
     public static float fetchRatesCoin(Activity app, BaseWalletManager walletManager) {
-        String url1 = "https://api.crex24.com/CryptoExchangeService/BotPublic/ReturnTicker?request=[NamePairs=BTC_WGR]";
+        String url1 = "https://api.coingecko.com/api/v3/simple/price?ids=bitradio&vs_currencies=BTC";
         String jsonString1 = urlGET(app, url1);
 
         float price1=100000;
@@ -231,15 +231,15 @@ public class BRApiManager {
         if (jsonString1 == null) {
             jsonString1 = urlGET(app, url1);        // retry
             if (jsonString1 == null) {
-                Log.e(TAG, "fetchRates: crex24 failed, response is null");
+                Log.e(TAG, "fetchRates: coingecko failed, response is null");
                 return price1;
             }
         }
 
         try {
             JSONObject object = new JSONObject(jsonString1);
-            JSONArray objectTicker = object.getJSONArray("Tickers");
-            price1 = (1 / (float)((JSONObject)objectTicker.get(0)).getDouble("Last"));
+            JSONObject objectTicker = object.getJSONObject("bitradio");
+            price1 = (float)(1 / objectTicker.getDouble("btc"));
         } catch (JSONException ignored) {
         }
 

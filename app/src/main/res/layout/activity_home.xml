@@ -25,7 +25,7 @@
             android:layout_alignParentTop="true">
 
             <ImageView
-                android:layout_width="185dp"
+                android:layout_width="220dp"
                 android:layout_height="45dp"
                 android:layout_alignBottom="@+id/total_assets_usd"
                 android:layout_alignStart="@+id/portfolio_label"

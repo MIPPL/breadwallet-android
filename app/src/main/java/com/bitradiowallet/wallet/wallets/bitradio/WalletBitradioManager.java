@@ -187,7 +187,7 @@ public class WalletBitradioManager extends BRCoreWalletManager implements BaseWa
             WalletsMaster.getInstance(app).updateFixedPeer(app, this);
 //        balanceListeners = new ArrayList<>();
 
-            uiConfig = new WalletUiConfiguration("#c20c23" , true, true, false);
+            uiConfig = new WalletUiConfiguration("#dfaa1a" , true, true, false);
 
         } finally {
             isInitiatingWallet = false;

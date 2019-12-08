@@ -144,7 +144,7 @@ public class FingerprintActivity extends BRActivity {
         //amount in user preferred ISO (e.g. USD)
         BigDecimal curAmount = master.getCurrentWallet(this).getFiatForSmallestCrypto(this, satoshis, null);
         //formatted string for the label
-        return String.format(getString(R.string.TouchIdSettings_spendingLimit), CurrencyUtils.getFormattedAmount(this, "WGR", amount), CurrencyUtils.getFormattedAmount(this, iso, curAmount));
+        return String.format(getString(R.string.TouchIdSettings_spendingLimit), CurrencyUtils.getFormattedAmount(this, "BRO", amount), CurrencyUtils.getFormattedAmount(this, iso, curAmount));
     }
 
     @Override
