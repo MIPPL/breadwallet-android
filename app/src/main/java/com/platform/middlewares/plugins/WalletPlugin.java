@@ -3,15 +3,15 @@ package com.platform.middlewares.plugins;
 import android.app.Activity;
 import android.util.Log;
 
-import com.wagerrwallet.WagerrApp;
-import com.wagerrwallet.presenter.interfaces.BRAuthCompletion;
-import com.wagerrwallet.tools.manager.BREventManager;
-import com.wagerrwallet.tools.manager.BRSharedPrefs;
-import com.wagerrwallet.tools.security.AuthManager;
-import com.wagerrwallet.tools.threads.executor.BRExecutor;
-import com.wagerrwallet.tools.util.BRConstants;
-import com.wagerrwallet.tools.util.Utils;
-import com.wagerrwallet.wallet.WalletsMaster;
+import com.bitradiowallet.BitradioApp;
+import com.bitradiowallet.presenter.interfaces.BRAuthCompletion;
+import com.bitradiowallet.tools.manager.BREventManager;
+import com.bitradiowallet.tools.manager.BRSharedPrefs;
+import com.bitradiowallet.tools.security.AuthManager;
+import com.bitradiowallet.tools.threads.executor.BRExecutor;
+import com.bitradiowallet.tools.util.BRConstants;
+import com.bitradiowallet.tools.util.Utils;
+import com.bitradiowallet.wallet.WalletsMaster;
 import com.platform.BRHTTPHelper;
 import com.platform.interfaces.Plugin;
 import com.platform.tools.BRBitId;
@@ -65,7 +65,7 @@ public class WalletPlugin implements Plugin {
     @Override
     public boolean handle(String target, final Request baseRequest, HttpServletRequest request, final HttpServletResponse response) {
         if (!target.startsWith("/_wallet")) return false;
-        Activity app = (Activity) WagerrApp.getBreadContext();
+        Activity app = (Activity) BitradioApp.getBreadContext();
 
         if (target.startsWith("/_wallet/info") && request.getMethod().equalsIgnoreCase("get")) {
             Log.i(TAG, "handling: " + target + " " + baseRequest.getMethod());

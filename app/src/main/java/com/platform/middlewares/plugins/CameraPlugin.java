@@ -12,14 +12,14 @@ import android.support.v4.content.ContextCompat;
 import android.util.Base64;
 import android.util.Log;
 
-import com.wagerrwallet.WagerrApp;
-import com.wagerrwallet.R;
-import com.wagerrwallet.presenter.activities.camera.CameraActivity;
-import com.wagerrwallet.presenter.customviews.BRDialogView;
-import com.wagerrwallet.tools.animation.BRDialog;
-import com.wagerrwallet.tools.crypto.CryptoHelper;
-import com.wagerrwallet.tools.threads.executor.BRExecutor;
-import com.wagerrwallet.tools.util.BRConstants;
+import com.bitradiowallet.BitradioApp;
+import com.bitradiowallet.R;
+import com.bitradiowallet.presenter.activities.camera.CameraActivity;
+import com.bitradiowallet.presenter.customviews.BRDialogView;
+import com.bitradiowallet.tools.animation.BRDialog;
+import com.bitradiowallet.tools.crypto.CryptoHelper;
+import com.bitradiowallet.tools.threads.executor.BRExecutor;
+import com.bitradiowallet.tools.util.BRConstants;
 import com.platform.BRHTTPHelper;
 import com.platform.interfaces.Plugin;
 
@@ -89,7 +89,7 @@ public class CameraPlugin implements Plugin {
 
         if (target.startsWith("/_camera/take_picture")) {
             Log.i(TAG, "handling: " + target + " " + baseRequest.getMethod());
-            final Context app = WagerrApp.getBreadContext();
+            final Context app = BitradioApp.getBreadContext();
             if (app == null) {
                 Log.e(TAG, "handle: context is null: " + target + " " + baseRequest.getMethod());
 
@@ -149,7 +149,7 @@ public class CameraPlugin implements Plugin {
             return true;
         } else if (target.startsWith("/_camera/picture/")) {
             Log.i(TAG, "handling: " + target + " " + baseRequest.getMethod());
-            final Context app = WagerrApp.getBreadContext();
+            final Context app = BitradioApp.getBreadContext();
             if (app == null) {
                 Log.e(TAG, "handle: context is null: " + target + " " + baseRequest.getMethod());
                 return BRHTTPHelper.handleError(404, "context is null", baseRequest, response);

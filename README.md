@@ -1,7 +1,7 @@
-![ƀ](/images/icon.png) wagerrwallet for Android
+![ƀ](/images/icon.png) bitradiowallet for Android
 ----------------------------------
 
-[![Get it on Google Play](/images/icon-google-play.png)](https://play.google.com/store/apps/details?id=com.wagerrwallet)
+[![Get it on Google Play](/images/icon-google-play.png)](https://play.google.com/store/apps/details?id=com.bitradiowallet)
 
 ### Cryptos done right
 

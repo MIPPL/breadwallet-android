@@ -4,7 +4,7 @@ android {
     compileSdkVersion = 27
     defaultConfig {
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
-        applicationId = 'com.wagerrwallet'
+        applicationId = 'com.bitradiowallet'
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 222
@@ -44,10 +44,10 @@ android {
     // Specifies two flavor dimensions.
     flavorDimensions "mode"
     productFlavors {
-        wagerr {
-            applicationId = "com.wagerrwallet"
+        bitradio {
+            applicationId = "com.bitradiowallet"
             dimension "mode"
-            resValue "string", "app_name", "Wagerr"
+            resValue "string", "app_name", "BRO Wallet"
             buildConfigField "boolean", "BITCOIN_TESTNET", "false"
             externalNativeBuild {
                 cmake {
@@ -60,9 +60,9 @@ android {
             }
         }
         brdTestnet {
-            applicationId = "com.wagerrtestnet"
+            applicationId = "com.bitradiotestnet"
             dimension "mode"
-            resValue "string", "app_name", "Wagerr-testnet"
+            resValue "string", "app_name", "Bitradio-testnet"
             buildConfigField "boolean", "BITCOIN_TESTNET", "true"
             externalNativeBuild {
                 cmake {
@@ -126,7 +126,7 @@ task copyResDirectoryToClasses(type: Copy) {
 }
 
 tasks.whenTaskAdded { task ->
-    if (task.name == 'assembleWagerrDebug') {
+    if (task.name == 'assembleBitradioDebug') {
         task.dependsOn(copyResDirectoryToClasses)
     }
 }

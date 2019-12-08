@@ -6,11 +6,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
-import com.wagerrwallet.WagerrApp;
-import com.wagerrwallet.R;
-import com.wagerrwallet.presenter.activities.settings.WebViewActivity;
-import com.wagerrwallet.tools.manager.BRReportsManager;
-import com.wagerrwallet.tools.util.Utils;
+import com.bitradiowallet.BitradioApp;
+import com.bitradiowallet.R;
+import com.bitradiowallet.presenter.activities.settings.WebViewActivity;
+import com.bitradiowallet.tools.manager.BRReportsManager;
+import com.bitradiowallet.tools.util.Utils;
 import com.platform.BRHTTPHelper;
 import com.platform.interfaces.Plugin;
 
@@ -55,7 +55,7 @@ public class LinkPlugin implements Plugin {
             Log.i(TAG, "handling: " + target + " " + baseRequest.getMethod());
             String url = request.getParameter("url");
 
-            Context app = WagerrApp.getBreadContext();
+            Context app = BitradioApp.getBreadContext();
             if (app == null) {
                 Log.e(TAG, "handle: context is null: " + target + " " + baseRequest.getMethod());
                 return BRHTTPHelper.handleError(500, "context is null", baseRequest, response);
@@ -72,7 +72,7 @@ public class LinkPlugin implements Plugin {
             return BRHTTPHelper.handleSuccess(204, null, baseRequest, response, null);
         } else if (target.startsWith("/_open_maps")) {
             Log.i(TAG, "handling: " + target + " " + baseRequest.getMethod());
-            Context app = WagerrApp.getBreadContext();
+            Context app = BitradioApp.getBreadContext();
             if (app == null) {
                 Log.e(TAG, "handle: context is null: " + target + " " + baseRequest.getMethod());
                 return BRHTTPHelper.handleError(500, "context is null", baseRequest, response);
@@ -88,7 +88,7 @@ public class LinkPlugin implements Plugin {
             app.startActivity(Intent.createChooser(intent, "Select an application"));
             return BRHTTPHelper.handleSuccess(204, null, baseRequest, response, null);
         } else if (target.startsWith("/_browser")) {
-            Context app = WagerrApp.getBreadContext();
+            Context app = BitradioApp.getBreadContext();
             if (app == null) {
                 Log.e(TAG, "handle: context is null: " + target + " " + baseRequest.getMethod());
                 return BRHTTPHelper.handleError(500, "context is null", baseRequest, response);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.wagerrwallet">
+    package="com.bitradiowallet">
 
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -41,7 +41,7 @@
         android:required="false"/>
 
     <application
-        android:name=".WagerrApp"
+        android:name="com.bitradiowallet.BitradioApp"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
@@ -54,7 +54,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.wagerrwallet"
+            android:authorities="com.bitradiowallet"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -63,7 +63,7 @@
         </provider>
 
         <activity
-            android:name=".presenter.activities.intro.IntroActivity"
+            android:name="com.bitradiowallet.presenter.activities.intro.IntroActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
@@ -74,7 +74,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presenter.activities.WalletActivity"
+            android:name="com.bitradiowallet.presenter.activities.WalletActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -100,145 +100,145 @@
                 android:resource="@xml/searchable"/>
         </activity>
         <activity
-            android:name=".presenter.activities.SetPinActivity"
+            android:name="com.bitradiowallet.presenter.activities.SetPinActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".presenter.activities.intro.RecoverActivity"
+            android:name="com.bitradiowallet.presenter.activities.intro.RecoverActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.settings.UnlinkActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.UnlinkActivity"
             android:launchMode="singleTask"
 
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.settings.ImportActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.ImportActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".presenter.activities.ReEnterPinActivity"
+            android:name="com.bitradiowallet.presenter.activities.ReEnterPinActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.UpdatePinActivity"
+            android:name="com.bitradiowallet.presenter.activities.UpdatePinActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.LoginActivity"
+            android:name="com.bitradiowallet.presenter.activities.LoginActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".presenter.activities.settings.SettingsActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.SettingsActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".presenter.activities.settings.NotificationActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.NotificationActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.settings.SyncBlockchainActivity"
-            android:launchMode="singleTask"
-
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".presenter.activities.settings.DisplayCurrencyActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.SyncBlockchainActivity"
             android:launchMode="singleTask"
 
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.settings.AboutActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.DisplayCurrencyActivity"
             android:launchMode="singleTask"
 
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.settings.SecurityCenterActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.AboutActivity"
             android:launchMode="singleTask"
 
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.settings.ShareDataActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.SecurityCenterActivity"
+            android:launchMode="singleTask"
+
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.bitradiowallet.presenter.activities.settings.ShareDataActivity"
             android:launchMode="singleTask"
 
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".presenter.activities.intro.WriteDownActivity"
+            android:name="com.bitradiowallet.presenter.activities.intro.WriteDownActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.PaperKeyActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-
-        <activity
-            android:name=".presenter.activities.settings.SpendLimitActivity"
+            android:name="com.bitradiowallet.presenter.activities.PaperKeyActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".presenter.activities.PaperKeyProveActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.SpendLimitActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.bitradiowallet.presenter.activities.PaperKeyProveActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.InputWordsActivity"
+            android:name="com.bitradiowallet.presenter.activities.InputWordsActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.camera.ScanQRActivity"
+            android:name="com.bitradiowallet.presenter.activities.camera.ScanQRActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
         <!--Use launchMode="standard for WebViewActivity in order to be able to have multiple instances"-->
         <activity
-            android:name=".presenter.activities.settings.WebViewActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.WebViewActivity"
             android:configChanges="orientation|keyboardHidden"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".presenter.activities.DisabledActivity"
+            android:name="com.bitradiowallet.presenter.activities.DisabledActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.settings.FingerprintActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.FingerprintActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.settings.AdvancedActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.AdvancedActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.settings.NodesActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.NodesActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.camera.CameraActivity"
+            android:name="com.bitradiowallet.presenter.activities.camera.CameraActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presenter.activities.settings.TestActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-
-        <activity
-            android:name=".presenter.activities.HomeActivity"
+            android:name="com.bitradiowallet.presenter.activities.settings.TestActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".presenter.activities.CurrencySettingsActivity"
+            android:name="com.bitradiowallet.presenter.activities.HomeActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.bitradiowallet.presenter.activities.CurrencySettingsActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
 
         </activity>
 
         <service
-            android:name=".tools.listeners.SyncReceiver"
+            android:name="com.bitradiowallet.tools.listeners.SyncReceiver"
             android:enabled="true"
             android:exported="false"
             android:label="SyncReceiver"/>

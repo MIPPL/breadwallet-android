@@ -32,12 +32,12 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.wagerrwallet.WagerrApp;
-import com.wagerrwallet.core.BRCoreKey;
-import com.wagerrwallet.tools.security.BRKeyStore;
-import com.wagerrwallet.tools.threads.executor.BRExecutor;
-import com.wagerrwallet.tools.util.BRConstants;
-import com.wagerrwallet.tools.util.Utils;
+import com.bitradiowallet.BitradioApp;
+import com.bitradiowallet.core.BRCoreKey;
+import com.bitradiowallet.tools.security.BRKeyStore;
+import com.bitradiowallet.tools.threads.executor.BRExecutor;
+import com.bitradiowallet.tools.util.BRConstants;
+import com.bitradiowallet.tools.util.Utils;
 import com.platform.interfaces.KVStoreAdaptor;
 import com.platform.sqlite.KVItem;
 import com.platform.sqlite.PlatformSqliteHelper;
@@ -854,7 +854,7 @@ public class ReplicatedKVStore {
             Log.e(TAG, "encrypt: data is null");
             return null;
         }
-        if (app == null) app = WagerrApp.getBreadContext();
+        if (app == null) app = BitradioApp.getBreadContext();
         if (app == null) {
             Log.e(TAG, "encrypt: app is null");
             return null;
@@ -894,7 +894,7 @@ public class ReplicatedKVStore {
             Log.e(TAG, "decrypt: failed to decrypt: " + (data == null ? null : data.length));
             return null;
         }
-        if (app == null) app = WagerrApp.getBreadContext();
+        if (app == null) app = BitradioApp.getBreadContext();
         if (app == null) return null;
         if (tempAuthKey == null)
             retrieveAuthKey(app);

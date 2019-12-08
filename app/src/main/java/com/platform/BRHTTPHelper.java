@@ -1,7 +1,7 @@
 package com.platform;
 
 
-import com.wagerrwallet.tools.util.Utils;
+import com.bitradiowallet.tools.util.Utils;
 
 import org.apache.commons.io.IOUtils;
 import org.eclipse.jetty.server.Request;

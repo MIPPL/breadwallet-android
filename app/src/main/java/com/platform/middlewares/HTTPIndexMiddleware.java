@@ -3,7 +3,7 @@ package com.platform.middlewares;
 import android.content.Context;
 import android.util.Log;
 
-import com.wagerrwallet.WagerrApp;
+import com.bitradiowallet.BitradioApp;
 import com.platform.APIClient;
 import com.platform.BRHTTPHelper;
 import com.platform.interfaces.Middleware;
@@ -49,7 +49,7 @@ public class HTTPIndexMiddleware implements Middleware {
     @Override
     public boolean handle(String target, org.eclipse.jetty.server.Request baseRequest, HttpServletRequest request, HttpServletResponse response) {
         Log.i(TAG, "handling: " + target + " " + baseRequest.getMethod());
-        Context app = WagerrApp.getBreadContext();
+        Context app = BitradioApp.getBreadContext();
         if (app == null) {
             Log.e(TAG, "handle: app is null!");
             return true;

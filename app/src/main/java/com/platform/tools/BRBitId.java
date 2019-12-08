@@ -6,16 +6,16 @@ import android.security.keystore.UserNotAuthenticatedException;
 import android.util.Base64;
 import android.util.Log;
 
-import com.wagerrwallet.core.BRCoreKey;
-import com.wagerrwallet.core.BRCoreMasterPubKey;
-import com.wagerrwallet.presenter.interfaces.BRAuthCompletion;
-import com.wagerrwallet.tools.manager.BRSharedPrefs;
-import com.wagerrwallet.tools.security.AuthManager;
-import com.wagerrwallet.tools.security.BRKeyStore;
-import com.wagerrwallet.tools.security.PostAuth;
-import com.wagerrwallet.tools.threads.executor.BRExecutor;
-import com.wagerrwallet.tools.util.BRConstants;
-import com.wagerrwallet.tools.util.Utils;
+import com.bitradiowallet.core.BRCoreKey;
+import com.bitradiowallet.core.BRCoreMasterPubKey;
+import com.bitradiowallet.presenter.interfaces.BRAuthCompletion;
+import com.bitradiowallet.tools.manager.BRSharedPrefs;
+import com.bitradiowallet.tools.security.AuthManager;
+import com.bitradiowallet.tools.security.BRKeyStore;
+import com.bitradiowallet.tools.security.PostAuth;
+import com.bitradiowallet.tools.threads.executor.BRExecutor;
+import com.bitradiowallet.tools.util.BRConstants;
+import com.bitradiowallet.tools.util.Utils;
 import com.platform.APIClient;
 import com.platform.middlewares.plugins.WalletPlugin;
 

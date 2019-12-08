@@ -1,7 +1,7 @@
 import android.util.Log;
 
-import com.wagerrwallet.tools.util.Bip39Reader;
-import com.wagerrwallet.wallet.WalletsMaster;
+import com.bitradiowallet.tools.util.Bip39Reader;
+import com.bitradiowallet.wallet.WalletsMaster;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;

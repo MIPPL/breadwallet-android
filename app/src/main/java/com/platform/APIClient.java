@@ -7,17 +7,17 @@ import android.net.Uri;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 
-import com.wagerrwallet.WagerrApp;
-import com.wagerrwallet.core.BRCoreKey;
-import com.wagerrwallet.presenter.activities.util.ActivityUTILS;
-import com.wagerrwallet.tools.crypto.Base58;
-import com.wagerrwallet.tools.manager.BRApiManager;
-import com.wagerrwallet.tools.manager.BRReportsManager;
-import com.wagerrwallet.tools.manager.BRSharedPrefs;
-import com.wagerrwallet.tools.crypto.CryptoHelper;
-import com.wagerrwallet.tools.security.BRKeyStore;
-import com.wagerrwallet.tools.threads.executor.BRExecutor;
-import com.wagerrwallet.tools.util.Utils;
+import com.bitradiowallet.BitradioApp;
+import com.bitradiowallet.core.BRCoreKey;
+import com.bitradiowallet.presenter.activities.util.ActivityUTILS;
+import com.bitradiowallet.tools.crypto.Base58;
+import com.bitradiowallet.tools.manager.BRApiManager;
+import com.bitradiowallet.tools.manager.BRReportsManager;
+import com.bitradiowallet.tools.manager.BRSharedPrefs;
+import com.bitradiowallet.tools.crypto.CryptoHelper;
+import com.bitradiowallet.tools.security.BRKeyStore;
+import com.bitradiowallet.tools.threads.executor.BRExecutor;
+import com.bitradiowallet.tools.util.Utils;
 import com.platform.kvstore.RemoteKVStore;
 import com.platform.kvstore.ReplicatedKVStore;
 
@@ -60,7 +60,7 @@ import okhttp3.ResponseBody;
 import okio.Buffer;
 import okio.BufferedSink;
 
-import static com.wagerrwallet.tools.util.BRCompressor.gZipExtract;
+import static com.bitradiowallet.tools.util.BRCompressor.gZipExtract;
 
 
 /**
@@ -95,7 +95,7 @@ public class APIClient {
     private static final String PROTO = "https";
 
     // convenience getter for the API endpoint
-    public static String BASE_URL = PROTO + "://" + WagerrApp.HOST;
+    public static String BASE_URL = PROTO + "://" + BitradioApp.HOST;
     //feePerKb url
     private static final String FEE_PER_KB_URL = "/v1/fee-per-kb";
     //token
@@ -195,7 +195,7 @@ public class APIClient {
         if (ActivityUTILS.isMainThread()) {
             throw new NetworkOnMainThreadException();
         }
-        if (ctx == null) ctx = WagerrApp.getBreadContext();
+        if (ctx == null) ctx = BitradioApp.getBreadContext();
         if (ctx == null) return null;
         String strUtl = BASE_URL + ME;
         Request request = new Request.Builder()
@@ -225,7 +225,7 @@ public class APIClient {
         if (ActivityUTILS.isMainThread()) {
             throw new NetworkOnMainThreadException();
         }
-        if (ctx == null) ctx = WagerrApp.getBreadContext();
+        if (ctx == null) ctx = BitradioApp.getBreadContext();
         if (ctx == null) return null;
         try {
             String strUtl = BASE_URL + TOKEN;
@@ -312,7 +312,7 @@ public class APIClient {
             throw new RuntimeException("network on main thread");
         }
 
-        Map<String, String> headers = WagerrApp.getBreadHeaders();
+        Map<String, String> headers = BitradioApp.getBreadHeaders();
 
         Iterator it = headers.entrySet().iterator();
 
@@ -354,7 +354,7 @@ public class APIClient {
                 Uri newUri = Uri.parse(newLocation);
                 if (newUri == null) {
                     Log.e(TAG, "sendRequest: redirect uri is null");
-                } else if (!newUri.getHost().equalsIgnoreCase(WagerrApp.HOST) || !newUri.getScheme().equalsIgnoreCase(PROTO)) {
+                } else if (!newUri.getHost().equalsIgnoreCase(BitradioApp.HOST) || !newUri.getScheme().equalsIgnoreCase(PROTO)) {
                     Log.e(TAG, "sendRequest: WARNING: redirect is NOT safe: " + newLocation);
                 } else {
                     Log.w(TAG, "redirecting: " + request.url() + " >>> " + newLocation);
@@ -624,7 +624,7 @@ public class APIClient {
     }
 
     public boolean tryExtractTar() {
-        Context app = WagerrApp.getBreadContext();
+        Context app = BitradioApp.getBreadContext();
         if (app == null) {
             Log.e(TAG, "tryExtractTar: failed to extract, app is null");
             return false;
