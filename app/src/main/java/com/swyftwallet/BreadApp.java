@@ -79,7 +79,7 @@ public class BreadApp extends Application implements ApplicationLifecycleObserve
     private static final String TAG = BreadApp.class.getName();
 
     // The server(s) on which the API is hosted
-    private static final String HOST = BuildConfig.DEBUG ? "stage2.breadwallet.com" : "api.breadwallet.com";
+    private static final String HOST = BuildConfig.DEBUG ? "api.breadwallet.com" : "api.breadwallet.com";
     private static final String WALLET_ID_PATTERN = "^[a-z0-9 ]*$"; // The wallet ID is in the form "xxxx xxxx xxxx xxxx" where x is a lowercase letter or a number.
     private static final String WALLET_ID_SEPARATOR = " ";
     private static final int NUMBER_OF_BYTES_FOR_SHA256_NEEDED = 10;

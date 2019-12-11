@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.breadwallet.model
+package com.swyftwallet.model
 
 /**
  * Transaction info to be shown on the confirmation screen.

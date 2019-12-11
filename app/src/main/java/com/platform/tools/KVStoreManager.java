@@ -15,6 +15,8 @@ import com.swyftwallet.tools.manager.BRSharedPrefs;
 import com.swyftwallet.tools.util.BRCompressor;
 import com.swyftwallet.tools.util.BRConstants;
 import com.swyftwallet.tools.util.Utils;
+import com.swyftwallet.wallet.WalletsMaster;
+import com.swyftwallet.wallet.wallets.ethereum.WalletTokenManager;
 import com.swyftwallet.wallet.abstracts.BaseWalletManager;
 import com.swyftwallet.wallet.wallets.CryptoTransaction;
 import com.platform.APIClient;
@@ -442,6 +444,7 @@ public class KVStoreManager {
         try {
             int classVersion = json.getInt(CLASS_VERSION); //not using yet
             List<TokenListMetaData.TokenInfo> enabledCurrencies = jsonToMetaData(json.getJSONArray(ENABLED_CURRENCIES));
+            enabledCurrencies.add(new TokenListMetaData.TokenInfo("SWYFTT", true, WalletTokenManager.SWYFTT_CONTRACT_ADDRESS));
             List<TokenListMetaData.TokenInfo> hiddenCurrencies = jsonToMetaData(json.getJSONArray(HIDDEN_CURRENCIES));
             result = new TokenListMetaData(enabledCurrencies, hiddenCurrencies);
         } catch (JSONException e) {
@@ -459,16 +462,20 @@ public class KVStoreManager {
         }
         for (int i = 0; i < json.length(); i++) {
             String s = json.getString(i);
+            if (s.equals("BTC"))    s = "SWYFT";
+            if (s.equals("BCH"))    continue;
             boolean isErc20 = s.contains(":");
             String symbol = s;
             String address = null;
             if (isErc20) {
                 symbol = s.split(":")[0];
+                if (symbol.equals(WalletTokenManager.DAI_CURRENCY_CODE))    continue;
+                if (symbol.equals(WalletTokenManager.TUSD_CURRENCY_CODE))    continue;
+                if (symbol.equals(WalletTokenManager.BRD_CURRENCY_CODE))    continue;
                 address = s.split(":")[1];
             }
             result.add(new TokenListMetaData.TokenInfo(symbol, isErc20, address));
         }
-
         return result;
     }
 

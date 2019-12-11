@@ -236,7 +236,7 @@ public class WalletTokenManager extends BaseEthereumWalletManager {
         } else {
             String feeString = mWalletToken.transferEstimatedFee(amount.toPlainString(),
                     BREthereumAmount.Unit.TOKEN_INTEGER, BREthereumAmount.Unit.ETHER_WEI);
-            fee = Utils.isNullOrEmpty(feeString) ? BigDecimal.ZERO : new BigDecimal(feeString).multiply(new BigDecimal(4));
+            fee = Utils.isNullOrEmpty(feeString) ? BigDecimal.ZERO : new BigDecimal(feeString);
         }
         return fee;
     }

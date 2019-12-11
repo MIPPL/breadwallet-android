@@ -24,7 +24,7 @@ android {
     }
     defaultConfig {
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
-        applicationId = 'com.breadwallet'
+        applicationId = 'com.swyftwallet'
         minSdkVersion 23
         targetSdkVersion 28
 
@@ -58,17 +58,17 @@ android {
     flavorDimensions "mode"
     productFlavors {
         brd {
-            applicationId = "com.breadwallet"
+            applicationId = "com.swyftwallet"
             dimension "mode"
-            resValue "string", "app_name", "BRD"
+            resValue "string", "app_name", "SWYFT"
             buildConfigField "boolean", "BITCOIN_TESTNET", "false"
             signingConfig signingConfigs.FakeSigningConfig // Uncomment to fake sign a mainnet release build for testing.
             missingDimensionStrategy 'network', 'onMainnet'
         }
         brdTestnet {
-            applicationId = "com.breadwallet.testnet"
+            applicationId = "com.swyftwallet.testnet"
             dimension "mode"
-            resValue "string", "app_name", "BRD Testnet"
+            resValue "string", "app_name", "SWYFT Testnet"
             buildConfigField "boolean", "BITCOIN_TESTNET", "true"
             signingConfig signingConfigs.FakeSigningConfig
             missingDimensionStrategy 'network', 'onTestnet'
@@ -133,7 +133,7 @@ task downloadBundles {
     doLast {
         def bundles = ["brd-web-3", "brd-tokens-prod", "brd-web-3-staging", "brd-tokens-staging"]
         def stagingHost = "api.breadwallet.com"
-        def releaseHost = "stage2.breadwallet.com"
+        def releaseHost = "api.breadwallet.com"
         for (String bundleName : bundles) {
             def fileUrl
             def resFolder
