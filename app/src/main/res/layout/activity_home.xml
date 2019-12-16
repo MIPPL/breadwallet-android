@@ -182,7 +182,7 @@
             <RelativeLayout
                 android:id="@+id/settings_row"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
+                android:layout_height="50dp"
                 android:layout_below="@id/admin_label"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
@@ -222,7 +222,7 @@
             <RelativeLayout
                 android:id="@+id/security_row"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
+                android:layout_height="50dp"
                 android:layout_below="@id/settings_row"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
@@ -262,9 +262,8 @@
             <RelativeLayout
                 android:id="@+id/support_row"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
+                android:layout_height="50dp"
                 android:layout_below="@id/security_row"
-                android:layout_marginBottom="30dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="12dp"
@@ -289,6 +288,85 @@
 
                 <ImageButton
                     android:id="@+id/support_arrow_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/ic_chevron_right"
+                    android:clickable="false"
+                    android:focusable="false" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/website_row"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/support_row"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/admin_card_shape">
+
+
+                <com.bitradiowallet.presenter.customviews.BRText
+                    android:id="@+id/website_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="16dp"
+                    android:clickable="false"
+                    android:drawableLeft="@drawable/ic_question_mark_shape"
+                    android:drawablePadding="8dp"
+                    android:focusable="false"
+                    android:paddingBottom="4dp"
+                    android:text="Website"
+                    android:textSize="16sp"
+                    app:customTFont="CircularPro-Book.otf" />
+
+                <ImageButton
+                    android:id="@+id/website_arrow_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/ic_chevron_right"
+                    android:clickable="false"
+                    android:focusable="false" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/radioplayer_row"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/website_row"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/admin_card_shape">
+
+
+                <com.bitradiowallet.presenter.customviews.BRText
+                    android:id="@+id/radioplayer_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="16dp"
+                    android:clickable="false"
+                    android:drawableLeft="@drawable/ic_question_mark_shape"
+                    android:drawablePadding="8dp"
+                    android:focusable="false"
+                    android:paddingBottom="4dp"
+                    android:text="Bitrad.io - FM Radioplayer"
+                    android:textSize="16sp"
+                    app:customTFont="CircularPro-Book.otf" />
+
+                <ImageButton
+                    android:id="@+id/radioplayer_arrow_right"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

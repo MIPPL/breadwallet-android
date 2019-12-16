@@ -25,6 +25,7 @@ public class AboutActivity extends BRActivity {
     private ImageView redditShare;
     private ImageView twitterShare;
     private ImageView blogShare;
+    private ImageView telegramShare;
     private static AboutActivity app;
 
     public static AboutActivity getApp() {
@@ -59,6 +60,7 @@ public class AboutActivity extends BRActivity {
         redditShare = (ImageView) findViewById(R.id.reddit_share_button);
         twitterShare = (ImageView) findViewById(R.id.twitter_share_button);
         blogShare = (ImageView) findViewById(R.id.blog_share_button);
+        telegramShare = (ImageView) findViewById(R.id.telegram_share_button);
 
         redditShare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +74,7 @@ public class AboutActivity extends BRActivity {
         twitterShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/bitradio"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/bitrad_io"));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
@@ -80,7 +82,15 @@ public class AboutActivity extends BRActivity {
         blogShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.bitrad.io/"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bitrad.io/"));
+                startActivity(browserIntent);
+                app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
+            }
+        });
+        telegramShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/bitradio"));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
@@ -88,7 +98,7 @@ public class AboutActivity extends BRActivity {
         policyText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.bitrad.io/privacy/"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bitrad.io/privacy-ioswallet/"));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }

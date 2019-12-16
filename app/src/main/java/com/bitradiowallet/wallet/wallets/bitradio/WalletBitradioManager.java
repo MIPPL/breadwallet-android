@@ -108,7 +108,7 @@ public class WalletBitradioManager extends BRCoreWalletManager implements BaseWa
 
     private static final String mName = "Bitradio";
     private static final long TIME_GENESIS = 1518743781;
-    public static final String BTC_SCHEME = "";
+    public static final String BTC_SCHEME = "bitradio";
 
 
     public static final long MAX_COIN = 200000000L;
@@ -187,7 +187,7 @@ public class WalletBitradioManager extends BRCoreWalletManager implements BaseWa
             WalletsMaster.getInstance(app).updateFixedPeer(app, this);
 //        balanceListeners = new ArrayList<>();
 
-            uiConfig = new WalletUiConfiguration("#dfaa1a" , true, true, false);
+            uiConfig = new WalletUiConfiguration("#0978ae" , true, true, false);
 
         } finally {
             isInitiatingWallet = false;

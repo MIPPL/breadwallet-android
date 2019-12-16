@@ -193,6 +193,21 @@ public class BRAnimator {
 */
     }
 
+    public static void showWebsiteFragment(Activity app, String articleId) {
+
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bitrad.io"));
+        app.startActivity(browserIntent);
+        app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
+    }
+
+    public static void showRadioplayerFragment(Activity app, String articleId) {
+
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=io.bitrad.bitradio"));
+        app.startActivity(browserIntent);
+        app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
+    }
+
+
     public static void popBackStackTillEntry(Activity app, int entryIndex) {
 
         if (app.getFragmentManager() == null) {

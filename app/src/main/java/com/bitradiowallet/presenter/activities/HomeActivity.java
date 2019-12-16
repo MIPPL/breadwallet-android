@@ -54,6 +54,8 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
     private RelativeLayout mSettings;
     private RelativeLayout mSecurity;
     private RelativeLayout mSupport;
+    private RelativeLayout mWebsite;
+    private RelativeLayout mRadioplayer;
     private PromptManager.PromptItem mCurrentPrompt;
     public BRNotificationBar mNotificationBar;
 
@@ -88,6 +90,8 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
         mSettings = findViewById(R.id.settings_row);
         mSecurity = findViewById(R.id.security_row);
         mSupport = findViewById(R.id.support_row);
+        mWebsite = findViewById(R.id.website_row);
+        mRadioplayer = findViewById(R.id.radioplayer_row);
         mNotificationBar = findViewById(R.id.notification_bar);
 
         mPromptCard = findViewById(R.id.prompt_card);
@@ -140,6 +144,20 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
             public void onClick(View v) {
                 if (!BRAnimator.isClickAllowed()) return;
                 BRAnimator.showSupportFragment(HomeActivity.this, null);
+            }
+        });
+        mWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!BRAnimator.isClickAllowed()) return;
+                BRAnimator.showWebsiteFragment(HomeActivity.this, null);
+            }
+        });
+        mRadioplayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!BRAnimator.isClickAllowed()) return;
+                BRAnimator.showRadioplayerFragment(HomeActivity.this, null);
             }
         });
 
