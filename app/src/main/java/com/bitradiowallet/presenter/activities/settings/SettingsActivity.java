@@ -99,7 +99,7 @@ public class SettingsActivity extends BRActivity {
                     ImageButton chevronRight = v.findViewById(R.id.chevron_right);
                     leaveArrow.setVisibility(View.VISIBLE);
                     chevronRight.setVisibility(View.INVISIBLE);
-                } else if (position == 8) {
+                }/* else if (position == 8) {
                     boolean shareData = BRSharedPrefs.getShareData(SettingsActivity.this);
                     if (shareData) {
                         addon.setText("ON");
@@ -107,7 +107,7 @@ public class SettingsActivity extends BRActivity {
                         addon.setText("OFF");
 
                     }
-                }
+                }*/
 
                 v.setOnClickListener(item.listener);
 
@@ -243,7 +243,7 @@ public class SettingsActivity extends BRActivity {
         }, false));
 
         items.add(new BRSettingsItem(getString(R.string.Settings_other), "", null, true));
-
+/*
         items.add(new BRSettingsItem(getString(R.string.Settings_shareData), "ON", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -252,7 +252,7 @@ public class SettingsActivity extends BRActivity {
                 overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
             }
         }, false));
-
+*/
         items.add(new BRSettingsItem(getString(R.string.Settings_review), "", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

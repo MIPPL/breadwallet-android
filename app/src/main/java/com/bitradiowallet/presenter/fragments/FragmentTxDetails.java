@@ -282,7 +282,7 @@ public class FragmentTxDetails extends DialogFragment {
             });
 
             // Set the transaction block number
-            mConfirmedInBlock.setText(String.valueOf(mTransaction.getBlockHeight()));
+            mConfirmedInBlock.setText(String.valueOf( (mTransaction.getBlockHeight()==Integer.MAX_VALUE)?"unconfirmed" : mTransaction.getBlockHeight() ));
 
         } else {
 
