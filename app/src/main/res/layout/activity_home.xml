@@ -24,6 +24,47 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true">
 
+            <RelativeLayout
+                android:id="@+id/tithe_row"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_below="@id/tithe_section_label"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/tithe_menu_shape">
+
+
+                <com.biblepaywallet.presenter.customviews.BRText
+                    android:id="@+id/tithe_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="16dp"
+                    android:clickable="false"
+                    android:drawableLeft="@drawable/ic_check_mark_white"
+                    android:drawablePadding="8dp"
+                    android:focusable="false"
+                    android:paddingBottom="4dp"
+                    android:text="Tithe"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    app:customTFont="CircularPro-Book.otf" />
+
+
+                <ImageButton
+                    android:id="@+id/betting_arrow_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/ic_chevron_right"
+                    android:clickable="false"
+                    android:focusable="false" />
+            </RelativeLayout>
+
             <ImageView
                 android:layout_width="178dp"
                 android:layout_height="53dp"
@@ -168,11 +209,22 @@
 
 
             <com.biblepaywallet.presenter.customviews.BRText
+                android:id="@+id/tithe_section_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_wallet_list"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="6dp"
+                android:text="Tithe"
+                android:textColor="#788f9e" />
+
+            <com.biblepaywallet.presenter.customviews.BRText
                 android:id="@+id/admin_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/rv_wallet_list"
+                android:layout_below="@id/tithe_row"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="16dp"
                 android:text="@string/Admin"

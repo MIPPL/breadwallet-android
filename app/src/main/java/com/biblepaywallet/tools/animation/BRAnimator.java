@@ -32,6 +32,7 @@ import com.biblepaywallet.presenter.activities.intro.IntroActivity;
 import com.biblepaywallet.presenter.customviews.BRDialogView;
 import com.biblepaywallet.presenter.entities.CryptoRequest;
 import com.biblepaywallet.presenter.entities.TxUiHolder;
+import com.biblepaywallet.presenter.entities.TitheUIHolder;
 import com.biblepaywallet.presenter.fragments.FragmentGreetings;
 import com.biblepaywallet.presenter.fragments.FragmentMenu;
 import com.biblepaywallet.presenter.fragments.FragmentSignal;
