@@ -62,6 +62,7 @@ public class BiblePayApp extends Application {
     public static String HOST = "api.breadwallet.com";
     public static String HOST_UTXO = "https://chainz.cryptoid.info/";
     public static String HOST_UTXO_KEY = "7f15255edf68";
+    public static String CMC_API_KEY = "ff739a52-e81a-45e7-9369-d2138187e1a3";
     //public static String HOST_UTXO = "http://195.201.99.200";           // Lichtsucher test explorer
     public static String HOST_BOINC = "boinc.bakerlab.org";
     private static List<OnAppBackgrounded> listeners;

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.os.NetworkOnMainThreadException;
+import android.util.JsonReader;
 import android.util.Log;
 
 import com.biblepaywallet.BiblePayApp;
@@ -222,7 +223,7 @@ public class BRApiManager {
      *          taken from bid/ask spread on 2 exchanges
      */
     public static float fetchRatesBiblePay(Activity app, BaseWalletManager walletManager) {
-        String url1 = "https://api.coinmarketcap.com/v1/ticker/biblepay/";
+        String url1 = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BBP&CMC_PRO_API_KEY=" + BiblePayApp.CMC_API_KEY;
         String jsonString1 = urlGET(app, url1);
         float price1=0;
 
@@ -233,9 +234,9 @@ public class BRApiManager {
         }
 
         try {
-            JSONArray arr1 = new JSONArray(jsonString1);
-            JSONObject obj1 = (JSONObject)arr1.get(0);
-            price1 = (1 / (float)obj1.getDouble("price_btc")) ;     // rate of BBP per BTC
+            JSONObject obj = new JSONObject(jsonString1);
+            JSONObject data = (JSONObject)obj.getJSONObject("data").getJSONObject("BBP").getJSONObject("quote").getJSONObject("USD");
+            price1 = (float)data.getDouble("price");     // rate of BBP in USD
         } catch (JSONException ignored) {
         }
 
