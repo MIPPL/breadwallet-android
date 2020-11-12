@@ -66,6 +66,47 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/dice_row"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_below="@id/events_row"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/event_menu_shape">
+
+
+                <com.wagerrwallet.presenter.customviews.BRText
+                    android:id="@+id/dice_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="16dp"
+                    android:clickable="false"
+                    android:drawableLeft="@drawable/ic_dice"
+                    android:drawablePadding="8dp"
+                    android:focusable="false"
+                    android:paddingBottom="4dp"
+                    android:text="@string/MenuButton.Dice"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:customTFont="CircularPro-Book.otf" />
+
+
+                <ImageButton
+                    android:id="@+id/dice_arrow_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/ic_chevron_right"
+                    android:clickable="false"
+                    android:focusable="false" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/swaps_row"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
@@ -274,7 +315,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/events_row"
+                android:layout_below="@id/dice_row"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="16dp"
                 android:text="@string/BuySwap"
