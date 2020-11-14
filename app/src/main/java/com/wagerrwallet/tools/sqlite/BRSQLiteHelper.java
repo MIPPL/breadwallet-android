@@ -222,6 +222,29 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
             BTX_TIME_STAMP + " integer, " +
             BTX_ISO + " text DEFAULT 'WGR' );";
 
+    //  betQuickGamesTxTable  TYPE 0d
+    public static final String BQGTX_TABLE_NAME = "betQuickGamesTxTable";
+    public static final String BQGTX_COLUMN_ID = "_id";
+    public static final String BQGTX_TYPE = "type";
+    public static final String BQGTX_VERSION = "version";
+    public static final String BQGTX_BLOCK_HEIGHT = "transactionBlockHeight";
+    public static final String BQGTX_TIME_STAMP = "transactionTimeStamp";
+    public static final String BQGTX_QUICK_GAME_TYPE = "quickGameType";
+    public static final String BQGTX_DICE_GAME_TYPE   = "diceGameType";
+    public static final String BQGTX_AMOUNT   = "betAmount";
+    public static final String BQGTX_SELECTED_OUTCOME = "selectedOutcome";
+
+    private static final String BQGTX_DATABASE_CREATE = "create table if not exists " + BQGTX_TABLE_NAME + " (" +
+            BQGTX_COLUMN_ID + " text, " +
+            BQGTX_TYPE + " integer, " +
+            BQGTX_VERSION + " integer, " +
+            BQGTX_QUICK_GAME_TYPE + " integer, " +
+            BQGTX_DICE_GAME_TYPE + " integer, " +
+            BQGTX_AMOUNT + " integer, " +
+            BQGTX_BLOCK_HEIGHT + " integer, " +
+            BQGTX_TIME_STAMP + " integer, " +
+            BQGTX_SELECTED_OUTCOME + " integer );";
+
     /**
      * Peer table
      */
