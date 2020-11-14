@@ -10,6 +10,7 @@ import com.wagerrwallet.core.BRCoreTransactionOutput;
 import com.wagerrwallet.presenter.entities.BetEntity;
 import com.wagerrwallet.presenter.entities.BetEventEntity;
 import com.wagerrwallet.presenter.entities.BetMappingEntity;
+import com.wagerrwallet.presenter.entities.BetQuickGamesEntity;
 import com.wagerrwallet.presenter.entities.BetResultEntity;
 import com.wagerrwallet.presenter.entities.CryptoRequest;
 import com.wagerrwallet.presenter.entities.ParlayBetEntity;
@@ -35,11 +36,11 @@ import java.util.Arrays;
 /**
  * BreadWallet
  * <p/>
- * Created by Mihail Gutan on <mihail@breadwallet.com> 11/28/16.
- * Copyright (c) 2016 breadwallet LLC
- * <p/>
+ * Created by MIP on 11/14/20.
+ * Copyright (c) 2020 Wagerr LTD
+ * <p>
  *
- *  (c) Wagerr Betting platform 2020
+ * (c) Wagerr Betting platform 2020
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -101,6 +102,8 @@ public class WagerrOpCodeManager {
                         case BET_PARLAY:
                             ret = getParlayBetEntity(tx, script, betAmount);
                             break;
+                        case BET_QUICK_GAMES:
+                            ret = getQuickGamesBetEntity(tx, script, betAmount);
                     }
                 }
             }
@@ -512,6 +515,48 @@ public class WagerrOpCodeManager {
         }
 
         return betEntity;
+    }
+
+    private static final int QUICK_GAMES_TYPE1_LENGTH=5;
+    private static final int QUICK_GAMES_TYPE2_LENGTH=1;
+    private static final int QUICK_GAMES_TYPE_POS=5;
+    private static final int QUICK_GAMES_VECTORLEN_POS=6;
+    private static final int QUICK_GAMES_DICE_TYPE_POS=7;
+    private static final int QUICK_GAMES_OUTCOME_POS=8;
+
+    protected static BetEntity getQuickGamesBetEntity(BRCoreTransaction tx, byte[] script, long betAmount ) throws WagerrTransactionException
+    {
+        BetQuickGamesEntity betEntity = null;
+        String txHash = Utils.reverseHex(Utils.bytesToHex(tx.getHash()));
+        int testByte = script[SMOKE_TEST_POS] & 0xFF;
+        passSmokeTestByte( txHash, testByte);
+
+        int opLength = script[LENGHT_POS] & 0xFF;
+
+        int version = script[VERSION_POS] & 0xFF;   // ignore value so far
+        int nQuickGameType = script[QUICK_GAMES_TYPE_POS] & 0xFF;
+        BetQuickGamesEntity.BetQuickGameType quickGameType = BetQuickGamesEntity.BetQuickGameType.fromValue(nQuickGameType);
+        int vectorLen = script[QUICK_GAMES_VECTORLEN_POS] & 0xFF;
+        int nDiceGameType = script[QUICK_GAMES_DICE_TYPE_POS] & 0xFF;
+        BetQuickGamesEntity.BetDiceGameType diceGameType = BetQuickGamesEntity.BetDiceGameType.fromValue(nDiceGameType);
+
+        long nSelectedOutcome = 0;
+
+        if ( diceGameType== BetQuickGamesEntity.BetDiceGameType.EVEN || diceGameType== BetQuickGamesEntity.BetDiceGameType.ODDS )   {
+            if (vectorLen != QUICK_GAMES_TYPE2_LENGTH )
+                throw new WagerrTransactionException("getQuickGamesBetEntity " + txHash + ": wrong vector length for even/odds bet");
+        }
+        else    {
+            if (vectorLen != QUICK_GAMES_TYPE1_LENGTH )
+                throw new WagerrTransactionException("getQuickGamesBetEntity " + txHash + ": wrong vector length for equal/not equal/over/under bet");
+
+                PositionPointer pos = new PositionPointer(QUICK_GAMES_OUTCOME_POS);
+                nSelectedOutcome = getBufferInt( script, pos, ByteOrder.LITTLE_ENDIAN);
+        }
+        
+        betEntity = new BetQuickGamesEntity( txHash , BetEntity.BetTxType.QUICK_GAMES, version, quickGameType, diceGameType, betAmount,
+                nSelectedOutcome, tx.getBlockHeight(), tx.getTimestamp() );
+        return (BetEntity) betEntity;
     }
 
     private static final int CHAIN_GAMES_LOTTO_RESULT_LENGTH=5;
