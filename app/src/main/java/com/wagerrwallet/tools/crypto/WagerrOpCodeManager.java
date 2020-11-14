@@ -623,6 +623,7 @@ public class WagerrOpCodeManager {
         EVENT_PEERLESS_SPREAD(0x09),
         EVENT_PEERLESS_TOTAL(0x0a),
         BET_PARLAY(0x0c),
+        BET_QUICK_GAMES(0x0d),
         UNKNOWN(-1);
 
         private int type;

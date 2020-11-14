@@ -6,8 +6,8 @@ import com.wagerrwallet.tools.crypto.WagerrOpCodeManager;
 /**
  * BreadWallet
  * <p>
- * Created by Mihail Gutan <mihail@breadwallet.com> on 1/13/16.
- * Copyright (c) 2016 breadwallet LLC
+ * Created by MIP on 1/13/20.
+ * Copyright (c) 2019 Wagerr LTD
  * <p>
  *
  * (c) Wagerr Betting platform 2019

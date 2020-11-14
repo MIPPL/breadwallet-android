@@ -4,8 +4,8 @@ package com.wagerrwallet.presenter.entities;
 /**
  * BreadWallet
  * <p>
- * Created by Mihail Gutan <mihail@breadwallet.com> on 1/13/16.
- * Copyright (c) 2016 breadwallet LLC
+ * Created by MIP on 1/13/20.
+ * Copyright (c) 2019 Wagerr LTD
  * <p>
  *
  * (c) Wagerr Betting platform 2019
@@ -36,6 +36,7 @@ public class BetEntity {
         PEERLESS(0x03),
         CHAIN_LOTTO(0x07),
         PARLAY(0x0c),
+        QUICK_GAMES(0x0d),
         UNKNOWN(-1);
 
         private int type;
