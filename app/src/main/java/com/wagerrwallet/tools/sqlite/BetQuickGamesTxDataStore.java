@@ -3,9 +3,9 @@ package com.wagerrwallet.tools.sqlite;
 /**
  * BreadWallet
  * <p/>
- * Created by MIP on 11/14/20.
- * Copyright (c) 2020 Wagerr LTD
- * <p>
+ * Created by Mihail Gutan <mihail@breadwallet.com> on 9/25/15.
+ * Copyright (c) 2016 breadwallet LLC
+ * <p/>
  *
  * (c) Wagerr Betting platform 2020
  *
@@ -35,15 +35,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.wagerrwallet.presenter.entities.BetEntity;
-import com.wagerrwallet.presenter.entities.BetMappingEntity;
 import com.wagerrwallet.tools.manager.BRReportsManager;
 import com.wagerrwallet.tools.util.BRConstants;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BetTxDataStore implements BRDataSourceInterface {
-    private static final String TAG = BetTxDataStore.class.getName();
+public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
+    private static final String TAG = BetQuickGamesTxDataStore.class.getName();
 
     // Database fields
     private SQLiteDatabase database;
@@ -60,16 +59,16 @@ public class BetTxDataStore implements BRDataSourceInterface {
             BRSQLiteHelper.BTX_ISO
     };
 
-    private static BetTxDataStore instance;
+    private static BetQuickGamesTxDataStore instance;
 
-    public static BetTxDataStore getInstance(Context context) {
+    public static BetQuickGamesTxDataStore getInstance(Context context) {
         if (instance == null) {
-            instance = new BetTxDataStore(context);
+            instance = new BetQuickGamesTxDataStore(context);
         }
         return instance;
     }
 
-    private BetTxDataStore(Context context) {
+    private BetQuickGamesTxDataStore(Context context) {
         dbHelper = BRSQLiteHelper.getInstance(context);
 
     }

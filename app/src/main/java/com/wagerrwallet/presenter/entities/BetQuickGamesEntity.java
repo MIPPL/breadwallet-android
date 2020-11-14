@@ -4,11 +4,11 @@ package com.wagerrwallet.presenter.entities;
 /**
  * BreadWallet
  * <p>
- * Created by MIP on 1/13/20.
- * Copyright (c) 2019 Wagerr LTD
+ * Created by MIP on 11/14/20.
+ * Copyright (c) 2020 Wagerr LTD
  * <p>
  *
- * (c) Wagerr Betting platform 2019
+ * (c) Wagerr Betting platform 2020
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
