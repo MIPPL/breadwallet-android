@@ -553,7 +553,7 @@ public class WagerrOpCodeManager {
                 PositionPointer pos = new PositionPointer(QUICK_GAMES_OUTCOME_POS);
                 nSelectedOutcome = getBufferInt( script, pos, ByteOrder.LITTLE_ENDIAN);
         }
-        
+
         betEntity = new BetQuickGamesEntity( txHash , BetEntity.BetTxType.QUICK_GAMES, version, quickGameType, diceGameType, betAmount,
                 nSelectedOutcome, tx.getBlockHeight(), tx.getTimestamp() );
         return (BetEntity) betEntity;

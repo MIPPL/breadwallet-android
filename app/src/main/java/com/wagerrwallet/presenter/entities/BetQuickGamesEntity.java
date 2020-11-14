@@ -1,6 +1,11 @@
 package com.wagerrwallet.presenter.entities;
 
 
+import android.content.Context;
+
+import com.wagerrwallet.R;
+import com.wagerrwallet.WagerrApp;
+
 /**
  * BreadWallet
  * <p>
@@ -105,8 +110,34 @@ public class BetQuickGamesEntity extends BetEntity {
         return gameType;
     }
 
-    public BetDiceGameType getDiceGameType() {
+    public BetDiceGameType  getDiceGameType() {
         return diceGameType;
+    }
+
+    public String  getDiceGameTypeText() {
+        String ret = "";
+        Context ctx = WagerrApp.getBreadContext();
+        switch (diceGameType)   {
+            case EQUAL:
+                ret = ctx.getResources().getString(R.string.Dice_Equal);
+                break;
+            case NOT_EQUAL:
+                ret = ctx.getResources().getString(R.string.Dice_NotEqual);
+                break;
+            case TOTAL_OVER:
+                ret = ctx.getResources().getString(R.string.Dice_TotalOver);
+                break;
+            case TOTAL_UNDER:
+                ret = ctx.getResources().getString(R.string.Dice_TotalUnder);
+                break;
+            case EVEN:
+                ret = ctx.getResources().getString(R.string.Dice_Even);
+                break;
+            case ODDS:
+                ret = ctx.getResources().getString(R.string.Dice_Odds);
+                break;
+        }
+        return ret;
     }
 
     public long getSelectedOutcome() {

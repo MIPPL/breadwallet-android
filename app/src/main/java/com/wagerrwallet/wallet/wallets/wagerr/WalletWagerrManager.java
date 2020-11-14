@@ -31,9 +31,11 @@ import com.wagerrwallet.presenter.entities.BRTransactionEntity;
 import com.wagerrwallet.presenter.entities.BetEntity;
 import com.wagerrwallet.presenter.entities.BetEventEntity;
 import com.wagerrwallet.presenter.entities.BetMappingEntity;
+import com.wagerrwallet.presenter.entities.BetQuickGamesEntity;
 import com.wagerrwallet.presenter.entities.BetResultEntity;
 import com.wagerrwallet.presenter.entities.BlockEntity;
 import com.wagerrwallet.presenter.entities.CurrencyEntity;
+import com.wagerrwallet.presenter.entities.DiceUiHolder;
 import com.wagerrwallet.presenter.entities.EventTxUiHolder;
 import com.wagerrwallet.presenter.entities.ParlayBetEntity;
 import com.wagerrwallet.presenter.entities.PeerEntity;
@@ -54,6 +56,7 @@ import com.wagerrwallet.tools.manager.TxManager;
 import com.wagerrwallet.tools.security.BRKeyStore;
 import com.wagerrwallet.tools.sqlite.BetEventTxDataStore;
 import com.wagerrwallet.tools.sqlite.BetMappingTxDataStore;
+import com.wagerrwallet.tools.sqlite.BetQuickGamesTxDataStore;
 import com.wagerrwallet.tools.sqlite.BetResultTxDataStore;
 import com.wagerrwallet.tools.sqlite.BetTxDataStore;
 import com.wagerrwallet.tools.sqlite.BtcBchTransactionDataStore;
@@ -351,6 +354,13 @@ public class WalletWagerrManager extends BRCoreWalletManager implements BaseWall
             uiTxs = BRApiManager.InstaSwapReport((Activity)app, wallet);
         }
         return uiTxs;
+    }
+
+    public List<DiceUiHolder> getDiceUiHolders(Context app )    {
+        List<DiceUiHolder> txs = BetQuickGamesTxDataStore.getInstance(app).getAllTransactions(app);
+        if (txs == null || txs.size() <= 0) return null;
+
+        return txs;
     }
 
     @Override

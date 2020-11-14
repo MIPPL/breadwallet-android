@@ -1,7 +1,6 @@
 package com.wagerrwallet.presenter.activities;
 
 import android.animation.LayoutTransition;
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
@@ -20,32 +19,28 @@ import android.support.transition.TransitionManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ViewFlipper;
 
-import com.platform.HTTPServer;
 import com.wagerrwallet.R;
 import com.wagerrwallet.core.BRCorePeer;
-import com.wagerrwallet.presenter.activities.settings.WebViewActivity;
 import com.wagerrwallet.presenter.activities.util.BRActivity;
 import com.wagerrwallet.presenter.customviews.BRButton;
+import com.wagerrwallet.presenter.customviews.BRDiceSearchBar;
 import com.wagerrwallet.presenter.customviews.BRNotificationBar;
 import com.wagerrwallet.presenter.customviews.BRSwapSearchBar;
 import com.wagerrwallet.presenter.customviews.BRText;
 import com.wagerrwallet.tools.animation.BRAnimator;
 import com.wagerrwallet.tools.animation.BRDialog;
 import com.wagerrwallet.tools.manager.BRSharedPrefs;
+import com.wagerrwallet.tools.manager.DiceManager;
 import com.wagerrwallet.tools.manager.FontManager;
 import com.wagerrwallet.tools.manager.InternetManager;
 import com.wagerrwallet.tools.manager.SwapManager;
 import com.wagerrwallet.tools.manager.SyncManager;
-import com.wagerrwallet.tools.manager.SwapManager;
 import com.wagerrwallet.tools.sqlite.CurrencyDataSource;
 import com.wagerrwallet.tools.threads.executor.BRExecutor;
 import com.wagerrwallet.tools.util.CurrencyUtils;
@@ -72,8 +67,8 @@ import static com.wagerrwallet.tools.animation.BRAnimator.t2Size;
  * (c) Wagerr Betting platform 2020
  */
 
-public class SwapActivity extends BRActivity implements InternetManager.ConnectionReceiverListener, OnSwapListModified, SyncManager.OnProgressUpdate {
-    private static final String TAG = SwapActivity.class.getName();
+public class DiceActivity extends BRActivity implements InternetManager.ConnectionReceiverListener, SyncManager.OnProgressUpdate {
+    private static final String TAG = DiceActivity.class.getName();
     BRText mCurrencyTitle;
     BRText mCurrencyPriceUsd;
     BRText mBalancePrimary;
@@ -86,20 +81,20 @@ public class SwapActivity extends BRActivity implements InternetManager.Connecti
     ProgressBar mProgressBar;
 
     public ViewFlipper barFlipper;
-    private BRSwapSearchBar searchBar;
+    private BRDiceSearchBar searchBar;
     private ImageButton mSearchIcon;
     private ImageButton mSwap;
     private ConstraintLayout toolBarConstraintLayout;
 
     private BRNotificationBar mNotificationBar;
 
-    private static SwapActivity app;
+    private static DiceActivity app;
 
     private InternetManager mConnectionReceiver;
     private TestLogger logger;
     public boolean isSearchBarVisible = false;
 
-    public static SwapActivity getApp() {
+    public static DiceActivity getApp() {
         return app;
     }
 
@@ -107,7 +102,7 @@ public class SwapActivity extends BRActivity implements InternetManager.Connecti
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_swap);
+        setContentView(R.layout.activity_dice);
 
         mCurrencyTitle = findViewById(R.id.currency_label);
         mCurrencyPriceUsd = findViewById(R.id.currency_usd_price);
@@ -148,7 +143,7 @@ public class SwapActivity extends BRActivity implements InternetManager.Connecti
         mBuyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BRAnimator.showSendSwapFragment(SwapActivity.this, null);
+                BRAnimator.showSendSwapFragment(DiceActivity.this, null);
 
             }
         });
@@ -183,7 +178,7 @@ public class SwapActivity extends BRActivity implements InternetManager.Connecti
             }
         });
 
-        SwapManager.getInstance().init(this);
+        DiceManager.getInstance().init(this);
 
         onConnectionChanged(InternetManager.getInstance().isConnected(this));
 
@@ -259,7 +254,7 @@ public class SwapActivity extends BRActivity implements InternetManager.Connecti
         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
             @Override
             public void run() {
-                SwapManager.getInstance().updateSwapList(SwapActivity.this);
+                DiceManager.getInstance().updateDiceList(DiceActivity.this);
             }
         });
 
@@ -312,15 +307,9 @@ public class SwapActivity extends BRActivity implements InternetManager.Connecti
                     if (currentPackageName.equals(packageName)) {
                         return true;
                     }
-
-
                 }
-
-
             }
-
         }
-
 
         return false;
     }
@@ -472,7 +461,7 @@ public class SwapActivity extends BRActivity implements InternetManager.Connecti
             @Override
             public void run() {
                 if (wallet.getPeerManager().getConnectStatus() != BRCorePeer.ConnectStatus.Connected)
-                    wallet.connectWallet(SwapActivity.this);
+                    wallet.connectWallet(DiceActivity.this);
             }
         });
 
@@ -484,7 +473,7 @@ public class SwapActivity extends BRActivity implements InternetManager.Connecti
 
             @Override
             public void syncStarted() {
-                SyncManager.getInstance().startSyncing(SwapActivity.this, wallet, SwapActivity.this);
+                SyncManager.getInstance().startSyncing(DiceActivity.this, wallet, DiceActivity.this);
             }
         });
 
@@ -523,16 +512,16 @@ public class SwapActivity extends BRActivity implements InternetManager.Connecti
             if (barFlipper != null && barFlipper.getDisplayedChild() == 2) {
                 barFlipper.setDisplayedChild(0);
             }
-            final BaseWalletManager wm = WalletsMaster.getInstance(SwapActivity.this).getCurrentWallet(SwapActivity.this);
+            final BaseWalletManager wm = WalletsMaster.getInstance(DiceActivity.this).getCurrentWallet(DiceActivity.this);
             BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
                 @Override
                 public void run() {
                     final double progress = wm.getPeerManager()
-                            .getSyncProgress(BRSharedPrefs.getStartHeight(SwapActivity.this,
-                                    BRSharedPrefs.getCurrentWalletIso(SwapActivity.this)));
+                            .getSyncProgress(BRSharedPrefs.getStartHeight(DiceActivity.this,
+                                    BRSharedPrefs.getCurrentWalletIso(DiceActivity.this)));
 //                    Log.e(TAG, "run: " + progress);
                     if (progress < 1 && progress > 0) {
-                        SyncManager.getInstance().startSyncing(SwapActivity.this, wm, SwapActivity.this);
+                        SyncManager.getInstance().startSyncing(DiceActivity.this, wm, DiceActivity.this);
                     }
                 }
             });
@@ -561,17 +550,6 @@ public class SwapActivity extends BRActivity implements InternetManager.Connecti
     }
 
     @Override
-    public void swapListModified(String hash) {
-        BRExecutor.getInstance().forMainThreadTasks().execute(new Runnable() {
-            @Override
-            public void run() {
-                updateUi();
-            }
-        });
-
-    }
-
-    @Override
     public boolean onProgressUpdated(double progress) {
         mProgressBar.setProgress((int) (progress * 100));
         if (progress == 1) {
@@ -588,7 +566,6 @@ public class SwapActivity extends BRActivity implements InternetManager.Connecti
         return true;
     }
 
-
     //test logger
     class TestLogger extends Thread {
         private static final String TAG = "TestLogger";
@@ -599,8 +576,8 @@ public class SwapActivity extends BRActivity implements InternetManager.Connecti
 
             while (true) {
                 StringBuilder builder = new StringBuilder();
-                for (BaseWalletManager w : WalletsMaster.getInstance(SwapActivity.this).getAllWallets()) {
-                    builder.append("   " + w.getIso(SwapActivity.this));
+                for (BaseWalletManager w : WalletsMaster.getInstance(DiceActivity.this).getAllWallets()) {
+                    builder.append("   " + w.getIso(DiceActivity.this));
                     String connectionStatus = "";
                     if (w.getPeerManager().getConnectStatus() == BRCorePeer.ConnectStatus.Connected)
                         connectionStatus = "Connected";
@@ -609,7 +586,7 @@ public class SwapActivity extends BRActivity implements InternetManager.Connecti
                     else if (w.getPeerManager().getConnectStatus() == BRCorePeer.ConnectStatus.Connecting)
                         connectionStatus = "Connecting";
 
-                    double progress = w.getPeerManager().getSyncProgress(BRSharedPrefs.getStartHeight(SwapActivity.this, w.getIso(SwapActivity.this)));
+                    double progress = w.getPeerManager().getSyncProgress(BRSharedPrefs.getStartHeight(DiceActivity.this, w.getIso(DiceActivity.this)));
 
                     builder.append(" - " + connectionStatus + " " + progress * 100 + "%     ");
 

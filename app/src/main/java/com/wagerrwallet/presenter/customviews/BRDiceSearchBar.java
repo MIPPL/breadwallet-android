@@ -13,7 +13,6 @@ import android.widget.EditText;
 
 import com.wagerrwallet.R;
 import com.wagerrwallet.presenter.activities.SwapActivity;
-import com.wagerrwallet.presenter.activities.WalletActivity;
 import com.wagerrwallet.tools.manager.SwapManager;
 import com.wagerrwallet.tools.threads.executor.BRExecutor;
 
@@ -25,6 +24,7 @@ import com.wagerrwallet.tools.threads.executor.BRExecutor;
  * <p>
  *
  * (c) Wagerr Betting platform 2020
+ * <p/>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -43,9 +43,9 @@ import com.wagerrwallet.tools.threads.executor.BRExecutor;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-public class BRSwapSearchBar extends android.support.v7.widget.Toolbar {
+public class BRDiceSearchBar extends android.support.v7.widget.Toolbar {
 
-    private static final String TAG = BRSwapSearchBar.class.getName();
+    private static final String TAG = BRDiceSearchBar.class.getName();
 
     private EditText searchEdit;
     //    private LinearLayout filterButtonsLayout;
@@ -58,17 +58,17 @@ public class BRSwapSearchBar extends android.support.v7.widget.Toolbar {
 
     public boolean[] filterSwitches = new boolean[3];
 
-    public BRSwapSearchBar(Context context) {
+    public BRDiceSearchBar(Context context) {
         super(context);
         init();
     }
 
-    public BRSwapSearchBar(Context context, @Nullable AttributeSet attrs) {
+    public BRDiceSearchBar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public BRSwapSearchBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public BRDiceSearchBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }

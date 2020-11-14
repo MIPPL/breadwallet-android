@@ -233,6 +233,11 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
     public static final String BQGTX_DICE_GAME_TYPE   = "diceGameType";
     public static final String BQGTX_AMOUNT   = "betAmount";
     public static final String BQGTX_SELECTED_OUTCOME = "selectedOutcome";
+    public static final String BQGTX_DICE1 = "dice1";
+    public static final String BQGTX_DICE2   = "dice2";
+    public static final String BQGTX_RESULT   = "diceResult";
+    public static final String BQGTX_PAYOUT_AMOUNT   = "payoutAmount";
+    public static final String BQGTX_PAYOUT_TXHASH = "payoutTxHash";
 
     private static final String BQGTX_DATABASE_CREATE = "create table if not exists " + BQGTX_TABLE_NAME + " (" +
             BQGTX_COLUMN_ID + " text, " +
@@ -243,8 +248,12 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
             BQGTX_AMOUNT + " integer, " +
             BQGTX_BLOCK_HEIGHT + " integer, " +
             BQGTX_TIME_STAMP + " integer, " +
-            BQGTX_SELECTED_OUTCOME + " integer );";
-
+            BQGTX_SELECTED_OUTCOME + " integer, " +
+            BQGTX_DICE1 + " integer DEFAULT 0 , " +
+            BQGTX_DICE2 + " integer DEFAULT 0, " +
+            BQGTX_RESULT + " integer DEFAULT 0, " +
+            BQGTX_PAYOUT_AMOUNT + " integer DEFAULT 0 , " +
+            BQGTX_PAYOUT_TXHASH + " text DEFAULT '' );";
     /**
      * Peer table
      */
@@ -305,13 +314,7 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
         database.execSQL(BETX_DATABASE_CREATE);
         database.execSQL(BMTX_DATABASE_CREATE);
         database.execSQL(BRTX_DATABASE_CREATE);
-
-//        printTableStructures(database, MB_TABLE_NAME);
-//        printTableStructures(database, TX_TABLE_NAME);
-//        printTableStructures(database, PEER_TABLE_NAME);
-//        printTableStructures(database, CURRENCY_TABLE_NAME);
-
-//        database.execSQL("PRAGMA journal_mode=WAL;");
+        database.execSQL(BQGTX_DATABASE_CREATE);
     }
 
     @Override

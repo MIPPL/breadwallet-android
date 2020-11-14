@@ -10,6 +10,7 @@ import com.wagerrwallet.core.BRCoreTransaction;
 import com.wagerrwallet.core.BRCoreWallet;
 import com.wagerrwallet.presenter.entities.BRTransactionEntity;
 import com.wagerrwallet.presenter.entities.CurrencyEntity;
+import com.wagerrwallet.presenter.entities.DiceUiHolder;
 import com.wagerrwallet.presenter.entities.SwapUiHolder;
 import com.wagerrwallet.presenter.entities.TxUiHolder;
 import com.wagerrwallet.presenter.entities.EventTxUiHolder;
@@ -88,8 +89,11 @@ public interface BaseWalletManager {
     //get a list of all the transactions UI holders sorted by timestamp
     List<EventTxUiHolder> getEventTxUiHolders(Context app);
 
-    //get a list of all the transactions UI holders sorted by timestamp
+    //get a list of all the Instaswap UI holders sorted by timestamp
     List<SwapUiHolder> getSwapUiHolders(Context app);
+
+    //get a list of all the dice bet UI holders sorted by timestamp
+    List<DiceUiHolder> getDiceUiHolders(Context app);
 
     //generate the wallet if needed
     boolean generateWallet(Context app);

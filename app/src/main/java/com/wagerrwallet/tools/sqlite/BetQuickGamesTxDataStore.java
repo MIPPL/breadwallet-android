@@ -36,6 +36,7 @@ import android.util.Log;
 
 import com.wagerrwallet.presenter.entities.BetEntity;
 import com.wagerrwallet.presenter.entities.BetQuickGamesEntity;
+import com.wagerrwallet.presenter.entities.DiceUiHolder;
 import com.wagerrwallet.tools.manager.BRReportsManager;
 import com.wagerrwallet.tools.util.BRConstants;
 
@@ -57,7 +58,12 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
             BRSQLiteHelper.BQGTX_AMOUNT,
             BRSQLiteHelper.BQGTX_BLOCK_HEIGHT,
             BRSQLiteHelper.BQGTX_TIME_STAMP,
-            BRSQLiteHelper.BQGTX_SELECTED_OUTCOME
+            BRSQLiteHelper.BQGTX_SELECTED_OUTCOME,
+            BRSQLiteHelper.BQGTX_DICE1,
+            BRSQLiteHelper.BQGTX_DICE2,
+            BRSQLiteHelper.BQGTX_RESULT,
+            BRSQLiteHelper.BQGTX_PAYOUT_AMOUNT,
+            BRSQLiteHelper.BQGTX_PAYOUT_TXHASH
     };
 
     private static BetQuickGamesTxDataStore instance;
@@ -73,7 +79,7 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
         dbHelper = BRSQLiteHelper.getInstance(context);
     }
 
-    public BetQuickGamesEntity putTransaction(Context app, String iso, BetQuickGamesEntity transactionEntity) {
+    public BetQuickGamesEntity putTransaction(Context app, String iso, DiceUiHolder transactionEntity) {
 
         Log.e(TAG, "putTransaction: :" + transactionEntity.getTxHash() + ", b:" + transactionEntity.getBlockheight() + ", t:" + transactionEntity.getTimestamp());
         Cursor cursor = null;
@@ -89,13 +95,18 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
             values.put(BRSQLiteHelper.BQGTX_BLOCK_HEIGHT, transactionEntity.getBlockheight());
             values.put(BRSQLiteHelper.BQGTX_TIME_STAMP, transactionEntity.getTimestamp());
             values.put(BRSQLiteHelper.BQGTX_SELECTED_OUTCOME, transactionEntity.getSelectedOutcome());
+            values.put(BRSQLiteHelper.BQGTX_DICE1, transactionEntity.getDice1());
+            values.put(BRSQLiteHelper.BQGTX_DICE2, transactionEntity.getDice2());
+            values.put(BRSQLiteHelper.BQGTX_RESULT, transactionEntity.getDiceResult());
+            values.put(BRSQLiteHelper.BQGTX_PAYOUT_AMOUNT, transactionEntity.getPayoutAmount());
+            values.put(BRSQLiteHelper.BQGTX_PAYOUT_TXHASH, transactionEntity.getPayoutTxHash());
 
             database.beginTransaction();
             database.insert(BRSQLiteHelper.BQGTX_TABLE_NAME, null, values);
             cursor = database.query(BRSQLiteHelper.BQGTX_TABLE_NAME,
                     allColumns, null, null, null, null, null);
             cursor.moveToFirst();
-            BetQuickGamesEntity transactionEntity1 = cursorToTransaction(app, iso.toUpperCase(), cursor);
+            DiceUiHolder transactionEntity1 = cursorToTransaction(app, cursor);
 
             database.setTransactionSuccessful();
             return transactionEntity1;
@@ -116,25 +127,24 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
     public void deleteAllTransactions(Context app, String iso) {
         try {
             database = openDatabase();
-
-            database.delete(BRSQLiteHelper.BTX_TABLE_NAME, BRSQLiteHelper.TX_ISO + "=?", new String[]{iso.toUpperCase()});
+            database.delete(BRSQLiteHelper.BQGTX_TABLE_NAME, null, null);
         } finally {
             closeDatabase();
         }
     }
 
-    public List<BetQuickGamesEntity> getAllTransactions(Context app, String iso) {
-        List<BetQuickGamesEntity> transactions = new ArrayList<>();
+    public List<DiceUiHolder> getAllTransactions(Context app) {
+        List<DiceUiHolder> transactions = new ArrayList<>();
         Cursor cursor = null;
         try {
             database = openDatabase();
 
-            cursor = database.query(BRSQLiteHelper.BTX_TABLE_NAME,
-                    allColumns, BRSQLiteHelper.TX_ISO + "=?", new String[]{iso.toUpperCase()}, null, null, null);
+            cursor = database.query(BRSQLiteHelper.BQGTX_TABLE_NAME,
+                    allColumns, null, null, null, null, null);
 
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                BetQuickGamesEntity transactionEntity = cursorToTransaction(app, iso.toUpperCase(), cursor);
+                DiceUiHolder transactionEntity = cursorToTransaction(app, cursor);
                 transactions.add(transactionEntity);
                 cursor.moveToNext();
             }
@@ -143,17 +153,18 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
             closeDatabase();
             if (cursor != null)
                 cursor.close();
-            printTest(app, iso);
+            printTest(app);
         }
         return transactions;
     }
 
 
-    public static BetQuickGamesEntity cursorToTransaction(Context app, String iso, Cursor cursor) {
+    public static DiceUiHolder cursorToTransaction(Context app, Cursor cursor) {
 
-        return new BetQuickGamesEntity(cursor.getString(0), BetQuickGamesEntity.BetTxType.fromValue(cursor.getInt(1)), cursor.getLong(2),
+        return new DiceUiHolder(cursor.getString(0), BetQuickGamesEntity.BetTxType.fromValue(cursor.getInt(1)), cursor.getLong(2),
                     BetQuickGamesEntity.BetQuickGameType.fromValue(cursor.getInt(3)), BetQuickGamesEntity.BetDiceGameType.fromValue(cursor.getInt(4)), cursor.getLong(5),
-                    cursor.getLong(6), cursor.getLong(7), cursor.getLong(8));
+                    cursor.getLong(6), cursor.getLong(7), cursor.getLong(8), cursor.getInt(9), cursor.getInt(10), cursor.getInt(11),
+                    cursor.getLong(12), cursor.getString(13));
     }
 
     public void deleteTxByHash(Context app, String iso, String hash) {
@@ -181,7 +192,7 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
 
     }
 
-    private void printTest(Context app, String iso) {
+    private void printTest(Context app) {
         Cursor cursor = null;
         try {
             database = openDatabase();
@@ -192,7 +203,7 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
             builder.append("Total: " + cursor.getCount() + "\n");
             cursor.moveToFirst();
             if (!cursor.isAfterLast()) {
-                BetQuickGamesEntity ent = cursorToTransaction(app, iso.toUpperCase(), cursor);
+                BetQuickGamesEntity ent = cursorToTransaction(app, cursor);
                 builder.append("ISO:" + ent.getTxISO() + ", Hash:" + ent.getTxHash() + ", blockHeight:" + ent.getBlockheight() + ", timeStamp:" + ent.getTimestamp()
                         + ", eventID:" + ent.getEventID() + ", outcome:" + ent.getOutcome().getNumber() + ", amount:" + ent.getAmount()  + "\n");
             }

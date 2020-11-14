@@ -28,6 +28,7 @@ import com.wagerrwallet.presenter.entities.BRPeerEntity;
 import com.wagerrwallet.presenter.entities.BRTransactionEntity;
 import com.wagerrwallet.presenter.entities.BlockEntity;
 import com.wagerrwallet.presenter.entities.CurrencyEntity;
+import com.wagerrwallet.presenter.entities.DiceUiHolder;
 import com.wagerrwallet.presenter.entities.EventTxUiHolder;
 import com.wagerrwallet.presenter.entities.PeerEntity;
 import com.wagerrwallet.presenter.entities.SwapUiHolder;
@@ -273,7 +274,11 @@ public class WalletBitcoinManager extends BRCoreWalletManager implements BaseWal
 
     public List<SwapUiHolder> getSwapUiHolders( Context app)    {
         List<SwapUiHolder> uiTxs = new ArrayList<>();
+        return uiTxs;
+    }
 
+    public List<DiceUiHolder> getDiceUiHolders(Context app)    {
+        List<DiceUiHolder> uiTxs = new ArrayList<>();
         return uiTxs;
     }
 

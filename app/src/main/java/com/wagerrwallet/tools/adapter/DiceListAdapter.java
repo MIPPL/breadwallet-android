@@ -4,30 +4,23 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import com.platform.tools.KVStoreManager;
 import com.wagerrwallet.R;
+import com.wagerrwallet.WagerrApp;
 import com.wagerrwallet.presenter.customviews.BRText;
-import com.wagerrwallet.presenter.entities.SwapUiHolder;
-import com.wagerrwallet.tools.manager.BRSharedPrefs;
+import com.wagerrwallet.presenter.entities.BetEventEntity;
+import com.wagerrwallet.presenter.entities.BetQuickGamesEntity;
+import com.wagerrwallet.presenter.entities.DiceUiHolder;
 import com.wagerrwallet.tools.threads.executor.BRExecutor;
 import com.wagerrwallet.tools.util.BRDateUtil;
-import com.wagerrwallet.tools.util.CurrencyUtils;
-import com.wagerrwallet.tools.util.Utils;
 import com.wagerrwallet.wallet.WalletsMaster;
 import com.wagerrwallet.wallet.abstracts.BaseWalletManager;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,14 +51,14 @@ import java.util.List;
  * THE SOFTWARE.
  */
 
-public class SwapListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    public static final String TAG = SwapListAdapter.class.getName();
+public class DiceListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    public static final String TAG = DiceListAdapter.class.getName();
 
     private final Context mContext;
     private final int txResId;
     private final int promptResId;
-    private List<SwapUiHolder> backUpFeed;
-    private List<SwapUiHolder> itemFeed;
+    private List<DiceUiHolder> backUpFeed;
+    private List<DiceUiHolder> itemFeed;
     //    private Map<String, TxMetaData> mds;
     public boolean[] filterSwitches = { false, false, false };
     public String filterQuery="";
@@ -77,8 +70,8 @@ public class SwapListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 //    private boolean updatingMetadata;
 
-    public SwapListAdapter(Context mContext, List<SwapUiHolder> items) {
-        this.txResId = R.layout.swap_item;
+    public DiceListAdapter(Context mContext, List<DiceUiHolder> items) {
+        this.txResId = R.layout.dice_item;
         this.promptResId = R.layout.prompt_item;
         this.mContext = mContext;
         items = new ArrayList<>();
@@ -86,11 +79,11 @@ public class SwapListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 //        updateMetadata();
     }
 
-    public void setItems(List<SwapUiHolder> items) {
+    public void setItems(List<DiceUiHolder> items) {
         init(items);
     }
 
-    private void init(List<SwapUiHolder> items) {
+    private void init(List<DiceUiHolder> items) {
         if (items == null) items = new ArrayList<>();
         if (itemFeed == null) itemFeed = new ArrayList<>();
         if (backUpFeed == null) backUpFeed = new ArrayList<>();
@@ -104,8 +97,8 @@ public class SwapListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             @Override
             public void run() {
                 long s = System.currentTimeMillis();
-                List<SwapUiHolder> newItems = new ArrayList<>(itemFeed);
-                SwapUiHolder item;
+                List<DiceUiHolder> newItems = new ArrayList<>(itemFeed);
+                DiceUiHolder item;
                 for (int i = 0; i < newItems.size(); i++) {
                     item = newItems.get(i);
                 }
@@ -119,7 +112,7 @@ public class SwapListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
 
-    public List<SwapUiHolder> getItems() {
+    public List<DiceUiHolder> getItems() {
         return itemFeed;
     }
 
@@ -127,7 +120,7 @@ public class SwapListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // inflate the layout
         LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
-        return new SwapHolder(inflater.inflate(txResId, parent, false));
+        return new DiceHolder(inflater.inflate(txResId, parent, false));
     }
 
     @Override
@@ -135,7 +128,7 @@ public class SwapListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         switch (holder.getItemViewType()) {
             case txType:
                 holder.setIsRecyclable(false);
-                setTexts((SwapHolder) holder, position);
+                setTexts((DiceHolder) holder, position);
                 break;
             case promptType:
                 //setPrompt((PromptHolder) holder);
@@ -154,14 +147,20 @@ public class SwapListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return itemFeed.size();
     }
 
-    private void setTexts(final SwapHolder convertView, int position) {
+    private void setTexts(final DiceHolder convertView, int position) {
         BaseWalletManager wallet = WalletsMaster.getInstance(mContext).getCurrentWallet(mContext);
-        SwapUiHolder item = itemFeed.get(position);
+        DiceUiHolder item = itemFeed.get(position);
+        Context ctx = WagerrApp.getBreadContext();
 
-        convertView.transactionTimestamp.setText(item.getTimestamp());
-        convertView.transactionAmount.setText(item.getReceivingAmount()+ " WGR");
-        convertView.transactionState.setText(item.getTransactionState().toString());
-        convertView.transactionId.setText("ID: " + item.getTransactionId());
+        String shortDate = BRDateUtil.getShortDate(item.getTimestamp());
+        convertView.transactionTimestamp.setText(shortDate);
+        convertView.diceType.setText(item.getDiceGameTypeText());
+        convertView.betAmount.setText(String.format("%s = %d WGR", ctx.getResources().getString(R.string.Dice_Bet), item.getAmount() ));
+        convertView.dice1.setText(String.format("%s 1 = %d", ctx.getResources().getString(R.string.Dice_Dice), item.getDice1() ));
+        convertView.dice2.setText(String.format("%s 2 = %d", ctx.getResources().getString(R.string.Dice_Dice), item.getDice2() ));
+        convertView.diceTotal.setText(String.format("%s = %d", ctx.getResources().getString(R.string.Dice_Total), item.getDice1() + item.getDice2() ));
+        convertView.diceResult.setText(String.format("%s = %d", ctx.getResources().getString(R.string.Dice_Result), item.getDiceResult() ));
+        convertView.dicePayout.setText(String.format("%d WGR", item.getPayoutAmount() ));
     }
 
     public void resetFilter() {
@@ -184,26 +183,36 @@ public class SwapListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         int switchesON = 0;
         for (boolean i : switches) if (i) switchesON++;
 
-        final List<SwapUiHolder> filteredList = new ArrayList<>();
-        SwapUiHolder item;
+        final List<DiceUiHolder> filteredList = new ArrayList<>();
+        DiceUiHolder item;
         for (int i = 0; i < backUpFeed.size(); i++) {
             item = backUpFeed.get(i);
-            boolean matchesId = item.getTransactionId() != null && item.getTransactionId().toLowerCase().contains(lowerQuery);
+            boolean matchesId = item.getTxHash() != null && item.getTxHash().toLowerCase().contains(lowerQuery);
 
             if (matchesId) {
                 if (switchesON == 0) {
                     filteredList.add(item);
                 } else {
                     boolean willAdd = false;
-                    if (switches[0] && (item.getTransactionState() != SwapUiHolder.TransactionState.completed && item.getTransactionState() != SwapUiHolder.TransactionState.notcompleted)) {
+                    if (switches[0] && (item.getDiceGameType() != BetQuickGamesEntity.BetDiceGameType.EQUAL)) {
                         willAdd = true;
                     }
-                    if (switches[1] && item.getTransactionState() == SwapUiHolder.TransactionState.notcompleted ) {
+                    if (switches[1] && (item.getDiceGameType() != BetQuickGamesEntity.BetDiceGameType.NOT_EQUAL)) {
                         willAdd = true;
                     }
-                    if (switches[2] && item.getTransactionState() == SwapUiHolder.TransactionState.completed ) {
+                    if (switches[2] && (item.getDiceGameType() != BetQuickGamesEntity.BetDiceGameType.TOTAL_UNDER)) {
                         willAdd = true;
                     }
+                    if (switches[3] && (item.getDiceGameType() != BetQuickGamesEntity.BetDiceGameType.TOTAL_OVER)) {
+                        willAdd = true;
+                    }
+                    if (switches[4] && (item.getDiceGameType() != BetQuickGamesEntity.BetDiceGameType.EVEN)) {
+                        willAdd = true;
+                    }
+                    if (switches[5] && (item.getDiceGameType() != BetQuickGamesEntity.BetDiceGameType.ODDS)) {
+                        willAdd = true;
+                    }
+
                     if (willAdd) filteredList.add(item);
                 }
             }
@@ -216,22 +225,30 @@ public class SwapListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         Log.e(TAG, "filter: " + query + " took: " + (System.currentTimeMillis() - start));
     }
 
-    private class SwapHolder extends RecyclerView.ViewHolder {
+    private class DiceHolder extends RecyclerView.ViewHolder {
         public RelativeLayout mainLayout;
         public ConstraintLayout constraintLayout;
 
+        public BRText diceType;
+        public BRText betAmount;
+        public BRText dice1;
+        public BRText dice2;
+        public BRText diceTotal;
+        public BRText diceResult;
         public BRText transactionTimestamp;
-        public BRText transactionAmount;
-        public BRText transactionState;
-        public BRText transactionId;
+        public BRText dicePayout;
 
-        public SwapHolder(View view) {
+        public DiceHolder(View view) {
             super(view);
 
             transactionTimestamp = view.findViewById(R.id.tx_timestamp);
-            transactionAmount = view.findViewById(R.id.tx_amount);
-            transactionState = view.findViewById(R.id.tx_state);
-            transactionId = view.findViewById(R.id.tx_id);
+            diceType = view.findViewById(R.id.tx_dice_type);
+            betAmount = view.findViewById(R.id.tx_bet_amount);
+            dice1 = view.findViewById(R.id.tx_dice1);
+            dice2 = view.findViewById(R.id.tx_dice2);
+            diceTotal = view.findViewById(R.id.tx_total);
+            diceResult = view.findViewById(R.id.tx_result);
+            dicePayout = view.findViewById(R.id.tx_payout_amount);
         }
     }
 
