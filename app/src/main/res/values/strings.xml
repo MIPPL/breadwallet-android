@@ -804,6 +804,10 @@
     <string name="Dice.Total">Total</string>
     <string name="Dice.Result">Result</string>
 
+    <string name="Dice.EqualNotEqual">Equal/Not Equal</string>
+    <string name="Dice.OverUnder">Over/Under</string>
+    <string name="Dice.EvenOdds">Even/Odds</string>
+
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 

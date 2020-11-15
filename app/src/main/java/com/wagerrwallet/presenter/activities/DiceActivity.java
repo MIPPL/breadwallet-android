@@ -7,6 +7,7 @@ import android.app.usage.UsageStatsManager;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.hardware.ConsumerIrManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
@@ -21,7 +22,10 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ViewFlipper;
 
@@ -75,7 +79,6 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
     BRText mBalanceSecondary;
     Toolbar mToolbar;
     ImageButton mBackButton;
-    BRButton mBuyButton;
     BRText mBalanceLabel;
     BRText mProgressLabel;
     ProgressBar mProgressBar;
@@ -89,6 +92,24 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
     private BRNotificationBar mNotificationBar;
 
     private static DiceActivity app;
+
+    // dice bet controls
+    LinearLayout mLayoutBetOptions;
+    Button mEqualNotEqual;
+    Button mOverUnder;
+    Button mEvenOdds;
+
+    Button[] mDiceN = new Button[11];
+    LinearLayout mLayoutDiceEqualNotEqual;
+    LinearLayout mLayoutDiceEqualNotEqual2;
+
+    Button[] mDiceN5 = new Button[10];
+    LinearLayout mLayoutDiceOverUnder;
+    LinearLayout mLayoutDiceOverUnder2;
+
+    Button mBetLeft;
+    Button mBetRight;
+    EditText mBetAmount;
 
     private InternetManager mConnectionReceiver;
     private TestLogger logger;
@@ -110,7 +131,6 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         mBalanceSecondary = findViewById(R.id.balance_secondary);
         mToolbar = findViewById(R.id.bread_bar);
         mBackButton = findViewById(R.id.back_icon);
-        mBuyButton = findViewById(R.id.buy_button);
         barFlipper = findViewById(R.id.tool_bar_flipper);
         searchBar = findViewById(R.id.search_bar);
         mSearchIcon = findViewById(R.id.search_icon);
@@ -120,6 +140,42 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         mProgressLabel = findViewById(R.id.syncing_label);
         mProgressBar = findViewById(R.id.sync_progress);
         mNotificationBar = findViewById(R.id.notification_bar);
+
+        mLayoutBetOptions = findViewById(R.id.layout_bet_options);
+        mEqualNotEqual = findViewById(R.id.dice_eqnoteq);
+        mOverUnder = findViewById(R.id.dice_overunder);
+        mEvenOdds = findViewById(R.id.dice_evenodds);
+
+        mLayoutDiceEqualNotEqual = findViewById(R.id.layout_dice_equal);
+        mLayoutDiceEqualNotEqual2 = findViewById(R.id.layout_dice_equal2);
+        mDiceN[0] = findViewById(R.id.dice_2);
+        mDiceN[1] = findViewById(R.id.dice_3);
+        mDiceN[2] = findViewById(R.id.dice_4);
+        mDiceN[3] = findViewById(R.id.dice_5);
+        mDiceN[4] = findViewById(R.id.dice_6);
+        mDiceN[5] = findViewById(R.id.dice_7);
+        mDiceN[6] = findViewById(R.id.dice_8);
+        mDiceN[7] = findViewById(R.id.dice_9);
+        mDiceN[8] = findViewById(R.id.dice_10);
+        mDiceN[9] = findViewById(R.id.dice_11);
+        mDiceN[10] = findViewById(R.id.dice_12);
+
+        mLayoutDiceOverUnder = findViewById(R.id.layout_dice_overunder);
+        mLayoutDiceOverUnder2 = findViewById(R.id.layout_dice_overunder2);
+        mDiceN5[0] = findViewById(R.id.dice_2_5);
+        mDiceN5[1] = findViewById(R.id.dice_3_5);
+        mDiceN5[2] = findViewById(R.id.dice_4_5);
+        mDiceN5[3] = findViewById(R.id.dice_5_5);
+        mDiceN5[4] = findViewById(R.id.dice_6_5);
+        mDiceN5[5] = findViewById(R.id.dice_7_5);
+        mDiceN5[6] = findViewById(R.id.dice_8_5);
+        mDiceN5[7] = findViewById(R.id.dice_9_5);
+        mDiceN5[8] = findViewById(R.id.dice_10_5);
+        mDiceN5[9] = findViewById(R.id.dice_11_5);
+
+        mBetLeft = findViewById(R.id.dice_bet_left);
+        mBetRight = findViewById(R.id.dice_bet_right);
+        mBetAmount = findViewById(R.id.tx_amount);
 
         if (Utils.isEmulatorOrDebug(this)) {
             if (logger != null) logger.interrupt();
@@ -136,17 +192,6 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         BRAnimator.init(this);
         mBalancePrimary.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);//make it the size it should be after animation to get the X
         mBalanceSecondary.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);//make it the size it should be after animation to get the X
-
-
-        mBuyButton.setHasShadow(false);
-        mBuyButton.setVisibility(View.VISIBLE);
-        mBuyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                BRAnimator.showSendSwapFragment(DiceActivity.this, null);
-
-            }
-        });
 
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,10 +227,7 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
 
         onConnectionChanged(InternetManager.getInstance().isConnected(this));
 
-        Log.e(TAG, "---START WalletActivity OnCreate UpdateUI");
         updateUi();
-        Log.e(TAG, "---END WalletActivity OnCreate UpdateUI");
-//        exchangeTest();
 
         boolean cryptoPreferred = BRSharedPrefs.isCryptoPreferred(this);
 
@@ -196,10 +238,7 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
 
         // Check if the "Twilight" screen altering app is currently running
         if (checkIfScreenAlteringAppIsRunning("com.urbandroid.lux")) {
-
             BRDialog.showSimpleDialog(this, getString(R.string.Dialog_screenAlteringTitle), getString(R.string.Dialog_screenAlteringMessage));
-
-
         }
         
     }
