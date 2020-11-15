@@ -598,8 +598,8 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginStart="26dp"
                             android:background="@drawable/ic_dice"
-                            app:layout_constraintStart_toStart="parent"
-                            />
+                            app:layout_constraintStart_toStartOf="parent" />
+
                         <Button
                             android:id="@+id/dice_bet_left"
                             android:layout_width="wrap_content"
@@ -668,9 +668,7 @@
                             android:layout_marginEnd="26dp"
                             android:layout_marginStart="6dp"
                             android:background="@drawable/ic_dice"
-                            app:layout_constraintEnd_toEnd="parent"
-                            />
-
+                            app:layout_constraintEnd_toEndOf="parent" />
 
                     </LinearLayout>
 

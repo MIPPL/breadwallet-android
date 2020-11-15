@@ -7,6 +7,7 @@ import android.app.usage.UsageStatsManager;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.hardware.ConsumerIrManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
@@ -29,6 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ViewFlipper;
 
+import com.wagerrwallet.BuildConfig;
 import com.wagerrwallet.R;
 import com.wagerrwallet.core.BRCorePeer;
 import com.wagerrwallet.presenter.activities.util.BRActivity;
@@ -111,6 +113,19 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
     Button mBetRight;
     EditText mBetAmount;
 
+    // switches
+    private enum DiceBetOptions {
+        DICE_BET_EQUAL_NOT_EQUAL,
+        DICE_BET_OVER_UNDER,
+        DICE_BET_EVEN_ODDS
+    }
+
+    private DiceBetOptions diceBetOptions = DiceBetOptions.DICE_BET_EQUAL_NOT_EQUAL;
+    private int nDiceNSelected = 0;
+    private int nDiceN5Selected = 0;
+    private int nDiceNSelectedPrev = 0;
+    private int nDiceN5SelectedPrev = 0;
+
     private InternetManager mConnectionReceiver;
     private TestLogger logger;
     public boolean isSearchBarVisible = false;
@@ -146,6 +161,30 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         mOverUnder = findViewById(R.id.dice_overunder);
         mEvenOdds = findViewById(R.id.dice_evenodds);
 
+        mEqualNotEqual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                diceBetOptions = DiceBetOptions.DICE_BET_EQUAL_NOT_EQUAL;
+                updateDiceButtonsUI();
+            }
+        });
+
+        mOverUnder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                diceBetOptions = DiceBetOptions.DICE_BET_OVER_UNDER;
+                updateDiceButtonsUI();
+            }
+        });
+
+        mEvenOdds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                diceBetOptions = DiceBetOptions.DICE_BET_EVEN_ODDS;
+                updateDiceButtonsUI();
+            }
+        });
+
         mLayoutDiceEqualNotEqual = findViewById(R.id.layout_dice_equal);
         mLayoutDiceEqualNotEqual2 = findViewById(R.id.layout_dice_equal2);
         mDiceN[0] = findViewById(R.id.dice_2);
@@ -160,6 +199,20 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         mDiceN[9] = findViewById(R.id.dice_11);
         mDiceN[10] = findViewById(R.id.dice_12);
 
+        int n=0;
+        for ( Button btn : mDiceN)  {
+            final int i = n;
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    nDiceNSelectedPrev = nDiceNSelected;
+                    nDiceNSelected = i;
+                    updateDiceButtonsUI();
+                }
+            });
+            n++;
+        }
+
         mLayoutDiceOverUnder = findViewById(R.id.layout_dice_overunder);
         mLayoutDiceOverUnder2 = findViewById(R.id.layout_dice_overunder2);
         mDiceN5[0] = findViewById(R.id.dice_2_5);
@@ -172,6 +225,20 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         mDiceN5[7] = findViewById(R.id.dice_9_5);
         mDiceN5[8] = findViewById(R.id.dice_10_5);
         mDiceN5[9] = findViewById(R.id.dice_11_5);
+
+        n = 0;
+        for ( Button btn : mDiceN5)  {
+            final int i = n;
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    nDiceN5SelectedPrev = nDiceN5Selected;
+                    nDiceN5Selected = i;
+                    updateDiceButtonsUI();
+                }
+            });
+            n++;
+        }
 
         mBetLeft = findViewById(R.id.dice_bet_left);
         mBetRight = findViewById(R.id.dice_bet_right);
@@ -270,6 +337,49 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         }
     }
 
+    private void updateDiceButtonsUI()  {
+        boolean bDiceEqualVisible = false;
+        boolean bDiceOverVisible = false;
+        Drawable drwSelected = getResources().getDrawable( R.drawable.dice_button_bg_selected );
+        Drawable drwNotSelected = getResources().getDrawable( R.drawable.dice_button_bg );
+
+        switch ( diceBetOptions )   {
+            case DICE_BET_EQUAL_NOT_EQUAL:
+                bDiceEqualVisible = true;
+                mEqualNotEqual.setBackground( drwSelected );
+                mOverUnder.setBackground( drwNotSelected );
+                mEvenOdds.setBackground( drwNotSelected );
+                mDiceN[nDiceNSelected].setBackground( drwSelected );
+                mDiceN[nDiceNSelectedPrev].setBackground( drwNotSelected );
+                mBetLeft.setText( getResources().getString( R.string.Dice_EqualTo) );
+                mBetRight.setText( getResources().getString( R.string.Dice_NotEqualTo) );
+                break;
+
+            case DICE_BET_OVER_UNDER:
+                bDiceOverVisible = true;
+                mEqualNotEqual.setBackground( drwNotSelected );
+                mOverUnder.setBackground( drwSelected );
+                mEvenOdds.setBackground( drwNotSelected );
+                mDiceN5[nDiceN5Selected].setBackground( drwSelected );
+                mDiceN5[nDiceN5SelectedPrev].setBackground( drwNotSelected );
+                mBetLeft.setText( getResources().getString( R.string.Dice_RollOver) );
+                mBetRight.setText( getResources().getString( R.string.Dice_RollUnder) );
+                break;
+
+            case DICE_BET_EVEN_ODDS:
+                mEqualNotEqual.setBackground( drwNotSelected );
+                mOverUnder.setBackground( drwNotSelected );
+                mEvenOdds.setBackground( drwSelected );
+                mBetLeft.setText( getResources().getString( R.string.Dice_RollEven) );
+                mBetRight.setText( getResources().getString( R.string.Dice_RollOdds) );
+                break;
+        }
+        mLayoutDiceEqualNotEqual.setVisibility((bDiceEqualVisible)?View.VISIBLE:View.GONE);
+        mLayoutDiceEqualNotEqual2.setVisibility((bDiceEqualVisible)?View.VISIBLE:View.GONE);
+        mLayoutDiceOverUnder.setVisibility((bDiceOverVisible)?View.VISIBLE:View.GONE);
+        mLayoutDiceOverUnder2.setVisibility((bDiceOverVisible)?View.VISIBLE:View.GONE);
+    }
+
     private void updateUi() {
         final BaseWalletManager wallet = WalletsMaster.getInstance(this).getCurrentWallet(this);
         if (wallet == null) {
@@ -288,7 +398,6 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         mBalancePrimary.setText(fiatBalance);
         mBalanceSecondary.setText(cryptoBalance);
         mToolbar.setBackgroundColor(Color.parseColor(wallet.getUiConfiguration().colorHex));
-        mBuyButton.setColor(Color.parseColor(wallet.getUiConfiguration().colorHex));
 
         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
             @Override
@@ -480,7 +589,6 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
             }
         });
         final BaseWalletManager wallet = WalletsMaster.getInstance(this).getCurrentWallet(this);
-        wallet.addSwapListModifiedListener(this);
         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
             @Override
             public void run() {

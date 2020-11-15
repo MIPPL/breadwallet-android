@@ -48,11 +48,14 @@ public class BRDiceSearchBar extends android.support.v7.widget.Toolbar {
     private static final String TAG = BRDiceSearchBar.class.getName();
 
     private EditText searchEdit;
-    //    private LinearLayout filterButtonsLayout;
-    private BRButton openFilter;
-    private BRButton notCompletedFilter;
-    private BRButton completedFilter;
     private BRButton cancelButton;
+    //    private LinearLayout filterButtonsLayout;
+    private BRButton equalFilter;
+    private BRButton notEqualFilter;
+    private BRButton overFilter;
+    private BRButton underButton;
+    private BRButton evenFilter;
+    private BRButton oddButton;
 
     private SwapActivity breadActivity;
 
@@ -75,13 +78,16 @@ public class BRDiceSearchBar extends android.support.v7.widget.Toolbar {
 
 
     private void init() {
-        inflate(getContext(), R.layout.swapsearch_bar, this);
+        inflate(getContext(), R.layout.dicesearch_bar, this);
         breadActivity = (SwapActivity) getContext();
         searchEdit = (EditText) findViewById(R.id.search_edit);
-        openFilter = (BRButton) findViewById(R.id.open_filter);
-        notCompletedFilter = (BRButton) findViewById(R.id.not_completed_filter);
-        completedFilter = (BRButton) findViewById(R.id.complete_filter);
         cancelButton = (BRButton) findViewById(R.id.cancel_button);
+        equalFilter = (BRButton) findViewById(R.id.equal_filter);
+        notEqualFilter = (BRButton) findViewById(R.id.notequal_filter);
+        overFilter = (BRButton) findViewById(R.id.over_filter);
+        underButton = (BRButton) findViewById(R.id.under_filter);
+        evenFilter = (BRButton) findViewById(R.id.even_filter);
+        oddButton = (BRButton) findViewById(R.id.odds_filter);
 
         clearSwitches();
         setListeners();
@@ -107,9 +113,13 @@ public class BRDiceSearchBar extends android.support.v7.widget.Toolbar {
     }
 
     private void updateFilterButtonsUI(boolean[] switches) {
-        openFilter.setType(switches[0] ? 3 : 2);
-        notCompletedFilter.setType(switches[1] ? 3 : 2);
-        completedFilter.setType(switches[2] ? 3 : 2);
+        equalFilter.setType(switches[0] ? 3 : 2);
+        notEqualFilter.setType(!switches[0] ? 3 : 2);
+        overFilter.setType(switches[1] ? 3 : 2);
+        underButton.setType(!switches[1] ? 3 : 2);
+        evenFilter.setType(switches[2] ? 3 : 2);
+        oddButton.setType(!switches[2] ? 3 : 2);
+
         if (SwapManager.getInstance().adapter != null)
             SwapManager.getInstance().adapter.filterBy(searchEdit.getText().toString(), filterSwitches);
     }

@@ -54,6 +54,8 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
     private BRText mFiatTotal;
     private RelativeLayout mEvents;
     private RelativeLayout mSwaps;
+    private RelativeLayout mDiceGame;
+
     private RelativeLayout mSettings;
     private RelativeLayout mSecurity;
     private RelativeLayout mSupport;
@@ -90,6 +92,7 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
 
         mEvents = findViewById(R.id.events_row);
         mSwaps = findViewById(R.id.swaps_row);
+        mDiceGame = findViewById( R.id.dice_row);
         mSettings = findViewById(R.id.settings_row);
         mSecurity = findViewById(R.id.security_row);
         mSupport = findViewById(R.id.support_row);
@@ -140,6 +143,16 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, SwapActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+            }
+        });
+
+        mDiceGame.setBackground( getResources().getDrawable( (BuildConfig.BITCOIN_TESTNET) ? R.drawable.event_menu_shape_testnet : R.drawable.event_menu_shape, null) );
+        mDiceGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, DiceActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
             }

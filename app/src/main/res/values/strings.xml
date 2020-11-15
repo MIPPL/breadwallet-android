@@ -797,12 +797,20 @@
     <string name="Dice.NotEqual">Not Equal</string>
     <string name="Dice.TotalOver">Total Over</string>
     <string name="Dice.TotalUnder">Total Under</string>
+    <string name="Dice.Over">Over</string>
+    <string name="Dice.Under">Under</string>
     <string name="Dice.Even">Even</string>
-    <string name="Dice.Odds">Odds</string>
+    <string name="Dice.Odds">Odd</string>
     <string name="Dice.Bet">Bet</string>
     <string name="Dice.Dice">Dice</string>
     <string name="Dice.Total">Total</string>
     <string name="Dice.Result">Result</string>
+    <string name="Dice.EqualTo">Equal to</string>
+    <string name="Dice.NotEqualTo">Not Equal to</string>
+    <string name="Dice.RollOver">Roll Over</string>
+    <string name="Dice.RollUnder">Roll Under</string>
+    <string name="Dice.RollEven">Roll Even</string>
+    <string name="Dice.RollOdds">Roll Odd</string>
 
     <string name="Dice.EqualNotEqual">Equal/Not Equal</string>
     <string name="Dice.OverUnder">Over/Under</string>
