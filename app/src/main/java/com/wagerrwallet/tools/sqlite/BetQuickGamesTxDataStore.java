@@ -79,7 +79,7 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
         dbHelper = BRSQLiteHelper.getInstance(context);
     }
 
-    public BetQuickGamesEntity putTransaction(Context app, String iso, DiceUiHolder transactionEntity) {
+    public BetQuickGamesEntity putTransaction(Context app, DiceUiHolder transactionEntity) {
 
         Log.e(TAG, "putTransaction: :" + transactionEntity.getTxHash() + ", b:" + transactionEntity.getBlockheight() + ", t:" + transactionEntity.getTimestamp());
         Cursor cursor = null;
@@ -95,11 +95,6 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
             values.put(BRSQLiteHelper.BQGTX_BLOCK_HEIGHT, transactionEntity.getBlockheight());
             values.put(BRSQLiteHelper.BQGTX_TIME_STAMP, transactionEntity.getTimestamp());
             values.put(BRSQLiteHelper.BQGTX_SELECTED_OUTCOME, transactionEntity.getSelectedOutcome());
-            values.put(BRSQLiteHelper.BQGTX_DICE1, transactionEntity.getDice1());
-            values.put(BRSQLiteHelper.BQGTX_DICE2, transactionEntity.getDice2());
-            values.put(BRSQLiteHelper.BQGTX_RESULT, transactionEntity.getDiceResult());
-            values.put(BRSQLiteHelper.BQGTX_PAYOUT_AMOUNT, transactionEntity.getPayoutAmount());
-            values.put(BRSQLiteHelper.BQGTX_PAYOUT_TXHASH, transactionEntity.getPayoutTxHash());
 
             database.beginTransaction();
             database.insert(BRSQLiteHelper.BQGTX_TABLE_NAME, null, values);
@@ -113,6 +108,38 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
         } catch (Exception ex) {
             BRReportsManager.reportBug(ex);
             Log.e(TAG, "Error inserting bet tx into SQLite", ex);
+            //Error in between database transaction
+        } finally {
+            database.endTransaction();
+            closeDatabase();
+            if (cursor != null) cursor.close();
+        }
+        return null;
+
+
+    }
+
+    public BetQuickGamesEntity updateTransaction(Context app, DiceUiHolder transactionEntity) {
+
+        Log.e(TAG, "updateQGTransaction: :" + transactionEntity.getTxHash() + ", b:" + transactionEntity.getBlockheight() + ", t:" + transactionEntity.getTimestamp());
+        Cursor cursor = null;
+        try {
+            database = openDatabase();
+            ContentValues values = new ContentValues();
+            values.put(BRSQLiteHelper.BQGTX_DICE1, transactionEntity.getDice1());
+            values.put(BRSQLiteHelper.BQGTX_DICE2, transactionEntity.getDice2());
+            values.put(BRSQLiteHelper.BQGTX_RESULT, transactionEntity.getDiceResult());
+            values.put(BRSQLiteHelper.BQGTX_PAYOUT_AMOUNT, transactionEntity.getPayoutAmount());
+            values.put(BRSQLiteHelper.BQGTX_PAYOUT_TXHASH, transactionEntity.getPayoutTxHash());
+
+            database.beginTransaction();
+            database.update(BRSQLiteHelper.BQGTX_TABLE_NAME, values, BRSQLiteHelper.BQGTX_COLUMN_ID + "=?",
+                    new String[]{transactionEntity.getTxHash()});
+            database.setTransactionSuccessful();
+            return transactionEntity;
+        } catch (Exception ex) {
+            BRReportsManager.reportBug(ex);
+            Log.e(TAG, "Error updating quick game tx into SQLite", ex);
             //Error in between database transaction
         } finally {
             database.endTransaction();

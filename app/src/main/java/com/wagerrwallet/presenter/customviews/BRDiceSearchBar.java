@@ -12,8 +12,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.wagerrwallet.R;
-import com.wagerrwallet.presenter.activities.SwapActivity;
-import com.wagerrwallet.tools.manager.SwapManager;
+import com.wagerrwallet.presenter.activities.DiceActivity;
+import com.wagerrwallet.tools.manager.DiceManager;
+import com.wagerrwallet.tools.manager.DiceManager;
 import com.wagerrwallet.tools.threads.executor.BRExecutor;
 
 /**
@@ -57,9 +58,9 @@ public class BRDiceSearchBar extends android.support.v7.widget.Toolbar {
     private BRButton evenFilter;
     private BRButton oddButton;
 
-    private SwapActivity breadActivity;
+    private DiceActivity breadActivity;
 
-    public boolean[] filterSwitches = new boolean[3];
+    public boolean[] filterSwitches = new boolean[6];
 
     public BRDiceSearchBar(Context context) {
         super(context);
@@ -76,10 +77,9 @@ public class BRDiceSearchBar extends android.support.v7.widget.Toolbar {
         init();
     }
 
-
     private void init() {
         inflate(getContext(), R.layout.dicesearch_bar, this);
-        breadActivity = (SwapActivity) getContext();
+        breadActivity = (DiceActivity) getContext();
         searchEdit = (EditText) findViewById(R.id.search_edit);
         cancelButton = (BRButton) findViewById(R.id.cancel_button);
         equalFilter = (BRButton) findViewById(R.id.equal_filter);
@@ -106,7 +106,7 @@ public class BRDiceSearchBar extends android.support.v7.widget.Toolbar {
         BRExecutor.getInstance().forBackgroundTasks().execute(new Runnable() {
             @Override
             public void run() {
-                SwapManager.getInstance().updateSwapList(breadActivity);
+                DiceManager.getInstance().updateDiceList(breadActivity);
             }
         });
 
@@ -114,14 +114,14 @@ public class BRDiceSearchBar extends android.support.v7.widget.Toolbar {
 
     private void updateFilterButtonsUI(boolean[] switches) {
         equalFilter.setType(switches[0] ? 3 : 2);
-        notEqualFilter.setType(!switches[0] ? 3 : 2);
-        overFilter.setType(switches[1] ? 3 : 2);
-        underButton.setType(!switches[1] ? 3 : 2);
-        evenFilter.setType(switches[2] ? 3 : 2);
-        oddButton.setType(!switches[2] ? 3 : 2);
+        notEqualFilter.setType(switches[1] ? 3 : 2);
+        overFilter.setType(switches[2] ? 3 : 2);
+        underButton.setType(switches[3] ? 3 : 2);
+        evenFilter.setType(switches[4] ? 3 : 2);
+        oddButton.setType(switches[5] ? 3 : 2);
 
-        if (SwapManager.getInstance().adapter != null)
-            SwapManager.getInstance().adapter.filterBy(searchEdit.getText().toString(), filterSwitches);
+        if (DiceManager.getInstance().adapter != null)
+            DiceManager.getInstance().adapter.filterBy(searchEdit.getText().toString(), filterSwitches);
     }
 
     private void setListeners() {
@@ -155,8 +155,8 @@ public class BRDiceSearchBar extends android.support.v7.widget.Toolbar {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (SwapManager.getInstance().adapter != null)
-                    SwapManager.getInstance().adapter.filterBy(s.toString(), filterSwitches);
+                if (DiceManager.getInstance().adapter != null)
+                    DiceManager.getInstance().adapter.filterBy(s.toString(), filterSwitches);
             }
 
             @Override
@@ -174,33 +174,52 @@ public class BRDiceSearchBar extends android.support.v7.widget.Toolbar {
             }
         });
 
-        openFilter.setOnClickListener(new OnClickListener() {
+        equalFilter.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 filterSwitches[0] = !filterSwitches[0];
-                filterSwitches[1] = false;
-                filterSwitches[2] = false;
                 updateFilterButtonsUI(filterSwitches);
 
             }
         });
 
-        notCompletedFilter.setOnClickListener(new OnClickListener() {
+        notEqualFilter.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 filterSwitches[1] = !filterSwitches[1];
-                filterSwitches[0] = false;
-                filterSwitches[2] = false;
                 updateFilterButtonsUI(filterSwitches);
             }
         });
 
-        completedFilter.setOnClickListener(new OnClickListener() {
+        overFilter.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 filterSwitches[2] = !filterSwitches[2];
-                filterSwitches[1] = false;
-                filterSwitches[0] = false;
+                updateFilterButtonsUI(filterSwitches);
+            }
+        });
+
+        underButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterSwitches[3] = !filterSwitches[3];
+                updateFilterButtonsUI(filterSwitches);
+
+            }
+        });
+
+        evenFilter.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterSwitches[4] = !filterSwitches[4];
+                updateFilterButtonsUI(filterSwitches);
+            }
+        });
+
+        oddButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterSwitches[5] = !filterSwitches[5];
                 updateFilterButtonsUI(filterSwitches);
             }
         });
@@ -210,6 +229,9 @@ public class BRDiceSearchBar extends android.support.v7.widget.Toolbar {
         filterSwitches[0] = false;
         filterSwitches[1] = false;
         filterSwitches[2] = false;
+        filterSwitches[3] = false;
+        filterSwitches[4] = false;
+        filterSwitches[5] = false;
     }
 
     public void onShow(boolean b) {
@@ -226,15 +248,15 @@ public class BRDiceSearchBar extends android.support.v7.widget.Toolbar {
                     keyboard.showSoftInput(searchEdit, 0);
                 }
             }, 400);
-            if (SwapManager.getInstance().adapter != null)
-                SwapManager.getInstance().adapter.updateData();
+            if (DiceManager.getInstance().adapter != null)
+                DiceManager.getInstance().adapter.updateData();
 
         } else {
             keyboard.hideSoftInputFromWindow(searchEdit.getWindowToken(), 0);
             clearSwitches();
             updateFilterButtonsUI(filterSwitches);
-            if (SwapManager.getInstance().adapter != null) {
-                SwapManager.getInstance().adapter.resetFilter();
+            if (DiceManager.getInstance().adapter != null) {
+                DiceManager.getInstance().adapter.resetFilter();
             }
         }
         breadActivity.isSearchBarVisible = b;

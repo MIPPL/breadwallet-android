@@ -37,7 +37,6 @@ import com.wagerrwallet.presenter.activities.util.BRActivity;
 import com.wagerrwallet.presenter.customviews.BRButton;
 import com.wagerrwallet.presenter.customviews.BRDiceSearchBar;
 import com.wagerrwallet.presenter.customviews.BRNotificationBar;
-import com.wagerrwallet.presenter.customviews.BRSwapSearchBar;
 import com.wagerrwallet.presenter.customviews.BRText;
 import com.wagerrwallet.tools.animation.BRAnimator;
 import com.wagerrwallet.tools.animation.BRDialog;
@@ -45,7 +44,7 @@ import com.wagerrwallet.tools.manager.BRSharedPrefs;
 import com.wagerrwallet.tools.manager.DiceManager;
 import com.wagerrwallet.tools.manager.FontManager;
 import com.wagerrwallet.tools.manager.InternetManager;
-import com.wagerrwallet.tools.manager.SwapManager;
+import com.wagerrwallet.tools.manager.DiceManager;
 import com.wagerrwallet.tools.manager.SyncManager;
 import com.wagerrwallet.tools.sqlite.CurrencyDataSource;
 import com.wagerrwallet.tools.threads.executor.BRExecutor;
@@ -53,7 +52,6 @@ import com.wagerrwallet.tools.util.CurrencyUtils;
 import com.wagerrwallet.tools.util.Utils;
 import com.wagerrwallet.wallet.WalletsMaster;
 import com.wagerrwallet.wallet.abstracts.BaseWalletManager;
-import com.wagerrwallet.wallet.abstracts.OnSwapListModified;
 import com.wagerrwallet.wallet.abstracts.SyncListener;
 import com.wagerrwallet.wallet.wallets.util.CryptoUriParser;
 
@@ -574,8 +572,8 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
 
         setupNetworking();
 
-        SwapManager.getInstance().adapter.updateData();
-        SwapManager.getInstance().onResume(this);
+        DiceManager.getInstance().adapter.updateData();
+        DiceManager.getInstance().onResume(this);
 
         CurrencyDataSource.getInstance(this).addOnDataChangedListener(new CurrencyDataSource.OnDataChanged() {
             @Override

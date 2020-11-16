@@ -52,7 +52,7 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
     }
 
     public static final String DATABASE_NAME = "breadwallet.db";
-    private static final int DATABASE_VERSION = 15;
+    private static final int DATABASE_VERSION = 16;     // Wagerr v16 = new table for quick games
 
     /**
      * MerkleBlock table
@@ -320,12 +320,10 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        if (oldVersion < 13 && (newVersion >= 13)) {
-            boolean migrationNeeded = !tableExists(MB_TABLE_NAME, db);
-            onCreate(db); //create new db tables
-
-            if (migrationNeeded)
-                migrateDatabases(db);
+        if (oldVersion == 15 && newVersion == 16) {
+            if ( !tableExists(BQGTX_TABLE_NAME, db) )   {
+                db.execSQL(BQGTX_DATABASE_CREATE);
+            }
         } else {
             //drop everything maybe?
 //            db.execSQL("DROP TABLE IF EXISTS " + MB_TABLE_NAME);

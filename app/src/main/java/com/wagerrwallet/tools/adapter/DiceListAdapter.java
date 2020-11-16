@@ -200,10 +200,10 @@ public class DiceListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     if (switches[1] && (item.getDiceGameType() != BetQuickGamesEntity.BetDiceGameType.NOT_EQUAL)) {
                         willAdd = true;
                     }
-                    if (switches[2] && (item.getDiceGameType() != BetQuickGamesEntity.BetDiceGameType.TOTAL_UNDER)) {
+                    if (switches[2] && (item.getDiceGameType() != BetQuickGamesEntity.BetDiceGameType.TOTAL_OVER)) {
                         willAdd = true;
                     }
-                    if (switches[3] && (item.getDiceGameType() != BetQuickGamesEntity.BetDiceGameType.TOTAL_OVER)) {
+                    if (switches[3] && (item.getDiceGameType() != BetQuickGamesEntity.BetDiceGameType.TOTAL_UNDER)) {
                         willAdd = true;
                     }
                     if (switches[4] && (item.getDiceGameType() != BetQuickGamesEntity.BetDiceGameType.EVEN)) {
