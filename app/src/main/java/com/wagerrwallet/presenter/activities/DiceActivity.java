@@ -88,6 +88,7 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
     private ImageButton mSearchIcon;
     private ImageButton mSwap;
     private ConstraintLayout toolBarConstraintLayout;
+    private ConstraintLayout toolBarConstraintLayout2;
 
     private BRNotificationBar mNotificationBar;
 
@@ -148,6 +149,7 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         searchBar = findViewById(R.id.search_bar);
         mSearchIcon = findViewById(R.id.search_icon);
         toolBarConstraintLayout = findViewById(R.id.bread_toolbar);
+        toolBarConstraintLayout2= findViewById(R.id.bread_toolbar2);
         mSwap = findViewById(R.id.swap);
         mBalanceLabel = findViewById(R.id.balance_label);
         mProgressLabel = findViewById(R.id.syncing_label);
@@ -203,9 +205,11 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    nDiceNSelectedPrev = nDiceNSelected;
                     nDiceNSelected = i;
-                    updateDiceButtonsUI();
+                    if (nDiceNSelectedPrev != nDiceNSelected) {
+                        updateDiceButtonsUI();
+                        nDiceNSelectedPrev = nDiceNSelected;
+                    }
                 }
             });
             n++;
@@ -230,9 +234,11 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    nDiceN5SelectedPrev = nDiceN5Selected;
                     nDiceN5Selected = i;
-                    updateDiceButtonsUI();
+                    if (nDiceN5SelectedPrev != nDiceN5Selected) {
+                        updateDiceButtonsUI();
+                        nDiceN5SelectedPrev = nDiceN5Selected;
+                    }
                 }
             });
             n++;
@@ -396,6 +402,7 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         mBalancePrimary.setText(fiatBalance);
         mBalanceSecondary.setText(cryptoBalance);
         mToolbar.setBackgroundColor(Color.parseColor(wallet.getUiConfiguration().colorHex));
+        toolBarConstraintLayout2.setBackgroundColor(Color.parseColor(wallet.getUiConfiguration().colorHex));
 
         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
             @Override
@@ -490,7 +497,7 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
 
             // Align crypto balance to the right parent
             set.connect(R.id.balance_secondary, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, px8);
-            set.connect(R.id.balance_secondary, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, -px8);
+            set.connect(R.id.balance_secondary, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, px8);
 
             // Align swap icon to left of crypto balance
             set.connect(R.id.swap, ConstraintSet.END, R.id.balance_secondary, ConstraintSet.START, px8);

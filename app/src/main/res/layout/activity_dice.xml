@@ -33,21 +33,22 @@
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/bread_bar"
-                                               android:layout_width="match_parent"
-                                               android:layout_height="280dp"
-                                               android:background="@color/currency_header_background"
-                                               android:clipChildren="false"
-                                               android:clipToPadding="false"
-                                               android:contentInsetLeft="0dp"
-                                               android:contentInsetStart="0dp"
-                                               app:contentInsetLeft="0dp"
-                                               app:contentInsetStart="0dp">
+                   android:layout_width="match_parent"
+                   android:layout_height="120dp"
+                   android:background="@color/currency_header_background"
+                   android:clipChildren="false"
+                   android:clipToPadding="false"
+                   android:contentInsetLeft="0dp"
+                   android:contentInsetStart="0dp"
+                   app:contentInsetLeft="0dp"
+                   app:contentInsetStart="0dp">
 
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/bread_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:animateLayoutChanges="true"
+
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
@@ -191,520 +192,529 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"/>
 
-                    <LinearLayout
-                        android:id="@+id/layout_bet_options"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/balance_primary"
-                        android:gravity="center_horizontal|center_vertical"
-                        android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/dice_eqnoteq"
-                        android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:layout_marginStart="20dp"
-                        android:background="@drawable/dice_button_bg_selected"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:text="@string/Dice.EqualNotEqual"
-                        android:textColor="#800000"
-                        android:gravity="center"
-                        android:textSize="14dp"
-                        android:layout_weight="1" />
-
-                    <Button
-                        android:id="@+id/dice_overunder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:layout_marginStart="20dp"
-                        android:background="@drawable/dice_button_bg"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:text="@string/Dice.OverUnder"
-                        android:textColor="#800000"
-                        android:textSize="14dp"
-                        android:layout_weight="1"/>
-
-                        <Button
-                            android:id="@+id/dice_evenodds"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="@string/Dice.EvenOdds"
-                            android:textColor="#800000"
-                            android:textSize="16dp"
-                            android:layout_weight="1" />
-            </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/layout_dice_equal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:visibility="visible"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/layout_bet_options"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/dice_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg_selected"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="2"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-
-                        <Button
-                            android:id="@+id/dice_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="3"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-
-                        <Button
-                            android:id="@+id/dice_4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="4"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="5"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="6"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="7"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/layout_dice_equal2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="5dp"
-                        android:visibility="visible"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/layout_dice_equal"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
-
-                    <Button
-                            android:id="@+id/dice_8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="8"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="9"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="10"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="11"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="12"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/layout_dice_overunder"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:visibility="gone"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/layout_bet_options"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/dice_2_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg_selected"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="2.5"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-
-                        <Button
-                            android:id="@+id/dice_3_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="3.5"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_4_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="4.5"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_5_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="5.5"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_6_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="6.5"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/layout_dice_overunder2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:visibility="gone"
-                        android:layout_marginTop="5dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/layout_dice_overunder"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/dice_7_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="7.5"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_8_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="8.5"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_9_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="9.5"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_10_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="10.5"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-                        <Button
-                            android:id="@+id/dice_11_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="11.5"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/layout_bet_bar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginBottom="10dp"
-                        android:visibility="visible"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
-
-                        <ImageButton
-                            android:id="@+id/dice_left"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginStart="26dp"
-                            android:background="@drawable/ic_dice"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <Button
-                            android:id="@+id/dice_bet_left"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="6dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="@string/Dice.Equal"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-
-                        <EditText
-                            android:id="@+id/tx_amount"
-                            android:layout_width="90dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="1dp"
-                            android:layout_marginLeft="10dp"
-                            android:paddingStart="5dp"
-                            android:paddingEnd="5dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:text=""
-                            android:hint="Min.Bet 25"
-                            android:background="@drawable/dice_bet_bg"
-                            android:singleLine="true"
-                            android:inputType="number"
-                            android:textColor="@color/total_assets_usd_color"
-                            android:imeOptions="actionDone"
-                            android:textSize="16sp" />
-
-                        <com.wagerrwallet.presenter.customviews.BRText
-                            android:id="@+id/tx_currency"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_toRightOf="@id/tx_amount"
-                            android:text="WGR"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:visibility="visible" />
-
-                        <Button
-                            android:id="@+id/dice_bet_right"
-                            android:layout_width="wrap_content"
-                            android:layout_height="33dp"
-                            android:layout_marginStart="10dp"
-                            android:background="@drawable/dice_button_bg"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="@string/Dice.NotEqual"
-                            android:textColor="#800000"
-                            android:gravity="center"
-                            android:textSize="14dp"
-                            android:layout_weight="1" />
-
-                        <ImageButton
-                            android:id="@+id/dice_right"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="26dp"
-                            android:layout_marginStart="6dp"
-                            android:background="@drawable/ic_dice"
-                            app:layout_constraintEnd_toEndOf="parent" />
-
-                    </LinearLayout>
-
                 </android.support.constraint.ConstraintLayout>
-
 
             </android.support.v7.widget.Toolbar>
 
             <com.wagerrwallet.presenter.customviews.BRDiceSearchBar xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                               android:id="@+id/search_bar"
-                                                               android:layout_width="match_parent"
-                                                               android:layout_height="160dp"
-                                                               android:background="@drawable/bread_gradient"
-                                                               android:contentInsetLeft="0dp"
-                                                               android:contentInsetStart="0dp"
-                                                               app:contentInsetLeft="0dp"
-                                                               app:contentInsetStart="0dp"/>
+                   android:id="@+id/search_bar"
+                   android:layout_width="match_parent"
+                   android:layout_height="120dp"
+                   android:background="@drawable/bread_gradient"
+                   android:contentInsetLeft="0dp"
+                   android:contentInsetStart="0dp"
+                   app:contentInsetLeft="0dp"
+                   app:contentInsetStart="0dp"/>
 
             <com.wagerrwallet.presenter.customviews.BRNotificationBar xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                                     android:id="@+id/notification_bar"
-                                                                     android:layout_width="match_parent"
-                                                                     android:layout_height="160dp"
-                                                                     android:layout_alignParentTop="true"
-                                                                     android:layout_marginLeft="0dp"
-                                                                     android:layout_marginRight="0dp"
-                                                                     android:background="@drawable/bread_gradient"
-                                                                     android:contentInsetLeft="0dp"
-                                                                     android:contentInsetStart="0dp"
-                                                                     android:visibility="visible"
-                                                                     app:breadText="No internet connection found.\nCheck your connection and try again."
-                                                                     app:contentInsetLeft="0dp"
-                                                                     app:contentInsetStart="0dp"/>
+                 android:id="@+id/notification_bar"
+                 android:layout_width="match_parent"
+                 android:layout_height="120dp"
+                 android:layout_alignParentTop="true"
+                 android:layout_marginLeft="0dp"
+                 android:layout_marginRight="0dp"
+                 android:background="@drawable/bread_gradient"
+                 android:contentInsetLeft="0dp"
+                 android:contentInsetStart="0dp"
+                 android:visibility="visible"
+                 app:breadText="No internet connection found.\nCheck your connection and try again."
+                 app:contentInsetLeft="0dp"
+                 app:contentInsetStart="0dp"/>
 
 
         </ViewFlipper>
 
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/bread_toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:animateLayoutChanges="true"
+            android:background="@color/currency_header_background"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <LinearLayout
+                android:id="@+id/layout_bet_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/dice_eqnoteq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg_selected"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="@string/Dice.EqualNotEqual"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/dice_overunder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="@string/Dice.OverUnder"
+                    android:textColor="#800000"
+                    android:textSize="12dp"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/dice_evenodds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="@string/Dice.EvenOdds"
+                    android:textColor="#800000"
+                    android:textSize="12dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_dice_equal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:visibility="visible"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_bet_options"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/dice_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg_selected"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="2"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/dice_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="3"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/dice_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="4"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="5"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="6"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="7"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_dice_equal2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:visibility="visible"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_dice_equal"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/dice_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="8"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="9"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="10"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="11"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="12"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_dice_overunder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_bet_options"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/dice_2_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg_selected"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="2.5"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/dice_3_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="3.5"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_4_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="4.5"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_5_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="5.5"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_6_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="6.5"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_dice_overunder2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_dice_overunder"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/dice_7_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="7.5"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_8_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="8.5"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_9_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="9.5"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_10_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="10.5"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/dice_11_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="11.5"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_bet_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:visibility="visible"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/dice_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/ic_dice"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/dice_bet_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/Dice.EqualTo"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/tx_amount"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text=""
+                    android:hint="Min.Bet 25"
+                    android:background="@drawable/dice_bet_bg"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:textColor="@color/total_assets_usd_color"
+                    android:imeOptions="actionDone"
+                    android:textSize="16sp" />
+
+                <com.wagerrwallet.presenter.customviews.BRText
+                    android:id="@+id/tx_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@id/tx_amount"
+                    android:text="WGR"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/dice_bet_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/dice_button_bg"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/Dice.NotEqual"
+                    android:textColor="#800000"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/dice_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/ic_dice"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
     </LinearLayout>
 
     <LinearLayout
