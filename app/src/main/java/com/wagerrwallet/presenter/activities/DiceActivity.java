@@ -33,11 +33,17 @@ import android.widget.ViewFlipper;
 import com.wagerrwallet.BuildConfig;
 import com.wagerrwallet.R;
 import com.wagerrwallet.core.BRCorePeer;
+import com.wagerrwallet.core.BRCoreTransaction;
 import com.wagerrwallet.presenter.activities.util.BRActivity;
 import com.wagerrwallet.presenter.customviews.BRButton;
+import com.wagerrwallet.presenter.customviews.BRDialogView;
 import com.wagerrwallet.presenter.customviews.BRDiceSearchBar;
 import com.wagerrwallet.presenter.customviews.BRNotificationBar;
 import com.wagerrwallet.presenter.customviews.BRText;
+import com.wagerrwallet.presenter.entities.BetEntity;
+import com.wagerrwallet.presenter.entities.BetEventEntity;
+import com.wagerrwallet.presenter.entities.BetQuickGamesEntity;
+import com.wagerrwallet.presenter.entities.CryptoRequest;
 import com.wagerrwallet.tools.animation.BRAnimator;
 import com.wagerrwallet.tools.animation.BRDialog;
 import com.wagerrwallet.tools.manager.BRSharedPrefs;
@@ -45,6 +51,7 @@ import com.wagerrwallet.tools.manager.DiceManager;
 import com.wagerrwallet.tools.manager.FontManager;
 import com.wagerrwallet.tools.manager.InternetManager;
 import com.wagerrwallet.tools.manager.DiceManager;
+import com.wagerrwallet.tools.manager.SendManager;
 import com.wagerrwallet.tools.manager.SyncManager;
 import com.wagerrwallet.tools.sqlite.CurrencyDataSource;
 import com.wagerrwallet.tools.threads.executor.BRExecutor;
@@ -73,6 +80,8 @@ import static com.wagerrwallet.tools.animation.BRAnimator.t2Size;
 
 public class DiceActivity extends BRActivity implements InternetManager.ConnectionReceiverListener, SyncManager.OnProgressUpdate {
     private static final String TAG = DiceActivity.class.getName();
+    private static final long UNIT_MULTIPLIER = 100000000L;     // so far in full WGR units
+
     BRText mCurrencyTitle;
     BRText mCurrencyPriceUsd;
     BRText mBalancePrimary;
@@ -245,7 +254,18 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         }
 
         mBetLeft = findViewById(R.id.dice_bet_left);
+
+        mBetLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {    AcceptBet( true );            }
+        });
+
         mBetRight = findViewById(R.id.dice_bet_right);
+        mBetRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {    AcceptBet( false );           }
+        });
+
         mBetAmount = findViewById(R.id.tx_amount);
 
         if (Utils.isEmulatorOrDebug(this)) {
@@ -314,6 +334,82 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         
     }
 
+    private void AcceptBet( boolean bLeft )    {
+        BaseWalletManager wallet = WalletsMaster.getInstance(app).getCurrentWallet(app);
+        Boolean isSyncing =  wallet.getPeerManager().getSyncProgress(BRSharedPrefs.getStartHeight(app, "WGR" ))<1;
+        isSyncing = false;  // +++ temp for testing
+        String strErrMessage = "";
+        if (isSyncing)    {
+            strErrMessage = "Please wait until wallet is fully synced";
+        }
+        else {
+            int min = app.getResources().getInteger(R.integer.min_bet_amount);
+            int max = Math.min( (int)(wallet.getWallet().getBalance()/UNIT_MULTIPLIER),
+                    app.getResources().getInteger(R.integer.max_bet_amount));
+            String strAmount = mBetAmount.getText().toString().replace(',', '.');
+            Float fAmount = Float.parseFloat(strAmount);
+            long amount = (long)(fAmount * UNIT_MULTIPLIER);
+
+            if ( fAmount < min )    {
+                strErrMessage = String.format("Minimum bet amount is %d WGR", min );
+            }
+            if (fAmount > max)  {
+                strErrMessage = String.format("Maximum bet amount is %d WGR", max );
+            }
+
+            if ( strErrMessage =="" ) {  // no errors, continue
+                BRCoreTransaction tx = wallet.getWallet().createDiceBetTransaction(amount, BetQuickGamesEntity.BetQuickGameType.DICE.getNumber(), getDiceGameType(bLeft).getNumber(), getSelectedOutcome());
+                CryptoRequest item = new CryptoRequest(tx, null, false, "", "", new BigDecimal(amount));
+                SendManager.sendTransaction(DiceActivity.this, item, wallet);
+            }
+        }
+
+        if ( strErrMessage!="" ) {
+            BRDialog.showCustomDialog(app, "Error", strErrMessage, app.getString(R.string.Button_ok), null, new BRDialogView.BROnClickListener() {
+                @Override
+                public void onClick(BRDialogView brDialogView) {
+                    brDialogView.dismiss();
+                }
+            }, null, null, 0);
+        }
+    }
+
+    private BetQuickGamesEntity.BetDiceGameType getDiceGameType( boolean bLeft)   {
+        BetQuickGamesEntity.BetDiceGameType ret = BetQuickGamesEntity.BetDiceGameType.UNKNOWN;
+
+        switch ( diceBetOptions )   {
+            case DICE_BET_EQUAL_NOT_EQUAL:
+                ret = (bLeft) ? BetQuickGamesEntity.BetDiceGameType.EQUAL: BetQuickGamesEntity.BetDiceGameType.NOT_EQUAL ;
+                break;
+
+            case DICE_BET_OVER_UNDER:
+                ret = (bLeft) ? BetQuickGamesEntity.BetDiceGameType.TOTAL_OVER: BetQuickGamesEntity.BetDiceGameType.TOTAL_UNDER ;
+                break;
+
+            case DICE_BET_EVEN_ODDS:
+                ret = (bLeft) ? BetQuickGamesEntity.BetDiceGameType.EVEN: BetQuickGamesEntity.BetDiceGameType.ODDS ;
+                break;
+        }
+        return ret;
+    }
+
+    private int getSelectedOutcome()    {
+        int ret = 0;
+        switch ( diceBetOptions )   {
+            case DICE_BET_EQUAL_NOT_EQUAL:
+                ret = nDiceNSelected+2;
+                break;
+
+            case DICE_BET_OVER_UNDER:
+                ret = nDiceN5Selected+1;
+                break;
+
+            case DICE_BET_EVEN_ODDS:    // no outcome, ignored
+                break;
+        }
+        return ret;
+    }
+
     public boolean isSearchActive() {
         return isSearchBarVisible;
     }
@@ -353,8 +449,8 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
                 mEqualNotEqual.setBackground( drwSelected );
                 mOverUnder.setBackground( drwNotSelected );
                 mEvenOdds.setBackground( drwNotSelected );
-                mDiceN[nDiceNSelected].setBackground( drwSelected );
                 mDiceN[nDiceNSelectedPrev].setBackground( drwNotSelected );
+                mDiceN[nDiceNSelected].setBackground( drwSelected );
                 mBetLeft.setText( getResources().getString( R.string.Dice_EqualTo) );
                 mBetRight.setText( getResources().getString( R.string.Dice_NotEqualTo) );
                 break;
@@ -364,8 +460,8 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
                 mEqualNotEqual.setBackground( drwNotSelected );
                 mOverUnder.setBackground( drwSelected );
                 mEvenOdds.setBackground( drwNotSelected );
-                mDiceN5[nDiceN5Selected].setBackground( drwSelected );
                 mDiceN5[nDiceN5SelectedPrev].setBackground( drwNotSelected );
+                mDiceN5[nDiceN5Selected].setBackground( drwSelected );
                 mBetLeft.setText( getResources().getString( R.string.Dice_RollOver) );
                 mBetRight.setText( getResources().getString( R.string.Dice_RollUnder) );
                 break;
