@@ -305,13 +305,6 @@ public class WalletWagerrManager extends BRCoreWalletManager implements BaseWall
                     , (tx.getInputAddresses().length==1 && tx.getInputAddresses()[0].equals("") && tx.getOutputAddresses().length>=1 && tx.getOutputAddresses()[0].length()==0) );      // is coinbase or POS
 
             BetEntity be = WagerrOpCodeManager.getEventIdFromCoreTx(tx);
-            /* delete after testing
-            if (be!=null && be instanceof BetQuickGamesEntity)  {
-                final Context ctx = WagerrApp.getBreadContext();
-                BetQuickGamesTxDataStore bqgtds = BetQuickGamesTxDataStore.getInstance(ctx);
-                bqgtds.putTransaction(ctx, (BetQuickGamesEntity) be);
-            }
-            */
 
             txUiHolder.setBetEntity(be);
             uiTxs.add(txUiHolder);

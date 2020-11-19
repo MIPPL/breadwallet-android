@@ -4,6 +4,7 @@ import android.animation.LayoutTransition;
 import android.app.ActivityManager;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -21,13 +22,17 @@ import android.support.transition.TransitionManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.wagerrwallet.BuildConfig;
@@ -83,6 +88,11 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
     private static final String TAG = DiceActivity.class.getName();
     private static final long UNIT_MULTIPLIER = 100000000L;     // so far in full WGR units
 
+    private static final Float fRewardEvenOdd = 1.99f;
+    private static final Float[] fRewardEqual = new Float[] { 35.65f, 17.83f, 11.89f, 8.92f, 7.138f, 5.95f, 7.138f, 8.92f, 11.89f, 17.83f, 35.65f } ;
+    private static final Float[] fRewardNotEqual = new Float[] { 1.028215f, 1.058212f, 1.089991f, 1.12375f, 1.159588f, 1.198f, 1.159588f, 1.12375f, 1.089991f, 1.058212f, 1.028215f } ;
+    private static final Float[] fRewardOverUnder = new Float[] { 35.65f, 11.89f, 5.95f, 3.574f, 2.386f, 1.707058f, 1.380754f, 1.198f, 1.089991f, 1.028215f } ;
+
     BRText mCurrencyTitle;
     BRText mCurrencyPriceUsd;
     BRText mBalancePrimary;
@@ -92,6 +102,8 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
     BRText mBalanceLabel;
     BRText mProgressLabel;
     ProgressBar mProgressBar;
+    BRText mPotentialLeft;
+    BRText mPotentialRight;
 
     public ViewFlipper barFlipper;
     private BRDiceSearchBar searchBar;
@@ -166,6 +178,8 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         mProgressBar = findViewById(R.id.sync_progress);
         mNotificationBar = findViewById(R.id.notification_bar);
 
+        mPotentialLeft =  findViewById(R.id.tx_potential_left);
+        mPotentialRight =  findViewById(R.id.tx_potential_right);
         mLayoutBetOptions = findViewById(R.id.layout_bet_options);
         mEqualNotEqual = findViewById(R.id.dice_eqnoteq);
         mOverUnder = findViewById(R.id.dice_overunder);
@@ -269,6 +283,18 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
 
         mBetAmount = findViewById(R.id.tx_amount);
 
+        mBetAmount.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    mBetAmount.clearFocus();
+                    updateDiceButtonsUI();
+                    return true;
+                }
+                return false;
+            }
+        });
+
         if (Utils.isEmulatorOrDebug(this)) {
             if (logger != null) logger.interrupt();
             logger = new TestLogger(); //Sync logger
@@ -320,6 +346,7 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         onConnectionChanged(InternetManager.getInstance().isConnected(this));
 
         updateUi();
+        updateDiceButtonsUI();
 
         boolean cryptoPreferred = BRSharedPrefs.isCryptoPreferred(this);
 
@@ -461,6 +488,17 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
         boolean bDiceOverVisible = false;
         Drawable drwSelected = getResources().getDrawable( R.drawable.dice_button_bg_selected );
         Drawable drwNotSelected = getResources().getDrawable( R.drawable.dice_button_bg );
+        Float fPotentialLeft = 0f;
+        Float fPotentialRight = 0f;
+        Float fAmount = 0f;
+
+        String strAmount = mBetAmount.getText().toString().replace(',', '.');
+        try {
+            fAmount = Float.parseFloat(strAmount);
+        }
+        catch (NumberFormatException ex)    {
+            fAmount = 0f;
+        }
 
         switch ( diceBetOptions )   {
             case DICE_BET_EQUAL_NOT_EQUAL:
@@ -472,6 +510,16 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
                 mDiceN[nDiceNSelected].setBackground( drwSelected );
                 mBetLeft.setText( getResources().getString( R.string.Dice_EqualTo) );
                 mBetRight.setText( getResources().getString( R.string.Dice_NotEqualTo) );
+                if (fAmount>0) {
+                    fPotentialLeft = DiceActivity.fRewardEqual[nDiceNSelected] * fAmount;
+                    fPotentialRight = DiceActivity.fRewardNotEqual[nDiceNSelected] * fAmount;
+                    mPotentialLeft.setText(String.format("%.2f WGR", fPotentialLeft ));
+                    mPotentialRight.setText(String.format("%.2f WGR", fPotentialRight ));
+                }
+                else    {
+                    mPotentialLeft.setText("");
+                    mPotentialRight.setText("");
+                }
                 break;
 
             case DICE_BET_OVER_UNDER:
@@ -483,6 +531,16 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
                 mDiceN5[nDiceN5Selected].setBackground( drwSelected );
                 mBetLeft.setText( getResources().getString( R.string.Dice_RollOver) );
                 mBetRight.setText( getResources().getString( R.string.Dice_RollUnder) );
+                if (fAmount>0) {
+                    fPotentialLeft = DiceActivity.fRewardOverUnder[nDiceN5Selected] * fAmount;
+                    fPotentialRight = DiceActivity.fRewardOverUnder[9 - nDiceN5Selected] * fAmount;
+                    mPotentialLeft.setText(String.format("%.2f WGR", fPotentialLeft ));
+                    mPotentialRight.setText(String.format("%.2f WGR", fPotentialRight ));
+                }
+                else    {
+                    mPotentialLeft.setText("");
+                    mPotentialRight.setText("");
+                }
                 break;
 
             case DICE_BET_EVEN_ODDS:
@@ -491,6 +549,15 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
                 mEvenOdds.setBackground( drwSelected );
                 mBetLeft.setText( getResources().getString( R.string.Dice_RollEven) );
                 mBetRight.setText( getResources().getString( R.string.Dice_RollOdds) );
+                if (fAmount>0) {
+                    fPotentialLeft = fPotentialRight = DiceActivity.fRewardEvenOdd * fAmount;
+                    mPotentialLeft.setText(String.format("%.2f WGR", fPotentialLeft ));
+                    mPotentialRight.setText(String.format("%.2f WGR", fPotentialRight ));
+                }
+                else    {
+                    mPotentialLeft.setText("");
+                    mPotentialRight.setText("");
+                }
                 break;
         }
         mLayoutDiceEqualNotEqual.setVisibility((bDiceEqualVisible)?View.VISIBLE:View.GONE);

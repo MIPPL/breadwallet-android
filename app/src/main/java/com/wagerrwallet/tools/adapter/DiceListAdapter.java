@@ -153,7 +153,7 @@ public class DiceListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         DiceUiHolder item = itemFeed.get(position);
         Context ctx = WagerrApp.getBreadContext();
 
-        String shortDate = BRDateUtil.getShortDate(item.getTimestamp());
+        String shortDate = BRDateUtil.getShortDate(item.getTimestamp()*1000);
         convertView.transactionTimestamp.setText(shortDate);
         convertView.diceType.setText(item.getDiceGameTypeText());
         convertView.betAmount.setText(String.format("%s = %d WGR", ctx.getResources().getString(R.string.Dice_Bet), item.getAmount() / BRConstants.ONE_BITCOIN));

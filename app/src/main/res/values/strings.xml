@@ -812,6 +812,7 @@
     <string name="Dice.RollEven">Roll Even</string>
     <string name="Dice.RollOdds">Roll Odd</string>
     <string name="Dice.SelectedOutcome">Selected outcome</string>
+    <string name="Dice.PotentialReward">Potential Reward</string>
 
     <string name="Dice.EqualNotEqual">Equal/Not Equal</string>
     <string name="Dice.OverUnder">Over/Under</string>
