@@ -91,7 +91,7 @@
         android:maxLength="38"
         android:maxLines="1"
         android:paddingBottom="0dp"
-        android:text="Total = 8"
+        android:text="Selected outcome = 8"
         android:textColor="@color/black"
         android:textSize="12sp" />
 

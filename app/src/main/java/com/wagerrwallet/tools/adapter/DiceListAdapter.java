@@ -17,6 +17,7 @@ import com.wagerrwallet.presenter.entities.BetEventEntity;
 import com.wagerrwallet.presenter.entities.BetQuickGamesEntity;
 import com.wagerrwallet.presenter.entities.DiceUiHolder;
 import com.wagerrwallet.tools.threads.executor.BRExecutor;
+import com.wagerrwallet.tools.util.BRConstants;
 import com.wagerrwallet.tools.util.BRDateUtil;
 import com.wagerrwallet.wallet.WalletsMaster;
 import com.wagerrwallet.wallet.abstracts.BaseWalletManager;
@@ -155,11 +156,11 @@ public class DiceListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         String shortDate = BRDateUtil.getShortDate(item.getTimestamp());
         convertView.transactionTimestamp.setText(shortDate);
         convertView.diceType.setText(item.getDiceGameTypeText());
-        convertView.betAmount.setText(String.format("%s = %d WGR", ctx.getResources().getString(R.string.Dice_Bet), item.getAmount() ));
+        convertView.betAmount.setText(String.format("%s = %d WGR", ctx.getResources().getString(R.string.Dice_Bet), item.getAmount() / BRConstants.ONE_BITCOIN));
         convertView.dice1.setText(String.format("%s 1 = %d", ctx.getResources().getString(R.string.Dice_Dice), item.getDice1() ));
         convertView.dice2.setText(String.format("%s 2 = %d", ctx.getResources().getString(R.string.Dice_Dice), item.getDice2() ));
-        convertView.diceTotal.setText(String.format("%s = %d", ctx.getResources().getString(R.string.Dice_Total), item.getDice1() + item.getDice2() ));
-        convertView.diceResult.setText(String.format("%s = %d", ctx.getResources().getString(R.string.Dice_Result), item.getDiceResult() ));
+        convertView.diceTotal.setText(item.getSelectedOutcomeTx() );
+        convertView.diceResult.setText(String.format("%s = %d", ctx.getResources().getString(R.string.Dice_Result), item.getDice1() + item.getDice2() ));
         convertView.dicePayout.setText(String.format("%d WGR", item.getPayoutAmount() ));
     }
 

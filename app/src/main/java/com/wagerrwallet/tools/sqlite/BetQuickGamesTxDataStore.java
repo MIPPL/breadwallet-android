@@ -79,7 +79,7 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
         dbHelper = BRSQLiteHelper.getInstance(context);
     }
 
-    public BetQuickGamesEntity putTransaction(Context app, DiceUiHolder transactionEntity) {
+    public BetQuickGamesEntity putTransaction(Context app, BetQuickGamesEntity transactionEntity) {
 
         Log.e(TAG, "putTransaction: :" + transactionEntity.getTxHash() + ", b:" + transactionEntity.getBlockheight() + ", t:" + transactionEntity.getTimestamp());
         Cursor cursor = null;
@@ -151,7 +151,7 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
 
     }
 
-    public void deleteAllTransactions(Context app, String iso) {
+    public void deleteAllTransactions(Context app) {
         try {
             database = openDatabase();
             database.delete(BRSQLiteHelper.BQGTX_TABLE_NAME, null, null);
@@ -190,7 +190,7 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
 
         return new DiceUiHolder(cursor.getString(0), BetQuickGamesEntity.BetTxType.fromValue(cursor.getInt(1)), cursor.getLong(2),
                     BetQuickGamesEntity.BetQuickGameType.fromValue(cursor.getInt(3)), BetQuickGamesEntity.BetDiceGameType.fromValue(cursor.getInt(4)), cursor.getLong(5),
-                    cursor.getLong(6), cursor.getLong(7), cursor.getLong(8), cursor.getInt(9), cursor.getInt(10), cursor.getInt(11),
+                    cursor.getLong(8), cursor.getLong(6), cursor.getLong(7), cursor.getInt(9), cursor.getInt(10), cursor.getInt(11),
                     cursor.getLong(12), cursor.getString(13));
     }
 
@@ -232,7 +232,7 @@ public class BetQuickGamesTxDataStore implements BRDataSourceInterface {
             if (!cursor.isAfterLast()) {
                 BetQuickGamesEntity ent = cursorToTransaction(app, cursor);
                 builder.append("ISO:" + ent.getTxISO() + ", Hash:" + ent.getTxHash() + ", blockHeight:" + ent.getBlockheight() + ", timeStamp:" + ent.getTimestamp()
-                        + ", eventID:" + ent.getEventID() + ", outcome:" + ent.getOutcome().getNumber() + ", amount:" + ent.getAmount()  + "\n");
+                        + ", eventID:" + ent.getEventID() + ", amount:" + ent.getAmount()  + "\n");
             }
             Log.e(TAG, "printTest: " + builder.toString());
         } finally {

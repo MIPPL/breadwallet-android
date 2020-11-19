@@ -95,7 +95,8 @@ public class BetQuickGamesEntity extends BetEntity {
         this.blockheight = blockheight;
         this.timestamp = timestamp;
         this.txHash = txHash;
-
+        this.gameType = betQuickGameType;
+        this.diceGameType = betDiceGameType;
         this.version = version;
         this.type = type;
 
@@ -142,5 +143,28 @@ public class BetQuickGamesEntity extends BetEntity {
 
     public long getSelectedOutcome() {
         return selectedOutcome;
+    }
+
+    public String getSelectedOutcomeTx() {
+        Context ctx = WagerrApp.getBreadContext();
+        String ret="", outcome="";
+
+        switch (diceGameType)   {
+            case EQUAL:
+            case NOT_EQUAL:
+                outcome = String.format("%d", selectedOutcome );
+                ret = String.format("%s = %s", ctx.getResources().getString(R.string.Dice_SelectedOutcome), outcome );
+                break;
+            case TOTAL_OVER:
+            case TOTAL_UNDER:
+                outcome = String.format("%d.5", selectedOutcome );
+                ret = String.format("%s = %s", ctx.getResources().getString(R.string.Dice_SelectedOutcome), outcome );
+                break;
+            case EVEN:
+            case ODDS:
+                ret = "";
+                break;
+        }
+        return ret;
     }
 }

@@ -630,7 +630,6 @@ public class WalletActivity extends BRActivity implements InternetManager.Connec
         }
     }
 
-
     @Override
     public void onBackPressed() {
         int c = getFragmentManager().getBackStackEntryCount();

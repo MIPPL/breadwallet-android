@@ -18,6 +18,7 @@ import com.wagerrwallet.presenter.entities.ParlayLegEntity;
 import com.wagerrwallet.tools.exceptions.WagerrTransactionException;
 import com.wagerrwallet.tools.sqlite.BetEventTxDataStore;
 import com.wagerrwallet.tools.sqlite.BetMappingTxDataStore;
+import com.wagerrwallet.tools.sqlite.BetQuickGamesTxDataStore;
 import com.wagerrwallet.tools.sqlite.BetResultTxDataStore;
 import com.wagerrwallet.tools.sqlite.BetTxDataStore;
 import com.wagerrwallet.tools.util.BytesUtil;
@@ -90,6 +91,7 @@ public class WagerrOpCodeManager {
             try {
                 if (opcode == OP_RETURN && test == SMOKE_TEST) {       // found wagerr bet tx!
                     int opType = script[BTX_POS] & 0xFF;
+                    betAmount = output.getAmount();
                     txType = BetTransactionType.fromValue(opType);
                     switch (txType) {
                         case BET_PEERLESS:
@@ -158,6 +160,7 @@ public class WagerrOpCodeManager {
                 BetEventEntity betEventEntity = null;
                 BetEntity betEntity = null;
                 BetResultEntity betResultEntity = null;
+                BetQuickGamesEntity betQuickGamesEntity = null;
                 boolean updateEntity = false;
 
                 byte[] script = betOutput.getScript();
@@ -524,7 +527,7 @@ public class WagerrOpCodeManager {
     private static final int QUICK_GAMES_DICE_TYPE_POS=7;
     private static final int QUICK_GAMES_OUTCOME_POS=8;
 
-    protected static BetEntity getQuickGamesBetEntity(BRCoreTransaction tx, byte[] script, long betAmount ) throws WagerrTransactionException
+    protected static BetQuickGamesEntity getQuickGamesBetEntity(BRCoreTransaction tx, byte[] script, long betAmount ) throws WagerrTransactionException
     {
         BetQuickGamesEntity betEntity = null;
         String txHash = Utils.reverseHex(Utils.bytesToHex(tx.getHash()));
@@ -556,7 +559,7 @@ public class WagerrOpCodeManager {
 
         betEntity = new BetQuickGamesEntity( txHash , BetEntity.BetTxType.QUICK_GAMES, version, quickGameType, diceGameType, betAmount,
                 nSelectedOutcome, tx.getBlockHeight(), tx.getTimestamp() );
-        return (BetEntity) betEntity;
+        return betEntity;
     }
 
     private static final int CHAIN_GAMES_LOTTO_RESULT_LENGTH=5;

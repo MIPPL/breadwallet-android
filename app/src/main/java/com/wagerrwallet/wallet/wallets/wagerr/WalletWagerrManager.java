@@ -305,6 +305,14 @@ public class WalletWagerrManager extends BRCoreWalletManager implements BaseWall
                     , (tx.getInputAddresses().length==1 && tx.getInputAddresses()[0].equals("") && tx.getOutputAddresses().length>=1 && tx.getOutputAddresses()[0].length()==0) );      // is coinbase or POS
 
             BetEntity be = WagerrOpCodeManager.getEventIdFromCoreTx(tx);
+            /* delete after testing
+            if (be!=null && be instanceof BetQuickGamesEntity)  {
+                final Context ctx = WagerrApp.getBreadContext();
+                BetQuickGamesTxDataStore bqgtds = BetQuickGamesTxDataStore.getInstance(ctx);
+                bqgtds.putTransaction(ctx, (BetQuickGamesEntity) be);
+            }
+            */
+
             txUiHolder.setBetEntity(be);
             uiTxs.add(txUiHolder);
         }
@@ -481,6 +489,7 @@ public class WalletWagerrManager extends BRCoreWalletManager implements BaseWall
         BetEventTxDataStore.getInstance(app).deleteAllTransactions(app, getIso(app));
         BetTxDataStore.getInstance(app).deleteAllTransactions(app, getIso(app));
         BetMappingTxDataStore.getInstance(app).deleteAllTransactions(app, getIso(app));
+        BetQuickGamesTxDataStore.getInstance(app).deleteAllTransactions(app);
         MerkleBlockDataSource.getInstance(app).deleteAllBlocks(app, getIso(app));
         PeerDataSource.getInstance(app).deleteAllPeers(app, getIso(app));
         BRSharedPrefs.clearAllPrefs(app);
@@ -911,8 +920,15 @@ public class WalletWagerrManager extends BRCoreWalletManager implements BaseWall
                 }
             });
         }
-        if (ctx != null)
+        if (ctx != null) {
             TransactionStorageManager.putTransaction(ctx, getIso(ctx), new BRTransactionEntity(transaction.serialize(), transaction.getBlockHeight(), transaction.getTimestamp(), BRCoreKey.encodeHex(transaction.getHash()), getIso(ctx)));
+            // if this is a quick game bet, add to the table
+            BetQuickGamesEntity betEntity =  (BetQuickGamesEntity)WagerrOpCodeManager.getEventIdFromCoreTx(transaction);
+            if (betEntity!=null && betEntity instanceof BetQuickGamesEntity) {
+                BetQuickGamesTxDataStore bqgtds = BetQuickGamesTxDataStore.getInstance(ctx);
+                bqgtds.putTransaction(ctx, betEntity);
+            }
+        }
         else
             Log.e(TAG, "onTxAdded: ctx is null!");
         for (OnTxListModified list : txModifiedListeners)

@@ -59,6 +59,7 @@ import com.wagerrwallet.tools.util.CurrencyUtils;
 import com.wagerrwallet.tools.util.Utils;
 import com.wagerrwallet.wallet.WalletsMaster;
 import com.wagerrwallet.wallet.abstracts.BaseWalletManager;
+import com.wagerrwallet.wallet.abstracts.OnTxListModified;
 import com.wagerrwallet.wallet.abstracts.SyncListener;
 import com.wagerrwallet.wallet.wallets.util.CryptoUriParser;
 
@@ -78,7 +79,7 @@ import static com.wagerrwallet.tools.animation.BRAnimator.t2Size;
  * (c) Wagerr Betting platform 2020
  */
 
-public class DiceActivity extends BRActivity implements InternetManager.ConnectionReceiverListener, SyncManager.OnProgressUpdate {
+public class DiceActivity extends BRActivity implements InternetManager.ConnectionReceiverListener, OnTxListModified, SyncManager.OnProgressUpdate {
     private static final String TAG = DiceActivity.class.getName();
     private static final long UNIT_MULTIPLIER = 100000000L;     // so far in full WGR units
 
@@ -347,7 +348,14 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
             int max = Math.min( (int)(wallet.getWallet().getBalance()/UNIT_MULTIPLIER),
                     app.getResources().getInteger(R.integer.max_bet_amount));
             String strAmount = mBetAmount.getText().toString().replace(',', '.');
-            Float fAmount = Float.parseFloat(strAmount);
+            Float fAmount = 0.0F;
+            try {
+                fAmount = Float.parseFloat(strAmount);
+            }
+            catch (NumberFormatException ex)    {
+                strErrMessage = "Please enter a correct bet amount";
+            }
+
             long amount = (long)(fAmount * UNIT_MULTIPLIER);
 
             if ( fAmount < min )    {
@@ -358,7 +366,7 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
             }
 
             if ( strErrMessage =="" ) {  // no errors, continue
-                BRCoreTransaction tx = wallet.getWallet().createDiceBetTransaction(amount, BetQuickGamesEntity.BetQuickGameType.DICE.getNumber(), getDiceGameType(bLeft).getNumber(), getSelectedOutcome());
+                BRCoreTransaction tx = wallet.getWallet().createDiceBetTransaction(amount, BetEntity.BetTxType.QUICK_GAMES.getNumber(), getDiceGameType(bLeft).getNumber(), getSelectedOutcome());
                 CryptoRequest item = new CryptoRequest(tx, null, false, "", "", new BigDecimal(amount));
                 SendManager.sendTransaction(DiceActivity.this, item, wallet);
             }
@@ -401,7 +409,7 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
                 break;
 
             case DICE_BET_OVER_UNDER:
-                ret = nDiceN5Selected+1;
+                ret = nDiceN5Selected+2;
                 break;
 
             case DICE_BET_EVEN_ODDS:    // no outcome, ignored
@@ -412,6 +420,17 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
 
     public boolean isSearchActive() {
         return isSearchBarVisible;
+    }
+
+    @Override
+    public void txListModified(String hash) {
+        BRExecutor.getInstance().forMainThreadTasks().execute(new Runnable() {
+            @Override
+            public void run() {
+                updateUi();
+            }
+        });
+
     }
 
     @Override
@@ -690,6 +709,7 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
             }
         });
         final BaseWalletManager wallet = WalletsMaster.getInstance(this).getCurrentWallet(this);
+        wallet.addTxListModifiedListener(this);
         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
             @Override
             public void run() {
