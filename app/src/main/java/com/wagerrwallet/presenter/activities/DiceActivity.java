@@ -288,6 +288,7 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     mBetAmount.clearFocus();
+                    Utils.hideKeyboard(DiceActivity.this);
                     updateDiceButtonsUI();
                     return true;
                 }
@@ -509,7 +510,7 @@ public class DiceActivity extends BRActivity implements InternetManager.Connecti
                 mDiceN[nDiceNSelectedPrev].setBackground( drwNotSelected );
                 mDiceN[nDiceNSelected].setBackground( drwSelected );
                 mBetLeft.setText( getResources().getString( R.string.Dice_EqualTo) );
-                mBetRight.setText( getResources().getString( R.string.Dice_NotEqualTo) );
+                mBetRight.setText( getResources().getString( R.string.Dice_NotEqual) );
                 if (fAmount>0) {
                     fPotentialLeft = DiceActivity.fRewardEqual[nDiceNSelected] * fAmount;
                     fPotentialRight = DiceActivity.fRewardNotEqual[nDiceNSelected] * fAmount;

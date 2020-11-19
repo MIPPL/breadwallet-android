@@ -734,7 +734,7 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="10dp"
                     android:text="11.35 WGR"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     app:customTFont="CircularPro-Bold.otf"
                     android:textSize="12sp"
                     android:visibility="visible" />
@@ -748,7 +748,7 @@
                     android:layout_marginBottom="5dp"
                     android:layout_toRightOf="@id/tx_amount"
                     android:text="@string/Dice.PotentialReward"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="14sp"
                     android:visibility="visible" />
 
@@ -761,7 +761,7 @@
                     android:layout_marginBottom="5dp"
                     android:layout_toRightOf="@id/tx_amount"
                     android:text="30 WGR"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     app:customTFont="CircularPro-Bold.otf"
                     android:textSize="12sp"
                     android:visibility="visible" />
