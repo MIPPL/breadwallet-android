@@ -6,9 +6,9 @@ android {
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
         applicationId = 'com.biblepaywallet'
         minSdkVersion 23
-        targetSdkVersion 28
-        versionCode 228
-        versionName "228"
+        targetSdkVersion 29
+        versionCode 230
+        versionName "230"
         multiDexEnabled true
 
         // Similar to other properties in the defaultConfig block,
