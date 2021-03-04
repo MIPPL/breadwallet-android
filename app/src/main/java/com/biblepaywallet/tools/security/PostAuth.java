@@ -17,6 +17,7 @@ import com.biblepaywallet.presenter.activities.PaperKeyProveActivity;
 import com.biblepaywallet.presenter.activities.intro.WriteDownActivity;
 import com.biblepaywallet.presenter.activities.util.ActivityUTILS;
 import com.biblepaywallet.presenter.entities.CryptoRequest;
+import com.biblepaywallet.tools.animation.BRAnimator;
 import com.biblepaywallet.tools.animation.BRDialog;
 import com.biblepaywallet.tools.manager.BRReportsManager;
 import com.biblepaywallet.tools.manager.BRSharedPrefs;
@@ -332,8 +333,8 @@ public class PostAuth {
                 }
             }
         }
-        WalletsMaster.getInstance(app).startTheWalletIfExists(app);
+        //WalletsMaster.getInstance(app).startTheWalletIfExists(app);
+        // move directly to paper key recover for emergency cases
+        BRAnimator.startEmergencyActivity(app);
     }
-
-
 }

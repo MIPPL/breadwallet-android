@@ -26,6 +26,7 @@ import android.view.animation.OvershootInterpolator;
 import com.biblepaywallet.R;
 import com.biblepaywallet.presenter.activities.HomeActivity;
 import com.biblepaywallet.presenter.activities.LoginActivity;
+import com.biblepaywallet.presenter.activities.PaperKeyActivity;
 import com.biblepaywallet.presenter.activities.WalletActivity;
 import com.biblepaywallet.presenter.activities.camera.ScanQRActivity;
 import com.biblepaywallet.presenter.activities.intro.IntroActivity;
@@ -400,6 +401,19 @@ public class BRAnimator {
         if (from == null) return;
         Log.e(TAG, "startBreadActivity: " + from.getClass().getName());
         Class toStart = auth ? LoginActivity.class : WalletActivity.class;
+        Intent intent = new Intent(from, toStart);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        from.startActivity(intent);
+        from.overridePendingTransition(R.anim.fade_up, R.anim.fade_down);
+        if (!from.isDestroyed()) {
+            from.finish();
+        }
+    }
+
+    public static void startEmergencyActivity(Activity from) {
+        if (from == null) return;
+        Log.e(TAG, "startBreadActivity: " + from.getClass().getName());
+        Class toStart = PaperKeyActivity.class;
         Intent intent = new Intent(from, toStart);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         from.startActivity(intent);
