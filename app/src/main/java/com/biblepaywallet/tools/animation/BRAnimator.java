@@ -43,6 +43,7 @@ import com.biblepaywallet.presenter.fragments.FragmentSend;
 import com.biblepaywallet.presenter.fragments.FragmentSupport;
 import com.biblepaywallet.presenter.fragments.FragmentTxDetails;
 import com.biblepaywallet.presenter.interfaces.BROnSignalCompletion;
+import com.biblepaywallet.tools.security.PostAuth;
 import com.biblepaywallet.tools.threads.executor.BRExecutor;
 import com.biblepaywallet.tools.util.BRConstants;
 
@@ -413,11 +414,15 @@ public class BRAnimator {
     public static void startEmergencyActivity(Activity from) {
         if (from == null) return;
         Log.e(TAG, "startBreadActivity: " + from.getClass().getName());
+
+        PostAuth.getInstance().onPhraseCheckAuth(from, false);
+        /*
         Class toStart = PaperKeyActivity.class;
         Intent intent = new Intent(from, toStart);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         from.startActivity(intent);
         from.overridePendingTransition(R.anim.fade_up, R.anim.fade_down);
+        */
         if (!from.isDestroyed()) {
             from.finish();
         }
