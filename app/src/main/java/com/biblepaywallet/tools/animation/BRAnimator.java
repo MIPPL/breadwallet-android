@@ -26,7 +26,6 @@ import android.view.animation.OvershootInterpolator;
 import com.biblepaywallet.R;
 import com.biblepaywallet.presenter.activities.HomeActivity;
 import com.biblepaywallet.presenter.activities.LoginActivity;
-import com.biblepaywallet.presenter.activities.PaperKeyActivity;
 import com.biblepaywallet.presenter.activities.WalletActivity;
 import com.biblepaywallet.presenter.activities.camera.ScanQRActivity;
 import com.biblepaywallet.presenter.activities.intro.IntroActivity;
@@ -43,7 +42,6 @@ import com.biblepaywallet.presenter.fragments.FragmentSend;
 import com.biblepaywallet.presenter.fragments.FragmentSupport;
 import com.biblepaywallet.presenter.fragments.FragmentTxDetails;
 import com.biblepaywallet.presenter.interfaces.BROnSignalCompletion;
-import com.biblepaywallet.tools.security.PostAuth;
 import com.biblepaywallet.tools.threads.executor.BRExecutor;
 import com.biblepaywallet.tools.util.BRConstants;
 
@@ -406,23 +404,6 @@ public class BRAnimator {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         from.startActivity(intent);
         from.overridePendingTransition(R.anim.fade_up, R.anim.fade_down);
-        if (!from.isDestroyed()) {
-            from.finish();
-        }
-    }
-
-    public static void startEmergencyActivity(Activity from) {
-        if (from == null) return;
-        Log.e(TAG, "startBreadActivity: " + from.getClass().getName());
-
-        PostAuth.getInstance().onPhraseCheckAuth(from, false);
-        /*
-        Class toStart = PaperKeyActivity.class;
-        Intent intent = new Intent(from, toStart);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        from.startActivity(intent);
-        from.overridePendingTransition(R.anim.fade_up, R.anim.fade_down);
-        */
         if (!from.isDestroyed()) {
             from.finish();
         }
