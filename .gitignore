@@ -72,3 +72,6 @@ Release_checklist
 
 /app/.externalNativeBuild/
 /app/wagerr/
+app/.cxx/cmake/
+app/.cxx/
+.idea/
