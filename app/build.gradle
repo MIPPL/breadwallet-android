@@ -6,7 +6,7 @@ android {
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
         applicationId = 'com.wagerrwallet'
         minSdkVersion 23
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 225
         versionName "225"
         multiDexEnabled true
